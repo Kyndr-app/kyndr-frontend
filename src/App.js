@@ -26,6 +26,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          borderRadius: "10px",
+        },
+      },
+    },
   },
   typography: {
     fontFamily: ["Raleway", "Roboto", "Helvetica", "Arial", "sans-serif"].join(

@@ -1,17 +1,10 @@
 import { Avatar, Button, ListItemIcon, Menu, MenuItem } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { DownArrow, Polygon } from "../../../assets/icons";
-import { ReactComponent as Logo } from "../../../assets/images/logo.svg";
-import NavLink from "../../../utils/NavLink";
-import user from "../../../assets/images/user.png";
-/**
- * 1. Donate
- * 2. DAO
- * 3. Wallet
- * 4. Stake (Coming Soon)
- * 5. NFT Market (Coming Soon)
- */
+import { DownArrow, Polygon } from "../../assets/icons";
+import { ReactComponent as Logo } from "../../assets/images/logo.svg";
+import NavLink from "../../utils/NavLink";
+import user from "../../assets/images/user.png";
 
 const userMenu = [
   {
@@ -24,7 +17,7 @@ const userMenu = [
   },
 ];
 
-const Header = () => {
+const Header = ({ links }) => {
   const [userDropdown, setUserDropdown] = useState(false);
   const handleUserDropdownOpen = (e) => setUserDropdown(e.currentTarget);
   return (
@@ -34,51 +27,17 @@ const Header = () => {
       </Link>
       <div className="flex items-center justify-between w-full">
         <ul className="list-none flex">
-          <li>
-            <NavLink
-              to="donate"
-              className="px-5 py-2 text-gray-300 font-semibold hover:text-gray-700 transition-all"
-              activeClassName="text-gray-700"
-            >
-              Donate
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="dao"
-              className="px-5 py-2 text-gray-300 font-semibold hover:text-gray-700 transition-all"
-              activeClassName="text-gray-700"
-            >
-              DAO
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="wallet"
-              className="px-5 py-2 text-gray-300 font-semibold hover:text-gray-700 transition-all"
-              activeClassName="text-gray-700"
-            >
-              Wallet
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="stake"
-              className="px-5 py-2 text-gray-300 font-semibold hover:text-gray-700 transition-all"
-              activeClassName="text-gray-700"
-            >
-              Stake (Coming Soon)
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="nft-market"
-              className="px-5 py-2 text-gray-300 font-semibold hover:text-gray-700 transition-all"
-              activeClassName="text-gray-700"
-            >
-              NFT Market (Coming Soon)
-            </NavLink>
-          </li>
+          {links.map((link) => (
+            <li>
+              <NavLink
+                to={link.path}
+                className="px-5 py-2 text-gray-300 after:absolute hover:after:w-full after:transition-all after:bottom-0 after:left-[50%] after:translate-x-[-50%] relative after:max-w-[60px] after:w-0 after:h-[2px] after:bg-primary font-semibold hover:text-gray-700 transition-all"
+                activeClassName="text-gray-700"
+              >
+                {link.name}
+              </NavLink>
+            </li>
+          ))}
         </ul>
         <div className="flex">
           <Button

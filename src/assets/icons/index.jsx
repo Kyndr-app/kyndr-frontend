@@ -15,5 +15,6 @@ export { ReactComponent as Mastercard } from "./mastercard.svg";
 export { ReactComponent as Visa } from "./visa.svg";
 export { ReactComponent as Discover } from "./discover.svg";
 export { ReactComponent as Paypal } from "./paypal.svg";
-// Protect
 export { ReactComponent as Protect } from "./protect.svg";
+// Norton
+export { ReactComponent as Norton } from "./norton.svg";

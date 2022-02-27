@@ -42,7 +42,11 @@ import fromNow from "../../libraries/FromNow";
 import { getRandomDate, getRandomStatus } from "../../utils/extras";
 import Method from "../../utils/Method";
 import { StyledTab, StyledTabs } from "../../utils/MuiComponents";
-import CreditCardPopup from "../../utils/CreditCardPopup";
+import {
+  ConfirmPopup,
+  CreditCardPopup,
+  PaymentPopup,
+} from "../../utils/CreditCardPopup";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
@@ -188,9 +192,21 @@ const Donor = () => {
     setValue(newValue);
   };
   const [open, setOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [paymentOpen, setPaymentOpen] = useState(false);
   return (
     <main className="px-10 pb-5 pt-10">
-      <CreditCardPopup open={open} setOpen={setOpen} />
+      <CreditCardPopup
+        open={open}
+        setCheckoutOpen={setConfirmOpen}
+        setOpen={setOpen}
+      />
+      <ConfirmPopup open={confirmOpen} setOpen={setConfirmOpen} />
+      <PaymentPopup
+        open={paymentOpen}
+        setOpen={setPaymentOpen}
+        setCheckoutOpen={setConfirmOpen}
+      />
       <h1 className="text-2xl text-gray-500 font-bold">Campaign 1</h1>
       <p
         className="text-gray-500 mb-2 text-xs font-semibold uppercase"
@@ -220,6 +236,7 @@ const Donor = () => {
                   color="primary"
                   className="bg-gradient-to-r h-11 py-2 from-primary-light to-primary"
                   startIcon={<Crypto />}
+                  onClick={() => setPaymentOpen(true)}
                 >
                   <span className="text-xs capitalize">Donate with Crypto</span>
                 </Button>
@@ -358,6 +375,7 @@ const Donor = () => {
                       "&.Mui-disabled": { display: "none" },
                     },
                   }}
+                  defaultValue={0}
                 >
                   {beneficiaries.map((item, index) => (
                     <Beneficiary key={index} {...item} />

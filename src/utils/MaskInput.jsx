@@ -10,7 +10,7 @@ const TextMaskCustom = forwardRef(function (
       {...props}
       mask={mask}
       definitions={{
-        "#": /[1-9]/,
+        "#": /[0-9]/,
       }}
       inputRef={ref}
       onAccept={(value) => onChange({ target: { name: props.name, value } })}
@@ -19,8 +19,12 @@ const TextMaskCustom = forwardRef(function (
   );
 });
 
-export const CreditCardMask = forwardRef((p, r) => {
-  return <TextMaskCustom ref={r} {...p} mask="#000 0000 0000 0000" />;
-});
+export const CreditCardMask = forwardRef((p, ref) => (
+  <TextMaskCustom {...p} ref={ref} mask="#000 0000 0000 0000" />
+));
+
+export const ExpiryMask = forwardRef((p, ref) => (
+  <TextMaskCustom {...p} mask="#0/00" ref={ref} />
+));
 
 export default TextMaskCustom;
