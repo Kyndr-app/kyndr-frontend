@@ -1,7 +1,7 @@
 import React from "react";
 
-const NGO = () => {
+const Cause = () => {
   return <div></div>;
 };
 
-export default NGO;
+export default Cause;

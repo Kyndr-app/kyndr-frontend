@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import Donor from "./Donor";
 import Header from "../Layout/Header";
+import Wallet from "./Wallet";
 
 /**
  * 1. Donate
@@ -48,7 +49,7 @@ const DonorRoutes = () => {
     <Routes>
       <Route path="" element={<DonorPages />}>
         <Route path="/" index element={<Donor />} />
-        {/* <Route path="donate" element={<Donor />} /> */}
+        <Route path="wallet" element={<Wallet />} />
         <Route path="*" element={<div />} />
       </Route>
     </Routes>

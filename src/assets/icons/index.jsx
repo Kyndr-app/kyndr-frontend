@@ -16,5 +16,10 @@ export { ReactComponent as Visa } from "./visa.svg";
 export { ReactComponent as Discover } from "./discover.svg";
 export { ReactComponent as Paypal } from "./paypal.svg";
 export { ReactComponent as Protect } from "./protect.svg";
-// Norton
 export { ReactComponent as Norton } from "./norton.svg";
+export { ReactComponent as BgBlurPrimary } from "./bg-blur-primary.svg";
+export { ReactComponent as BgBlurSecondary } from "./bg-blur-secondary.svg";
+// bg-blur-primary-lg.svg
+export { ReactComponent as BgBlurPrimaryLg } from "./bg-blur-primary-lg.svg";
+// reward.svg
+export { ReactComponent as Reward } from "./reward.svg";
