@@ -1,5 +1,6 @@
 import {
   FormControlLabel,
+  Select,
   styled,
   Tab,
   Tabs,
@@ -73,6 +74,22 @@ export function MyFormControlLabel(props) {
 }
 
 export const StyledInput = styled(TextField)({
+  "& input": {
+    fontSize: 14,
+    paddingTop: 14,
+    paddingBottom: 14,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  "& label": {
+    fontSize: 14,
+    color: "#828282 !important",
+  },
+  "& fieldset": {
+    borderRadius: 10,
+  },
+});
+export const StyledSelect = styled(Select)({
   "& input": {
     fontSize: 14,
     paddingTop: 14,

@@ -22,7 +22,6 @@ import {
   BgBlurSecondary,
   Download,
   Reward,
-  Save,
   Upload,
 } from "../../assets/icons";
 import fromNow from "../../libraries/FromNow";

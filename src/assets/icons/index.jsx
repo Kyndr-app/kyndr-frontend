@@ -19,7 +19,8 @@ export { ReactComponent as Protect } from "./protect.svg";
 export { ReactComponent as Norton } from "./norton.svg";
 export { ReactComponent as BgBlurPrimary } from "./bg-blur-primary.svg";
 export { ReactComponent as BgBlurSecondary } from "./bg-blur-secondary.svg";
-// bg-blur-primary-lg.svg
 export { ReactComponent as BgBlurPrimaryLg } from "./bg-blur-primary-lg.svg";
-// reward.svg
 export { ReactComponent as Reward } from "./reward.svg";
+export { ReactComponent as BgBlurTertiary } from "./bg-blur-tertiary.svg";
+// upload-icon
+export { ReactComponent as UploadIcon } from "./upload-icon.svg";
