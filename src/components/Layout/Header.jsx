@@ -6,22 +6,11 @@ import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import NavLink from "../../utils/NavLink";
 import user from "../../assets/images/user.png";
 
-const userMenu = [
-  {
-    title: "Account",
-    icon: <span className="text-xl text-[#F16178]">+</span>,
-  },
-  {
-    title: "Logout",
-    icon: <span className="text-xl text-[#F16178]">+</span>,
-  },
-];
-
-const Header = ({ links }) => {
+const Header = ({ links, userMenu }) => {
   const [userDropdown, setUserDropdown] = useState(false);
   const handleUserDropdownOpen = (e) => setUserDropdown(e.currentTarget);
   return (
-    <header className="px-10 pt-5 flex items-center">
+    <header className="px-10 py-5 bg-white z-10 flex items-center sticky top-0">
       <Link to="/" className="pr-10">
         <Logo className="w-28 h-auto" />
       </Link>
@@ -86,7 +75,7 @@ const Header = ({ links }) => {
                     minWidth: "20px",
                   }}
                 >
-                  {item.icon}
+                  <span className="text-xl text-[#F16178]">+</span>
                 </ListItemIcon>
                 <div className="text-xs font-medium">{item.title}</div>
               </MenuItem>

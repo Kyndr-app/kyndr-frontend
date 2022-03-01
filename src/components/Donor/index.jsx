@@ -3,6 +3,9 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import Donor from "./Donor";
 import Header from "../Layout/Header";
 import Wallet from "./Wallet";
+import Donate from "./Donate";
+import DAO from "./DAO";
+import Account from "./Account";
 
 /**
  * 1. Donate
@@ -35,10 +38,19 @@ const links = [
   },
 ];
 
+const userMenu = [
+  {
+    title: "Account",
+  },
+  {
+    title: "Logout",
+  },
+];
+
 const DonorPages = () => {
   return (
     <>
-      <Header links={links} />
+      <Header links={links} userMenu={userMenu} />
       <Outlet />
     </>
   );
@@ -50,6 +62,9 @@ const DonorRoutes = () => {
       <Route path="" element={<DonorPages />}>
         <Route path="/" index element={<Donor />} />
         <Route path="wallet" element={<Wallet />} />
+        <Route path="donate" element={<Donate />} />
+        <Route path="dao" element={<DAO />} />
+        <Route path="account" element={<Account />} />
         <Route path="*" element={<div />} />
       </Route>
     </Routes>

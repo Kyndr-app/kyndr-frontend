@@ -6,7 +6,30 @@
 * {
   font-family: Raleway, sans-serif;
 }
-
+/* All Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .text-roboto {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+.percent {
+  stroke-dasharray: 100;
+  stroke-dashoffset: calc(100 - var(--val));
+}
+
+.fifty {
+  --val: 50;
+}
+
+.sixty {
+  --val: 60;
+}
+
+.ninety {
+  --val: 90;
 }

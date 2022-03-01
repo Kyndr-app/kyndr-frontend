@@ -16,12 +16,7 @@ const a11yProps = (index) => ({
   id: `wallet-tabs-${index}`,
   "aria-controls": `wallet-tabspanel-${index}`,
 });
-/**
- * TABS
- * 1.Tokens Recevied
- * 2.Token Withdrawals
- * 3.Bank Withdrawals
- */
+
 const Wallet = () => {
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {

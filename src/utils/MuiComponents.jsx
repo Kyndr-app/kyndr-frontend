@@ -1,5 +1,7 @@
 import {
   FormControlLabel,
+  LinearProgress,
+  linearProgressClasses,
   Select,
   styled,
   Tab,
@@ -105,3 +107,17 @@ export const StyledSelect = styled(Select)({
     borderRadius: 10,
   },
 });
+
+export const BorderLinearProgress = styled(LinearProgress)(
+  ({ theme, extraColor }) => ({
+    height: 10,
+    borderRadius: 5,
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+      backgroundColor: extraColor ? "#C4C4C4" : theme.palette.secondary.light,
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+      borderRadius: 5,
+      backgroundColor: extraColor || theme.palette.secondary.main,
+    },
+  })
+);

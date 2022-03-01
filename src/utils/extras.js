@@ -79,8 +79,7 @@ export const getRandomEmail = () => {
   return `${name}@${domain}`;
 };
 
-export function getRandomDate(end = new Date()) {
-  const start = new Date(2022, 0, 1);
+export function getRandomDate(end = new Date(), start = new Date(2022, 0, 1)) {
   return new Date(
     start.getTime() + Math.random() * (end.getTime() - start.getTime())
   ).toISOString();
@@ -122,3 +121,8 @@ const statues = ["Withdraw All", "Completed", "Deposit"];
 export const getRandomStatus = () => {
   return getRandomElement(statues);
 };
+
+// Get random number between min and max
+export function getRandomInt(min = 0, max = 100) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

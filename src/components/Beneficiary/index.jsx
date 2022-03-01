@@ -24,9 +24,15 @@ const links = [
   },
 ];
 
+const userMenu = [
+  {
+    title: "Logout",
+  },
+];
+
 const BeneficiaryPages = () => (
   <>
-    <Header links={links} />
+    <Header links={links} userMenu={userMenu} />
     <Outlet />
   </>
 );

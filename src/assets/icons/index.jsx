@@ -22,5 +22,12 @@ export { ReactComponent as BgBlurSecondary } from "./bg-blur-secondary.svg";
 export { ReactComponent as BgBlurPrimaryLg } from "./bg-blur-primary-lg.svg";
 export { ReactComponent as Reward } from "./reward.svg";
 export { ReactComponent as BgBlurTertiary } from "./bg-blur-tertiary.svg";
-// upload-icon
 export { ReactComponent as UploadIcon } from "./upload-icon.svg";
+export { ReactComponent as Virus } from "./virus.svg";
+export { ReactComponent as Medical } from "./medical.svg";
+export { ReactComponent as Memorials } from "./memorials.svg";
+export { ReactComponent as Sport } from "./sport.svg";
+export { ReactComponent as Tech } from "./tech.svg";
+export { ReactComponent as Graph } from "./graph.svg";
+export { ReactComponent as Increase } from "./increase.svg";
+export { ReactComponent as Women } from "./women.svg";

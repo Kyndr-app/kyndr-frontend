@@ -21,8 +21,6 @@ import {
   Tabs,
   tabsClasses,
   styled,
-  LinearProgress,
-  linearProgressClasses,
   TableFooter,
   Pagination,
 } from "@mui/material";
@@ -41,24 +39,16 @@ import group from "../../assets/images/group.png";
 import fromNow from "../../libraries/FromNow";
 import { getRandomDate, getRandomStatus } from "../../utils/extras";
 import Method from "../../utils/Method";
-import { StyledTab, StyledTabs } from "../../utils/MuiComponents";
+import {
+  BorderLinearProgress,
+  StyledTab,
+  StyledTabs,
+} from "../../utils/MuiComponents";
 import {
   ConfirmPopup,
   CreditCardPopup,
   PaymentPopup,
 } from "../../utils/CreditCardPopup";
-
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 10,
-  borderRadius: 5,
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: theme.palette.secondary.light,
-  },
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
-    backgroundColor: theme.palette.secondary.main,
-  },
-}));
 
 const beneficiaries = [
   {
