@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
-import Donor from "./Donor";
+import Details from "./Details";
 import Header from "../Layout/Header";
 import Wallet from "./Wallet";
 import Donate from "./Donate";
@@ -31,10 +31,12 @@ const links = [
   {
     name: "Stake (Coming Soon)",
     path: "stake",
+    disabled: true,
   },
   {
     name: "NFT Market (Coming Soon)",
     path: "nft-market",
+    disabled: true,
   },
 ];
 
@@ -60,7 +62,7 @@ const DonorRoutes = () => {
   return (
     <Routes>
       <Route path="" element={<DonorPages />}>
-        <Route path="/" index element={<Donor />} />
+        <Route path="donate/details" index element={<Details />} />
         <Route path="wallet" element={<Wallet />} />
         <Route path="donate" element={<Donate />} />
         <Route path="dao" element={<DAO />} />

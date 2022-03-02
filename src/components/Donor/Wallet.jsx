@@ -21,6 +21,8 @@ import {
   BgBlurPrimaryLg,
   BgBlurSecondary,
   Download,
+  Kinr,
+  Kyndr,
   Reward,
   Upload,
 } from "../../assets/icons";
@@ -55,10 +57,7 @@ const Wallet = () => {
             <BgBlurPrimary className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] blur-3xl" />
             <ListItem disablePadding>
               <ListItemAvatar className="">
-                <Avatar
-                  src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-                  alt="avatar"
-                />
+                <Avatar src={Kyndr} alt="avatar" />
               </ListItemAvatar>
               <ListItemText
                 primary={<span className="font-bold">Token Balance</span>}
@@ -85,16 +84,11 @@ const Wallet = () => {
             <BgBlurSecondary className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] blur-3xl" />
             <ListItem disablePadding>
               <ListItemAvatar className="">
-                <Avatar
-                  src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-                  alt="avatar"
-                />
+                <Avatar src={Kinr} alt="avatar" />
               </ListItemAvatar>
               <ListItemText
                 primary={<span className="font-bold">Token Balance</span>}
-                secondary={
-                  <span className="text-gray-500 text-xs">$KYNDR</span>
-                }
+                secondary={<span className="text-gray-500 text-xs">$KiNR</span>}
               />
             </ListItem>
             <div className="mt-3 text-center">
@@ -107,7 +101,7 @@ const Wallet = () => {
                 fullWidth
                 className="bg-gradient-to-r py-3 shadow-none from-primary-light to-primary"
               >
-                <span className="text-xs capitalize">Get $KYNDR</span>
+                <span className="text-xs capitalize">Get $KiNR</span>
               </Button>
             </div>
           </Paper>

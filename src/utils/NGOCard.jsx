@@ -1,6 +1,7 @@
-import { Card, CardContent, CardMedia } from "@mui/material";
+import { Button, Card, CardContent, CardMedia } from "@mui/material";
 import React from "react";
 import img from "../assets/images/donate-img-1.svg";
+import { Link } from "react-router-dom";
 const NGOCard = ({ title, desc, des, percentage }) => {
   // Percentage Between 0-40
   // text-danger
@@ -33,8 +34,26 @@ const NGOCard = ({ title, desc, des, percentage }) => {
     }
   };
   return (
-    <Card className="shadow-lg">
-      <CardMedia component="img" alt="green iguana" height="175" image={img} />
+    <Card className="shadow-lg card">
+      <div className="relative">
+        <CardMedia
+          component="img"
+          alt="green iguana"
+          height="175"
+          image={img}
+        />
+        <div className="absolute button-container opacity-0 transition-all bg-gray-800 flex justify-center items-center bg-opacity-50 inset-0">
+          <Button
+            variant="contained"
+            color="primary"
+            component={Link}
+            to="details"
+            className="bg-gradient-to-r py-3 px-10 from-primary-light to-primary"
+          >
+            <span className="text-xs capitalize">View Cause</span>
+          </Button>
+        </div>
+      </div>
       <CardContent>
         <div className="flex items-center">
           <div>

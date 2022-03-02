@@ -12,9 +12,9 @@ function intToString(value) {
   var suffixes = ["", "K", "M", "B", "T"];
   var suffixNum = Math.floor(("" + value).length / 3);
   var shortValue = parseFloat(
-    (suffixNum != 0 ? value / Math.pow(1000, suffixNum) : value).toPrecision(2)
+    (suffixNum !== 0 ? value / Math.pow(1000, suffixNum) : value).toPrecision(2)
   );
-  if (shortValue % 1 != 0) {
+  if (shortValue % 1 !== 0) {
     shortValue = shortValue.toFixed(1);
   }
   return shortValue + suffixes[suffixNum];
@@ -198,85 +198,90 @@ const DAO = () => {
       </div>
       <div className="grid grid-cols-3 mt-8 gap-4">
         <div className="col-span-1">
-          <h3 className="text-[#4C4C66] text-xs mb-2 uppercase font-medium">
-            Treasury Breakdown
-          </h3>
-          <Paper className="px-8 py-10 shadow-lg">
-            {progressBars.map((bar) => (
-              <div className="flex items-end last:mb-0 mb-4">
-                <div className="text-xs w-14">{bar.name}</div>
-                <div className="w-full">
-                  <div className="flex justify-between">
-                    <span className="text-xs font-bold">
-                      {bar.amount} {bar.name}
-                    </span>
-                    <h6 className="text-right font-medium text-sm">
-                      {bar.value}%
-                    </h6>
+          <div className="flex h-full flex-col">
+            <h3 className="text-[#4C4C66] text-xs mb-2 uppercase font-medium">
+              Treasury Breakdown
+            </h3>
+            <Paper className="px-8 py-10 h-full flex justify-center flex-col shadow-lg">
+              {progressBars.map((bar) => (
+                <div className="flex items-end last:mb-0 mb-4">
+                  <div className="text-xs w-14">{bar.name}</div>
+                  <div className="w-full">
+                    <div className="flex justify-between">
+                      <span className="text-xs font-bold">
+                        {bar.amount} {bar.name}
+                      </span>
+                      <h6 className="text-right font-medium text-sm">
+                        {bar.value}%
+                      </h6>
+                    </div>
+                    <BorderLinearProgress
+                      className="w-full"
+                      variant="determinate"
+                      value={bar.value}
+                      extraColor={bar.color}
+                    />
                   </div>
-                  <BorderLinearProgress
-                    className="w-full"
-                    variant="determinate"
-                    value={bar.value}
-                    extraColor={bar.color}
-                  />
                 </div>
-              </div>
-            ))}
-          </Paper>
+              ))}
+            </Paper>
+          </div>
         </div>
         <div className="col-span-2">
-          <h3 className="text-[#4C4C66] text-xs mb-2 uppercase font-medium">
-            Proposals & Voting
-          </h3>
-          <Paper className="px-10 py-10 shadow-lg">
-            <div className="grid grid-cols-2 gap-5">
-              <div>
-                <h1 className="text-lg font-bold mb-5">
-                  Tokens Required For Proposals & Votes &nbsp; &nbsp; &nbsp;
-                  &nbsp;
-                  <span className="text-xl font-semibold text-[#5E5D75]">
-                    20 $KYNDR
-                  </span>
-                </h1>
-                <p className="text-lg text-[#6C6C6C]">
-                  You can now create proposals to add or remove features, create
-                  something new or get inputs on matters regarding the platform.
-                  Token holders can both create proposals and vote on them.
-                </p>
-              </div>
-              <div className="flex flex-col justify-between">
-                <div className="mt-4 w-full">
-                  <div className="flex items-center justify-between">
-                    <h1 className="text-xl">Your Token Balance</h1>
-                    <div className="text-[32px]">51.56 $KYNDR</div>
+          <div className="h-full flex flex-col">
+            <h3 className="text-[#4C4C66] text-xs mb-2 uppercase font-medium">
+              Proposals & Voting
+            </h3>
+            <Paper className="px-10 py-10 shadow-lg h-full">
+              <div className="grid grid-cols-2 gap-5">
+                <div>
+                  <h1 className="text-lg font-bold mb-5">
+                    Tokens Required For Proposals & Votes &nbsp; &nbsp; &nbsp;
+                    &nbsp;
+                    <span className="text-xl font-semibold text-[#5E5D75]">
+                      20 $KYNDR
+                    </span>
+                  </h1>
+                  <p className="text-lg text-[#6C6C6C]">
+                    You can now create proposals to add or remove features,
+                    create something new or get inputs on matters regarding the
+                    platform. Token holders can both create proposals and vote
+                    on them.
+                  </p>
+                </div>
+                <div className="flex flex-col justify-between">
+                  <div className="mt-4 w-full">
+                    <div className="flex items-center justify-between">
+                      <h1 className="text-xl">Your Token Balance</h1>
+                      <div className="text-[32px]">51.56 $KYNDR</div>
+                    </div>
+                  </div>
+                  <div className="w-full flex gap-4">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                      className="bg-gradient-to-r py-4 from-primary-light to-primary"
+                    >
+                      <span className="text-xs capitalize">
+                        Click here to make a proposal
+                      </span>
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                      className="bg-gradient-to-r py-4 from-primary-light to-primary"
+                    >
+                      <span className="text-xs capitalize">
+                        Click here to vote
+                      </span>
+                    </Button>
                   </div>
                 </div>
-                <div className="w-full flex gap-4">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    className="bg-gradient-to-r py-4 from-primary-light to-primary"
-                  >
-                    <span className="text-xs capitalize">
-                      Click here to make a proposal
-                    </span>
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    className="bg-gradient-to-r py-4 from-primary-light to-primary"
-                  >
-                    <span className="text-xs capitalize">
-                      Click here to vote
-                    </span>
-                  </Button>
-                </div>
               </div>
-            </div>
-          </Paper>
+            </Paper>
+          </div>
         </div>
       </div>
     </main>

@@ -9,7 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 import React, { useState } from "react";
-import { BgBlurTertiary, UploadIcon } from "../../assets/icons";
+import { BgBlurTertiary, Bitcoin, UploadIcon } from "../../assets/icons";
 import { StyledInput, StyledTab, StyledTabs } from "../../utils/MuiComponents";
 
 const a11yProps = (index) => ({
@@ -35,14 +35,11 @@ const Wallet = () => {
       </p>
       <Paper className="shadow-lg my-4 max-w-[1230px] flex p-5">
         <div className=" max-w-[270px] w-full ml-4 mr-16">
-          <div className="relative px-3 w-full rounded-md pt-5 pb-3 overflow-hidden">
+          <div className="relative shadow-lg px-3 w-full rounded-md pt-5 pb-3 overflow-hidden">
             <BgBlurTertiary className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] blur-3xl" />
             <ListItem disablePadding>
               <ListItemAvatar className="">
-                <Avatar
-                  src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-                  alt="avatar"
-                />
+                <Avatar src={Bitcoin} alt="avatar" />
               </ListItemAvatar>
               <ListItemText
                 primary={<span className="font-bold">Token Balance</span>}

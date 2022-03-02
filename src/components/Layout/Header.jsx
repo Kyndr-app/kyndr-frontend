@@ -20,6 +20,7 @@ const Header = ({ links, userMenu }) => {
             <li>
               <NavLink
                 to={link.path}
+                style={{ pointerEvents: link.disabled ? "none" : "auto" }}
                 className="px-5 py-2 text-gray-300 after:absolute hover:after:w-full after:transition-all after:bottom-0 after:left-[50%] after:translate-x-[-50%] relative after:max-w-[60px] after:w-0 after:h-[2px] after:bg-primary font-semibold hover:text-gray-700 transition-all"
                 activeClassName="text-gray-700"
               >
@@ -31,7 +32,7 @@ const Header = ({ links, userMenu }) => {
         <div className="flex">
           <Button
             variant="outlined"
-            className="rounded-none h-10 mr-3 border-[#FFC0CA] hover:bg-white hover:border-[#F16178] focus:border-[#F16178]"
+            className="rounded-[3px] h-10 mr-3 border-[#FFC0CA] hover:bg-white hover:border-[#F16178] focus:border-[#F16178]"
             endIcon={<Polygon className="ml-2" />}
             disableRipple
           >
@@ -39,7 +40,7 @@ const Header = ({ links, userMenu }) => {
           </Button>
           <Button
             variant="outlined"
-            className="rounded-none h-10 mr-3 border-[#FFC0CA] hover:bg-white hover:border-[#F16178] focus:border-[#F16178]"
+            className="rounded-[3px] h-10 mr-3 border-[#FFC0CA] hover:bg-white hover:border-[#F16178] focus:border-[#F16178]"
             disableRipple
           >
             <span className="text-xs font-medium text-black">KYNDR $0.45</span>
@@ -68,7 +69,11 @@ const Header = ({ links, userMenu }) => {
                 onClick={() => setUserDropdown(false)}
                 component={Link}
                 className="px-7 py-0"
-                to={item.path ?? item.title.toLowerCase().split(" ").join("-")}
+                to={
+                  item.title === "Logout"
+                    ? "/user/join-us"
+                    : item.title.toLowerCase().split(" ").join("-")
+                }
               >
                 <ListItemIcon
                   style={{

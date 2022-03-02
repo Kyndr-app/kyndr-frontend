@@ -35,7 +35,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Raleway", "Roboto", "Helvetica", "Arial", "sans-serif"].join(
+    fontFamily: ["DM Sans", "Roboto", "Helvetica", "Arial", "sans-serif"].join(
       ","
     ),
   },

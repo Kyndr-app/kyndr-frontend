@@ -30,4 +30,8 @@ export { ReactComponent as Sport } from "./sport.svg";
 export { ReactComponent as Tech } from "./tech.svg";
 export { ReactComponent as Graph } from "./graph.svg";
 export { ReactComponent as Increase } from "./increase.svg";
+// Bitcoin
+export { default as Bitcoin } from "./bitcoin.svg";
+export { default as Kinr } from "./kinr.svg";
+export { default as Kyndr } from "./kyndr.svg";
 export { ReactComponent as Women } from "./women.svg";
