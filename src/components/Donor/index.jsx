@@ -62,6 +62,7 @@ const DonorRoutes = () => {
   return (
     <Routes>
       <Route path="" element={<DonorPages />}>
+        <Route index element={<Donate />} />
         <Route path="donate/details" index element={<Details />} />
         <Route path="wallet" element={<Wallet />} />
         <Route path="donate" element={<Donate />} />

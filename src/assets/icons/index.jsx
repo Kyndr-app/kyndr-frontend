@@ -30,7 +30,13 @@ export { ReactComponent as Sport } from "./sport.svg";
 export { ReactComponent as Tech } from "./tech.svg";
 export { ReactComponent as Graph } from "./graph.svg";
 export { ReactComponent as Increase } from "./increase.svg";
-// Bitcoin
+export { ReactComponent as KyndrLogoWhite } from "./kyndr-logo-white.svg";
+export { ReactComponent as CircleCheck } from "./circle-check.svg";
+export { ReactComponent as Donor } from "./donor.svg";
+export { ReactComponent as Ngo } from "./ngo.svg";
+// right.svg
+export { ReactComponent as Right } from "./right.svg";
+export { ReactComponent as Beneficiary } from "./beneficiary.svg";
 export { default as Bitcoin } from "./bitcoin.svg";
 export { default as Kinr } from "./kinr.svg";
 export { default as Kyndr } from "./kyndr.svg";

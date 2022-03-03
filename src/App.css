@@ -2,7 +2,10 @@
   font-size: 12px;
   font-weight: 500;
 }
-
+:root {
+  --primary-light: rgb(241, 97, 120, 0.85);
+  --primary: rgb(241, 97, 120);
+}
 * {
   font-family: "DM Sans", sans-serif;
 }
@@ -20,18 +23,6 @@ h6,
 .percent {
   stroke-dasharray: 100;
   stroke-dashoffset: calc(100 - var(--val));
-}
-
-.fifty {
-  --val: 50;
-}
-
-.sixty {
-  --val: 60;
-}
-
-.ninety {
-  --val: 90;
 }
 
 .card:hover .button-container {
@@ -53,5 +44,5 @@ h6,
 .swiper-button-next::after,
 .swiper-button-prev::after {
   font-size: 20px !important;
-  color: #ff2449;
+  color: var(--primary);
 }

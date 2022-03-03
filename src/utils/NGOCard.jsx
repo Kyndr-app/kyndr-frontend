@@ -47,7 +47,7 @@ const NGOCard = ({ title, desc, des, percentage }) => {
             variant="contained"
             color="primary"
             component={Link}
-            to="details"
+            to="/donor/donate/details"
             className="bg-gradient-to-r py-3 px-10 from-primary-light to-primary"
           >
             <span className="text-xs capitalize">View Cause</span>
