@@ -1,5 +1,5 @@
 import React from "react";
-import { CircleCheck, KyndrLogoWhite } from "../../assets/icons";
+import { CircleCheck, EndingLayout, KyndrLogoWhite } from "../../assets/icons";
 import img from "../../assets/images/login_bg.png";
 const Layout = ({ children, ...props }) => {
   return (
@@ -21,13 +21,19 @@ const Layout = ({ children, ...props }) => {
           >
             “
           </div>
-          <div className="text-xl text-roboto">
+          <div
+            className="text-xl text-roboto font-light"
+            style={{ lineHeight: 2, letterSpacing: 1 }}
+          >
             It does not matter how much we donate; it matters whether the
             donation is meaningful. How to define meaningful? Let society and
             history judge.
           </div>
           <div className="mt-3 text-lg flex items-center">
             Ronnie Chan <CircleCheck className="ml-2" />
+          </div>
+          <div className="flex justify-end">
+            <EndingLayout />
           </div>
         </div>
         <div />

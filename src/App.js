@@ -6,6 +6,7 @@ import {
   StyledEngineProvider,
   ThemeProvider,
 } from "@mui/material";
+import "flag-icons/css/flag-icons.min.css";
 
 const theme = createTheme({
   palette: {

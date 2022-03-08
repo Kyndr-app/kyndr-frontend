@@ -63,28 +63,21 @@ const JoinUs = () => {
               value={el.path}
               control={<Radio className="hidden" />}
               className="mr-0"
-              classes={{
-                label: "w-full mb-3",
-              }}
+              classes={{ label: "w-full mb-3" }}
               label={
-                <Paper
-                  elevation={3}
+                <Box
                   sx={{
                     transition: "all .1s",
-                    "& *": {
-                      transition: "all .1s",
-                    },
+                    "& *": { transition: "all .1s" },
                   }}
-                  onClick={() => {
-                    if (value === el.path) {
-                      navigate(`/${el.path}`);
-                    }
-                  }}
+                  onClick={() =>
+                    value === el.path && navigate(`/user/${el.path}`)
+                  }
                   className={`${
                     value === el.path
                       ? "border-primary bg-[#FFF7F8]"
                       : "border-transparent"
-                  } px-8 py-5 rounded-md border items-center flex`}
+                  } px-8 py-5 rounded-md shadow-lg border items-center flex`}
                 >
                   <div
                     className={`mr-7 ${
@@ -94,9 +87,7 @@ const JoinUs = () => {
                     <SvgIcon
                       component={el.icon}
                       sx={{
-                        "& .hover-white": {
-                          fill: value === el.path && "#fff",
-                        },
+                        "& .hover-white": { fill: value === el.path && "#fff" },
                       }}
                       className="text-5xl"
                       inheritViewBox
@@ -112,9 +103,9 @@ const JoinUs = () => {
                       visibility: value === el.path ? "visible" : "hidden",
                     }}
                   >
-                    {<Right />}
+                    <Right />
                   </div>
-                </Paper>
+                </Box>
               }
             />
           ))}
