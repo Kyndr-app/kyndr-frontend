@@ -1,7 +1,6 @@
 import {
   Box,
   FormControlLabel,
-  Paper,
   Radio,
   RadioGroup,
   SvgIcon,

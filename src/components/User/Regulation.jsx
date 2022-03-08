@@ -1,14 +1,5 @@
-import {
-  Button,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  InputBase,
-  MenuItem,
-  Select,
-} from "@mui/material";
-import React, { useState } from "react";
-import countries from "../../data/currencies";
+import { Button } from "@mui/material";
+import React from "react";
 import { CircleCheck, Lock } from "../../assets/icons";
 import Input from "../../utils/Input";
 import Layout from "./Layout";

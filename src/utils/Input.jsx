@@ -1,5 +1,5 @@
 import { InputAdornment, InputLabel } from "@mui/material";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { StyledInput } from "./MuiComponents";
 
 const Input = ({ label, labelProps, ...p }) => {

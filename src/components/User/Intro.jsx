@@ -1,16 +1,6 @@
-import {
-  Button,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  MenuItem,
-  Step,
-  StepLabel,
-  Stepper,
-} from "@mui/material";
+import { Button, MenuItem, Step, StepLabel, Stepper } from "@mui/material";
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Google } from "../../assets/icons";
+import { useNavigate } from "react-router-dom";
 import countries from "../../data/currencies";
 import Input from "../../utils/Input";
 import Layout from "./Layout";

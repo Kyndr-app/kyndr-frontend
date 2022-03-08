@@ -1,16 +1,8 @@
-import {
-  Button,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  InputBase,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { Button, InputBase, MenuItem, Select } from "@mui/material";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import countries from "../../data/currencies";
-import { Google, Lock } from "../../assets/icons";
+import { Lock } from "../../assets/icons";
 import Input from "../../utils/Input";
 import Layout from "./Layout";
 import Toolbar from "./Toolbar";
