@@ -47,7 +47,7 @@ const JoinUs = () => {
     <Layout className="p-10 justify-between">
       <div className="text-right w-full">
         Already have an account?{" "}
-        <Link to="../signin" className="text-primary">
+        <Link to="/user/login" className="text-primary">
           Sign In
         </Link>
       </div>

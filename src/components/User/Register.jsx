@@ -61,7 +61,7 @@ const Register = () => {
           <span className="text-[#8692A6] text-roboto">
             Already have an account?
           </span>{" "}
-          <Link to="../signup" className="text-primary">
+          <Link to="/user/login" className="text-primary">
             Sign In
           </Link>
         </div>

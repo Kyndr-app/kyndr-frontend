@@ -52,6 +52,7 @@ const User = () => {
       <Route path="">
         <Route index element={<JoinUs />} />
         <Route path="join-us" element={<JoinUs />} />
+        <Route path="login" element={<Login />} />
         <Route path="donor">
           <Route index element={<Login donor />} />
           <Route path="login" index element={<Login donor />} />
