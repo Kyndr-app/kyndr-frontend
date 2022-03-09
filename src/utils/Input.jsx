@@ -10,10 +10,10 @@ const Input = ({ label, labelProps, ...p }) => {
     return false;
   }, [type]);
   return (
-    <div className="mb-5">
+    <div className="mb-5 max-w-[450px] w-full">
       <InputLabel
         {...labelProps}
-        className={`${labelProps?.className} text-base mb-1 text-[#696F79]`}
+        className={`${labelProps?.className} text-base text-roboto mb-2 text-[#696F79]`}
         htmlFor={label}
       >
         {label}
@@ -25,9 +25,15 @@ const Input = ({ label, labelProps, ...p }) => {
         type={type}
         className={`${p.className} shadow-sm shadow-gray-400 rounded-xl`}
         id={label}
+        SelectProps={{
+          className: "py-1",
+          displayEmpty: true,
+        }}
         InputProps={{
           ...p?.InputProps,
-          className: `${p?.InputProps?.className} px-5`,
+          className: `${p?.InputProps?.className} px-5 ${
+            p?.multiline ? "pt-3" : "py-2"
+          }`,
           endAdornment: isPassword ? (
             <InputAdornment
               position="end"

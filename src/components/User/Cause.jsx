@@ -44,7 +44,6 @@ const Cause = () => {
         <Input
           label="Raising funds for"
           select
-          SelectProps={{ displayEmpty: true }}
           placeholder="Select..."
           defaultValue=""
         >
@@ -57,7 +56,6 @@ const Cause = () => {
         <Input
           label="Select your impact category"
           select
-          SelectProps={{ displayEmpty: true }}
           placeholder="Select..."
           defaultValue=""
         >

@@ -5,21 +5,10 @@ import { BorderLinearProgress } from "../../utils/MuiComponents";
 import { getRandomInt } from "../../utils/extras";
 const data = Array.from({ length: 200 }, (_e, i) => [
   new Date("July 07,2021").getTime() + 7200000 * i,
-  getRandomInt(10000, 60000),
+  getRandomInt(30000, 50000),
 ]);
 
-function intToString(value) {
-  var suffixes = ["", "K", "M", "B", "T"];
-  var suffixNum = Math.floor(("" + value).length / 3);
-  var shortValue = parseFloat(
-    (suffixNum !== 0 ? value / Math.pow(1000, suffixNum) : value).toPrecision(2)
-  );
-  if (shortValue % 1 !== 0) {
-    shortValue = shortValue.toFixed(1);
-  }
-  return shortValue + suffixes[suffixNum];
-}
-
+const formatter = Intl.NumberFormat("en", { notation: "compact" });
 var options = {
   series: [{ data }],
   chart: {
@@ -48,8 +37,9 @@ var options = {
   yaxis: {
     seriesName: "KiNR Circulating Supply",
     labels: {
-      formatter: intToString,
+      formatter: formatter.format,
     },
+    min: 10000,
   },
   tooltip: {
     x: {

@@ -31,7 +31,6 @@ const Intro = () => {
         <Input
           label="I would like to register as:"
           select
-          SelectProps={{ displayEmpty: true }}
           placeholder="Select..."
           defaultValue=""
         >
@@ -45,7 +44,6 @@ const Intro = () => {
         <Input
           label="Purpose of fundraiser"
           select
-          SelectProps={{ displayEmpty: true }}
           placeholder="Select..."
           defaultValue=""
         >
@@ -59,7 +57,6 @@ const Intro = () => {
         <Input
           label="Where are you located?"
           select
-          SelectProps={{ displayEmpty: true }}
           placeholder="Select..."
           defaultValue=""
         >

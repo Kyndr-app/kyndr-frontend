@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   mode: "jit",
   theme: {
+    container: {
+      padding: "2rem",
+      center: true,
+    },
     extend: {
       fontFamily: {
         sans: ["DM Sans", ...defaultTheme.fontFamily.sans],

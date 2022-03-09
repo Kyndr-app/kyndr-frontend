@@ -1,5 +1,5 @@
 import { Avatar, Button, ListItemIcon, Menu, MenuItem } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DownArrow, Polygon } from "../../assets/icons";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
@@ -9,8 +9,19 @@ import user from "../../assets/images/user.png";
 const Header = ({ links, userMenu }) => {
   const [userDropdown, setUserDropdown] = useState(false);
   const handleUserDropdownOpen = (e) => setUserDropdown(e.currentTarget);
+  const [header, setHeader] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setHeader(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
   return (
-    <header className="px-10 py-5 bg-white z-10 flex items-center sticky top-0">
+    <header
+      className={`px-10 py-5 bg-white z-10 transition-all duration-200 flex items-center sticky top-0 ${
+        header && "shadow-md"
+      }`}
+    >
       <Link to="/" className="pr-10">
         <Logo className="w-28 h-auto" />
       </Link>

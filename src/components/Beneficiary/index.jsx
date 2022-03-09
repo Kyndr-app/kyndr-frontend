@@ -1,13 +1,11 @@
 import React from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import Header from "../Layout/Header";
+import Account from "./Account";
+import CorporateInfo from "./CorporateInfo";
+import KYC from "./KYC";
+import PersonalInfo from "./PersonalInfo";
 import Wallet from "./Wallet";
-
-/**
- * 1. Wallet
- * 2. Account
- * 3. KYC
- */
 
 const links = [
   {
@@ -42,6 +40,16 @@ const Beneficiary = () => {
     <Routes>
       <Route path="" element={<BeneficiaryPages />}>
         <Route path="wallet" element={<Wallet />} />
+        <Route path="account" element={<Account />} />
+        <Route path="kyc">
+          <Route index element={<KYC />} />
+          <Route path="company">
+            <Route path="info" element={<CorporateInfo />} />
+          </Route>
+          <Route path="personal">
+            <Route path="info" element={<PersonalInfo />} />
+          </Route>
+        </Route>
         <Route path="*" element={<div />} />
       </Route>
     </Routes>
