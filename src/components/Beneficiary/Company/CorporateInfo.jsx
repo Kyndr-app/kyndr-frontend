@@ -1,8 +1,10 @@
 import { Button, Paper } from "@mui/material";
 import React from "react";
-import Input from "../../utils/Input";
+import { useNavigate } from "react-router-dom";
+import Input from "../../../utils/Input";
 
 const CorporateInfo = () => {
+  const navigate = useNavigate();
   return (
     <main className="pb-5 pt-10">
       <Paper
@@ -31,6 +33,9 @@ const CorporateInfo = () => {
             variant="contained"
             className="py-4 mt-10 bg-primary"
             color="primary"
+            onClick={() => {
+              navigate("../document-info");
+            }}
             fullWidth
           >
             <span className="capitalize">Next</span>

@@ -2,9 +2,9 @@ import React from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import Header from "../Layout/Header";
 import Account from "./Account";
-import CorporateInfo from "./CorporateInfo";
+import Company from "./Company";
 import KYC from "./KYC";
-import PersonalInfo from "./PersonalInfo";
+import Personal from "./Personal";
 import Wallet from "./Wallet";
 
 const links = [
@@ -39,16 +39,13 @@ const Beneficiary = () => {
   return (
     <Routes>
       <Route path="" element={<BeneficiaryPages />}>
+        <Route index element={<Wallet />} />
         <Route path="wallet" element={<Wallet />} />
         <Route path="account" element={<Account />} />
         <Route path="kyc">
           <Route index element={<KYC />} />
-          <Route path="company">
-            <Route path="info" element={<CorporateInfo />} />
-          </Route>
-          <Route path="personal">
-            <Route path="info" element={<PersonalInfo />} />
-          </Route>
+          <Route path="company/*" element={<Company />} />
+          <Route path="personal/*" element={<Personal />} />
         </Route>
         <Route path="*" element={<div />} />
       </Route>

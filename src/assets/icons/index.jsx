@@ -39,7 +39,8 @@ export { ReactComponent as Right } from "./right.svg";
 export { ReactComponent as Google } from "./google.svg";
 export { ReactComponent as Beneficiary } from "./beneficiary.svg";
 export { ReactComponent as EndingLayout } from "./ending-layout.svg";
-// lock.svg
+export { ReactComponent as Delete } from "./delete.svg";
+export { ReactComponent as Search } from "./search.svg";
 export { ReactComponent as Lock } from "./lock.svg";
 export { default as Bitcoin } from "./bitcoin.svg";
 export { default as Kinr } from "./kinr.svg";
