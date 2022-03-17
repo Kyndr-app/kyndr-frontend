@@ -84,7 +84,7 @@ const Finalize = ({ beneficiary }) => {
             if (beneficiary) {
               navigate("../regulation");
             } else {
-              navigate("/donor");
+              navigate("/donor/donate");
             }
           }}
         >

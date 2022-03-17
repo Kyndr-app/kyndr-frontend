@@ -1,17 +1,27 @@
 import { Button, Step, StepLabel, Stepper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ImageBox from "../../utils/ImageBox";
-import Layout from "./Layout";
-import Toolbar from "./Toolbar";
+import ImageBox from "../../../utils/ImageBox";
+import Toolbar from "../../User/Toolbar";
 
 const steps = ["Intro", "Cause", "Setup", "Launch"];
 
 const Setup = () => {
   const navigate = useNavigate();
   return (
-    <Layout className="py-10 px-28 justify-between">
-      <Toolbar primary="STEP 03.1/04.1" secondary={"Setup"} />
+    <>
+      <Toolbar
+        left={
+          <>
+            <div className="text-xl font-bold text-roboto text-gray-600">
+              Campaign Creator
+            </div>
+            <h6 className="uppercase text-xs text-gray-600">New Campaign</h6>
+          </>
+        }
+        primary="STEP 03.1/04.1"
+        secondary={"Setup"}
+      />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
           {steps.map((label) => (
@@ -40,7 +50,14 @@ const Setup = () => {
               }
             />
           </div>
-          <div />
+          <div className="">
+            <ImageBox
+              id="banner-image"
+              title={
+                <div className="mb-3 text-[#696F79]">Cause Banner Image</div>
+              }
+            />
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-8 mt-7">
           <div className="">
@@ -70,7 +87,7 @@ const Setup = () => {
         </Button>
       </div>
       <div />
-    </Layout>
+    </>
   );
 };
 

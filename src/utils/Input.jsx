@@ -9,16 +9,19 @@ const Input = ({ label, labelProps, ...p }) => {
     if (type === "password") return true;
     return false;
   }, [type]);
+  console.log(p.className);
   return (
     <div className="mb-5 max-w-[450px] w-full">
-      <InputLabel
-        {...labelProps}
-        className={`${labelProps?.className} text-base text-roboto mb-2 text-[#696F79]`}
-        htmlFor={label}
-      >
-        {label}
-        {p.required && "*"}
-      </InputLabel>
+      {label && (
+        <InputLabel
+          {...labelProps}
+          className={`${labelProps?.className} text-base text-roboto mb-2 text-[#696F79]`}
+          htmlFor={label}
+        >
+          {label}
+          {p.required && "*"}
+        </InputLabel>
+      )}
       <StyledInput
         fullWidth
         {...p}

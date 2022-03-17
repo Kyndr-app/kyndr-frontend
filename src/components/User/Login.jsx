@@ -62,7 +62,7 @@ const Login = ({ beneficiary }) => {
           <span className="text-[#8692A6] text-roboto">
             Don't have an account?
           </span>{" "}
-          <Link to="../signup" className="text-primary">
+          <Link to="../join-us" className="text-primary">
             Sign Up
           </Link>
         </div>

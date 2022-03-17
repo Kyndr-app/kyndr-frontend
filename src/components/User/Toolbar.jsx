@@ -3,18 +3,22 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BackArrow } from "../../assets/icons";
 
-const Toolbar = ({ primary, secondary, path }) => {
+const Toolbar = ({ left, primary, secondary, path }) => {
   const navigate = useNavigate();
   return (
     <div className="flex justify-between items-center">
-      <Button
-        startIcon={<BackArrow />}
-        variant="text"
-        className="text-gray-500"
-        onClick={() => navigate(path || -1)}
-      >
-        <span className="text-sm capitalize">Back</span>
-      </Button>
+      {left ? (
+        <div>{left}</div>
+      ) : (
+        <Button
+          startIcon={<BackArrow />}
+          variant="text"
+          className="text-gray-500"
+          onClick={() => navigate(path || -1)}
+        >
+          <span className="text-sm capitalize">Back</span>
+        </Button>
+      )}
       <div className="text-right">
         <ListItemText
           primary={

@@ -7,6 +7,8 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import "flag-icons/css/flag-icons.min.css";
+import DateAdapter from "@mui/lab/AdapterLuxon";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
 const theme = createTheme({
   palette: {
@@ -44,11 +46,13 @@ const theme = createTheme({
 function App() {
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </ThemeProvider>
+      <LocalizationProvider dateAdapter={DateAdapter}>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </ThemeProvider>
+      </LocalizationProvider>
     </StyledEngineProvider>
   );
 }

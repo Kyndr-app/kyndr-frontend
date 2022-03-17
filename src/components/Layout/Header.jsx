@@ -33,7 +33,7 @@ const Header = ({ links, userMenu }) => {
                 to={link.path}
                 style={{ pointerEvents: link.disabled ? "none" : "auto" }}
                 className="px-5 py-2 text-gray-300 capitalize after:absolute hover:after:w-full after:transition-all after:bottom-0 after:left-[50%] after:translate-x-[-50%] relative after:max-w-[60px] after:w-0 after:h-[2px] after:bg-primary font-semibold hover:text-gray-700 transition-all"
-                activeClassName="text-gray-700"
+                activeClassName="text-gray-700 expand-after"
               >
                 {link.name}
               </NavLink>

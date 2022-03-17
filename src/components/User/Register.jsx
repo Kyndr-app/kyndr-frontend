@@ -5,8 +5,10 @@ import { Google } from "../../assets/icons";
 import Input from "../../utils/Input";
 import Layout from "./Layout";
 import Toolbar from "./Toolbar";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   return (
     <Layout className="py-10 px-28 justify-between">
       <Toolbar primary="STEP 03/03" secondary={"Residency Info."} />
@@ -36,6 +38,7 @@ const Register = () => {
           variant="contained"
           className="bg-primary py-3 shadow-none"
           color="primary"
+          onClick={() => navigate("../intro")}
         >
           <span className="capitalize text-roboto">Register Account</span>
         </Button>

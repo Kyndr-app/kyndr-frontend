@@ -42,6 +42,20 @@ export { ReactComponent as EndingLayout } from "./ending-layout.svg";
 export { ReactComponent as Delete } from "./delete.svg";
 export { ReactComponent as Search } from "./search.svg";
 export { ReactComponent as Lock } from "./lock.svg";
+export { ReactComponent as Filter } from "./filter.svg";
+export { ReactComponent as Chart } from "./chart.svg";
+export { ReactComponent as Wallet } from "./wallet.svg";
+export { ReactComponent as Trophy } from "./trophy.svg";
+export { ReactComponent as Users } from "./users.svg";
+// user-square.svg
+export { ReactComponent as UserSquare } from "./user-square.svg";
+export { ReactComponent as User } from "./user.svg";
+// flag-alt
+export { ReactComponent as FlagAlt } from "./flag-alt.svg";
+// send
+// edit
+export { ReactComponent as Edit } from "./edit.svg";
+export { ReactComponent as Send } from "./send.svg";
 export { default as Bitcoin } from "./bitcoin.svg";
 export { default as Kinr } from "./kinr.svg";
 export { default as Kyndr } from "./kyndr.svg";

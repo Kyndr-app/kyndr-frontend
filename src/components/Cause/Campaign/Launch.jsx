@@ -1,17 +1,27 @@
 import { Button, Step, StepLabel, Stepper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Input from "../../utils/Input";
-import Layout from "./Layout";
-import Toolbar from "./Toolbar";
+import Input from "../../../utils/Input";
+import Toolbar from "../../User/Toolbar";
 
 const steps = ["Intro", "Cause", "Setup", "Launch"];
 
 const Launch = () => {
   const navigate = useNavigate();
   return (
-    <Layout className="py-10 px-28 justify-enevly">
-      <Toolbar primary="STEP 04.1/04.1" secondary={"Launch"} />
+    <>
+      <Toolbar
+        left={
+          <>
+            <div className="text-xl font-bold text-roboto text-gray-600">
+              Campaign Creator
+            </div>
+            <h6 className="uppercase text-xs text-gray-600">New Campaign</h6>
+          </>
+        }
+        primary="STEP 04.1/04.1"
+        secondary={"Launch"}
+      />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
           {steps.map((label) => (
@@ -27,14 +37,10 @@ const Launch = () => {
         </Stepper>
       </div>
       <div className="max-w-[450px] p-4 mt-4 mx-auto w-full overflow-hidden">
-        <div className="text-lg text-roboto mt-7 text-[#8692A6] mb-4">
-          For the purpose of industry regulation, your details are required.
-        </div>
-
         <Input
-          label="Email"
+          label="Tell Your Story"
           multiline
-          rows={6}
+          rows={10}
           InputProps={{
             className: "py-4",
           }}
@@ -55,7 +61,7 @@ const Launch = () => {
       <div />
       <div />
       <div />
-    </Layout>
+    </>
   );
 };
 

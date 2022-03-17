@@ -4,14 +4,15 @@ import Chart from "react-apexcharts";
 import { BorderLinearProgress } from "../../utils/MuiComponents";
 import { getRandomInt } from "../../utils/extras";
 const data = Array.from({ length: 200 }, (_e, i) => [
-  new Date("July 07,2021").getTime() + 7200000 * i,
-  getRandomInt(30000, 50000),
+  new Date("July 07,2021").getTime() + 86400000 * i,
+  getRandomInt(10000, 20000),
 ]);
 
 const formatter = Intl.NumberFormat("en", { notation: "compact" });
 var options = {
   series: [{ data }],
   chart: {
+    fontFamily: "Poppins, sans-serif",
     selection: {
       enabled: false,
     },
@@ -28,7 +29,7 @@ var options = {
   },
   markers: {
     size: 0,
-    style: "hollow",
+    // style: "hollow",
   },
   xaxis: {
     type: "datetime",
@@ -37,9 +38,11 @@ var options = {
   yaxis: {
     seriesName: "KiNR Circulating Supply",
     labels: {
-      formatter: formatter.format,
+      formatter: (v) => `$ ${formatter.format(v)}`,
     },
-    min: 10000,
+    min: 0,
+    max: 50000,
+    forceNiceScale: true,
   },
   tooltip: {
     x: {
@@ -60,7 +63,6 @@ var options = {
     },
   },
 };
-
 const cards = [
   {
     name: "KiNR Circulating Supply",

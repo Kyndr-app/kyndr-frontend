@@ -126,3 +126,11 @@ export const getRandomStatus = () => {
 export function getRandomInt(min = 0, max = 100) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+export function getRandomImage({ ratio = 1, width, height }) {
+  const random = getRandomInt(100, 999);
+  const rHeight = height || Math.floor(random / ratio);
+  if (!width) width = random;
+  if (!height) height = rHeight || random;
+  return `https://picsum.photos/${width}/${height}/?random`;
+}

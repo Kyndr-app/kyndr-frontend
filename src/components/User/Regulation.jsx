@@ -44,7 +44,7 @@ const Regulation = () => {
           className="bg-primary py-3 shadow-none"
           color="primary"
           onClick={() => {
-            navigate("/beneficiary");
+            navigate("/beneficiary/wallet");
           }}
         >
           <span className="capitalize text-roboto">Save & Finish</span>
