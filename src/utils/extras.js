@@ -134,3 +134,14 @@ export function getRandomImage({ ratio = 1, width, height }) {
   if (!height) height = rHeight || random;
   return `https://picsum.photos/${width}/${height}/?random`;
 }
+// truncate string from middle
+export function truncateFromMiddle(fullStr, strLen = 20, separator = "...") {
+  if (fullStr.length <= strLen) return fullStr;
+  const sepLen = separator.length;
+  const charsToShow = strLen - sepLen;
+  const frontChars = Math.ceil(charsToShow / 2);
+  const backChars = Math.floor(charsToShow / 2);
+  const firstPart = fullStr.substr(0, frontChars);
+  const lastPart = fullStr.substr(fullStr.length - backChars);
+  return `${firstPart}${separator}${lastPart}`;
+}

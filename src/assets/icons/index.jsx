@@ -20,6 +20,8 @@ export { ReactComponent as Norton } from "./norton.svg";
 export { ReactComponent as BgBlurPrimary } from "./bg-blur-primary.svg";
 export { ReactComponent as BgBlurSecondary } from "./bg-blur-secondary.svg";
 export { ReactComponent as BgBlurPrimaryLg } from "./bg-blur-primary-lg.svg";
+export { ReactComponent as BgBlurForth } from "./bg-blur-forth.svg";
+export { ReactComponent as BgBlurFifth } from "./bg-blur-fifth.svg";
 export { ReactComponent as Reward } from "./reward.svg";
 export { ReactComponent as BgBlurTertiary } from "./bg-blur-tertiary.svg";
 export { ReactComponent as UploadIcon } from "./upload-icon.svg";
@@ -47,15 +49,12 @@ export { ReactComponent as Chart } from "./chart.svg";
 export { ReactComponent as Wallet } from "./wallet.svg";
 export { ReactComponent as Trophy } from "./trophy.svg";
 export { ReactComponent as Users } from "./users.svg";
-// user-square.svg
 export { ReactComponent as UserSquare } from "./user-square.svg";
 export { ReactComponent as User } from "./user.svg";
-// flag-alt
 export { ReactComponent as FlagAlt } from "./flag-alt.svg";
-// send
-// edit
 export { ReactComponent as Edit } from "./edit.svg";
 export { ReactComponent as Send } from "./send.svg";
+export { ReactComponent as Arrow } from "./arrow.svg";
 export { default as Bitcoin } from "./bitcoin.svg";
 export { default as Kinr } from "./kinr.svg";
 export { default as Kyndr } from "./kyndr.svg";

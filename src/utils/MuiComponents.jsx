@@ -84,7 +84,7 @@ export const StyledInput = styled(TextField)({
     paddingRight: 10,
   },
   "& label": {
-    fontSize: 14,
+    fontSize: 16,
     color: "#828282 !important",
   },
   "& fieldset": {

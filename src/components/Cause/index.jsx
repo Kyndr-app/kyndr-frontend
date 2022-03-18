@@ -11,6 +11,7 @@ import Permission from "./Permission";
 import Personal from "./Personal";
 import Supporters from "./Supporters";
 import Team from "./Team";
+import Wallet from "./Wallet";
 
 const links = [
   {
@@ -74,6 +75,7 @@ const Cause = () => {
         <Route path="permission" element={<Permission />} />
         <Route path="payments" element={<Payment />} />
         <Route path="team" element={<Team />} />
+        <Route path="wallet" element={<Wallet />} />
         <Route path="campaign/*" element={<CampaignPages />} />
         <Route path="kyc">
           <Route index element={<KYC />} />
