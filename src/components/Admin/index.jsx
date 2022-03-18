@@ -28,16 +28,14 @@ const AdminRoutes = () => (
   </>
 );
 
-const Admin = () => {
-  return (
-    <Routes>
-      <Route path="" element={<AdminRoutes />}>
-        <Route index element={<div />} />
-        <Route path="data" element={<Data />} />
-        <Route path="*" element={<div />} />
-      </Route>
-    </Routes>
-  );
-};
+const Admin = () => (
+  <Routes>
+    <Route path="" element={<AdminRoutes />}>
+      <Route index element={<Data />} />
+      <Route path="data" element={<Data />} />
+      <Route path="*" element={<div />} />
+    </Route>
+  </Routes>
+);
 
 export default Admin;
