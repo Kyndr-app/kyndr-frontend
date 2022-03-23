@@ -19,7 +19,7 @@ const Cause = () => {
             <h6 className="uppercase text-xs text-gray-600">New Campaign</h6>
           </>
         }
-        primary="STEP 02.1/04.1"
+        primary="STEP 02/04"
         secondary={"Cause"}
       />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
@@ -60,8 +60,11 @@ const Cause = () => {
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
-          <MenuItem value="Organization">Organization</MenuItem>
-          <MenuItem value="Individual">Individual</MenuItem>
+          {["Individual", "Group", "Organization"].map((label) => (
+            <MenuItem key={label} value={label}>
+              {label}
+            </MenuItem>
+          ))}
         </Input>
         <Input
           label="Select your impact category"
@@ -72,8 +75,26 @@ const Cause = () => {
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
-          <MenuItem value="Organization">Organization</MenuItem>
-          <MenuItem value="Individual">Individual</MenuItem>
+          {[
+            "Education",
+            "Emergencies",
+            "Children",
+            "Animals",
+            "Sports",
+            "Community",
+            "Elderly",
+            "Arts & Media",
+            "Technology",
+            "Environment",
+            "Social Entrepreneurship",
+            "Human Rights",
+            "Rural Development",
+            "Women",
+          ].map((label) => (
+            <MenuItem key={label} value={label}>
+              {label}
+            </MenuItem>
+          ))}
         </Input>
         <div className="mb-10" />
         <Button

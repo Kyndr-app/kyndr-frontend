@@ -12,7 +12,7 @@ const Intro = () => {
   const navigate = useNavigate();
   return (
     <Layout className="py-10 px-28 justify-between">
-      <Toolbar primary="STEP 01.1/04.1" secondary={"Cause"} />
+      <Toolbar primary="STEP 01/04" secondary={"Cause"} />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
           {steps.map((label) => (
@@ -63,13 +63,46 @@ const Intro = () => {
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
-          {countries.map((country) => (
-            <MenuItem value={country.country}>
-              <span
-                className={`fi fi-${country.code} mr-2 shadow-sm shadow-gray-600`}
-              />
-              {country.country}
-            </MenuItem>
+          {[
+            "Andaman and Nicobar Islands",
+            "Andhra Pradesh",
+            "Arunachal Pradesh",
+            "Assam",
+            "Bihar",
+            "Chandigarh",
+            "Chhattisgarh",
+            "Dadra and Nagar Haveli",
+            "Daman and Diu",
+            "Delhi",
+            "Goa",
+            "Gujarat",
+            "Haryana",
+            "Himachal Pradesh",
+            "Jammu and Kashmir",
+            "Jharkhand",
+            "Karnataka",
+            "Kerala",
+            "Ladakh",
+            "Lakshadweep",
+            "Madhya Pradesh",
+            "Maharashtra",
+            "Manipur",
+            "Meghalaya",
+            "Mizoram",
+            "Nagaland",
+            "Odisha",
+            "Puducherry",
+            "Punjab",
+            "Rajasthan",
+            "Sikkim",
+            "Tamil Nadu",
+            "Telangana",
+            "Tripura",
+            "Uttar Pradesh",
+            "Uttarakhand",
+            "West Bengal",
+          ].map((country) => (
+            <MenuItem value={country}>{country}</MenuItem>
           ))}
         </Input>
         <div className="mb-10" />

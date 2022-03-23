@@ -11,6 +11,8 @@ const Data = () => {
   const [values, setValues] = useState([null, null]);
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
+  const [secondValues, setSecondValues] = useState([null, null]);
+  const [secondOpen, setSecondOpen] = useState(false);
   return (
     <div className="p-10">
       <div className="text-gray-500 mb-2 text-roboto text-xs font-medium uppercase">
@@ -30,7 +32,7 @@ const Data = () => {
               open={open}
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
-              onChange={(newValue) => setValues(newValue)}
+              onChange={(e) => setValues(e)}
               renderInput={() => (
                 <div className="flex">
                   <Button
@@ -117,17 +119,17 @@ const Data = () => {
             </div>
             <div className="flex">
               <DateRangePicker
-                value={values}
-                open={open}
-                onClose={() => setOpen(false)}
-                onOpen={() => setOpen(true)}
-                onChange={(newValue) => setValues(newValue)}
+                value={secondValues}
+                open={secondOpen}
+                onClose={() => setSecondOpen(false)}
+                onOpen={() => setSecondOpen(true)}
+                onChange={(newValue) => setSecondValues(newValue)}
                 renderInput={() => (
                   <div className="flex">
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => setOpen(true)}
+                      onClick={() => setSecondOpen(true)}
                       endIcon={<Filter />}
                       className="bg-gradient-to-tr px-5 rounded shadow-none py-3 max-w-[300px] mx-auto from-primary-light to-primary"
                     >

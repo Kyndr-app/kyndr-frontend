@@ -6,7 +6,7 @@ import Input from "../../utils/Input";
 import Layout from "./Layout";
 import Toolbar from "./Toolbar";
 
-const Login = ({ beneficiary }) => {
+const Login = () => {
   return (
     <Layout className="py-10 px-28 justify-between">
       <Toolbar primary="Login account" secondary={"Personal Info."} />
@@ -62,7 +62,7 @@ const Login = ({ beneficiary }) => {
           <span className="text-[#8692A6] text-roboto">
             Don't have an account?
           </span>{" "}
-          <Link to="../join-us" className="text-primary">
+          <Link to="/user/join-us" className="text-primary">
             Sign Up
           </Link>
         </div>

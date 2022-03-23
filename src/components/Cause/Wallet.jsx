@@ -5,6 +5,7 @@ import {
   ListItemAvatar,
   ListItemIcon,
   ListItemText,
+  MenuItem,
   Pagination,
   Paper,
   Table,
@@ -27,6 +28,7 @@ import {
   Trophy,
   Arrow,
   Copy,
+  Open,
 } from "../../assets/icons";
 import fromNow from "../../libraries/FromNow";
 import {
@@ -90,7 +92,10 @@ const TransactionTable = () => {
               <TableCell className="text-sm font-medium text-roboto px-1 py-3">
                 To
               </TableCell>
-              <TableCell className="text-sm font-medium text-roboto px-1 py-3">
+              <TableCell
+                align="right"
+                className="text-sm font-medium text-roboto px-1 py-3"
+              >
                 Quantity
               </TableCell>
             </TableRow>
@@ -105,10 +110,10 @@ const TransactionTable = () => {
                   <Method method={row.method} />
                 </TableCell>
                 <TableCell className="text-sm px-1 py-3 font-medium text-roboto text-primary">
-                  {row.block}
+                  <div className="min-w-[100px]">{row.block}</div>
                 </TableCell>
                 <TableCell className="font-medium px-1 py-3 text-roboto text-xs ">
-                  {row.age}
+                  <div className="w-24">{row.age}</div>
                 </TableCell>
                 <TableCell className="text-sm px-1 py-3">
                   c4C222B8546C3be595f6894m
@@ -126,7 +131,9 @@ const TransactionTable = () => {
                     c4C222B83be595f6894m
                   </div>
                 </TableCell>
-                <TableCell className="text-sm py-3 px-1">20,000</TableCell>
+                <TableCell className="text-sm py-3 px-1">
+                  <div className="min-w-[100px] text-right">20,000</div>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -152,11 +159,17 @@ const TransactionTable = () => {
 const Wallet = () => {
   return (
     <main className="p-10">
-      <h1 className="text-2xl font-semibold mb-5 text-[#4C4C66]">
+      <h1 className="text-2xl items-center flex font-semibold mb-5 text-[#4C4C66]">
         Your Wallet:{" "}
         <span className="text-primary font-normal">
           0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
         </span>
+        <div className="ml-3">
+          <Copy className="cursor-pointer" />
+        </div>
+        <div className="ml-3">
+          <Open className="cursor-pointer" />
+        </div>
       </h1>
       <div className="grid grid-cols-12 gap-5">
         <div className="col-span-8">
@@ -260,7 +273,7 @@ const Wallet = () => {
               <div className="backdrop-blur-[60px] h-full px-3 relative pt-5 pb-3">
                 <ListItem disablePadding>
                   <ListItemIcon className="">
-                    <Trophy />
+                    <Trophy className="mb-5" />
                   </ListItemIcon>
                   <ListItemText
                     primary={<span className="font-bold">Token Balance</span>}
@@ -301,14 +314,14 @@ const Wallet = () => {
                     alt=""
                   />
                 </div>
-                <div className="text-primary items-center flex text-xs">
+                <div className="text-primary items-center flex text-sm">
                   {truncateFromMiddle(
                     "0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1",
-                    18
+                    25
                   )}
                   <Copy className="cursor-pointer ml-3" />
                 </div>
-                <div className="mt-2 font-bold text-xs">0 MATIC</div>
+                <div className="mt-2 font-bold text-sm">0 KINR</div>
               </div>
             </div>
             <div className="p-8 text-center">
@@ -317,10 +330,16 @@ const Wallet = () => {
                 <StyledInput
                   label="Address"
                   name="address"
-                  InputProps={{ className: "pb-1" }}
                   fullWidth
                   placeholder="0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1"
-                />
+                  select
+                >
+                  <MenuItem
+                    value={"0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1"}
+                  >
+                    0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
+                  </MenuItem>
+                </StyledInput>
               </div>
               <div className="mt-5 first:mt-0">
                 <StyledInput
@@ -329,16 +348,25 @@ const Wallet = () => {
                   InputProps={{ className: "pb-1" }}
                   fullWidth
                   placeholder="10,000.00"
+                  type="number"
                 />
               </div>
-              <div className="mt-5 first:mt-0">
+              <div className="mt-5 first:mt-0 text-left">
                 <StyledInput
                   label="Assets"
                   name="assets"
-                  InputProps={{ className: "pb-1" }}
                   fullWidth
                   placeholder="12,345.00"
-                />
+                  select
+                  SelectProps={{
+                    displayEmpty: true,
+                  }}
+                >
+                  <MenuItem value="" disabled>
+                    Select
+                  </MenuItem>
+                  <MenuItem value={"KINR"}>KINR</MenuItem>
+                </StyledInput>
               </div>
               <div className="mt-10">
                 <Button
@@ -360,7 +388,7 @@ const Wallet = () => {
               letterSpacing: "0.01em",
             }}
           >
-            Info & Explainer
+            Payment Requests
           </p>
           <TableContainer
             className="flex flex-col justify-between"

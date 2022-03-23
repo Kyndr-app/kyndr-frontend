@@ -19,7 +19,7 @@ const Launch = () => {
             <h6 className="uppercase text-xs text-gray-600">New Campaign</h6>
           </>
         }
-        primary="STEP 04.1/04.1"
+        primary="STEP 04/04"
         secondary={"Launch"}
       />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">

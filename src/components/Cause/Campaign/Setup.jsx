@@ -19,7 +19,7 @@ const Setup = () => {
             <h6 className="uppercase text-xs text-gray-600">New Campaign</h6>
           </>
         }
-        primary="STEP 03.1/04.1"
+        primary="STEP 03/04"
         secondary={"Setup"}
       />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">

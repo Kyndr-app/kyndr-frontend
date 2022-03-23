@@ -5,7 +5,6 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  MenuItem,
   Paper,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -43,9 +42,7 @@ const Wallet = () => {
               </ListItemAvatar>
               <ListItemText
                 primary={<span className="font-bold">Token Balance</span>}
-                secondary={
-                  <span className="text-gray-500 text-xs">$KYNDR</span>
-                }
+                secondary={<span className="text-gray-500 text-xs">KINR</span>}
               />
             </ListItem>
             <div className="mt-3 text-center">
@@ -72,28 +69,20 @@ const Wallet = () => {
           </div>
           <div className="mt-4">
             <StyledInput
-              select
               className="max-w-[380px]"
               fullWidth
               label="Select Beneficiary Address"
               InputProps={{ className: "text-primary" }}
-            >
-              <MenuItem value="c4C222B8546C3be595f6894m">
-                c4C222B8546C3be595f6894m
-              </MenuItem>
-            </StyledInput>
+            ></StyledInput>
           </div>
           <div className="mt-4">
             <StyledInput
-              select
+              type="number"
               className="max-w-[380px]"
               fullWidth
               label="Select Beneficiary Address"
-              InputProps={{ startAdornment: "$" }}
-            >
-              <MenuItem value="15">15</MenuItem>
-              <MenuItem value="25">25</MenuItem>
-            </StyledInput>
+              InputProps={{ startAdornment: "₹" }}
+            />
           </div>
           <div className="mt-4 flex justify-between items-end">
             <input type="file" id="file" className="hidden" />

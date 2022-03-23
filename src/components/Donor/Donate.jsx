@@ -4,6 +4,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Menu,
+  MenuItem,
   SvgIcon,
   Tab,
   Tabs,
@@ -64,6 +66,14 @@ const tabs = [
 
 const Donate = () => {
   const [active, setActive] = useState(0);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <main className="px-10 pb-5 pt-10">
       <div
@@ -175,9 +185,49 @@ const Donate = () => {
             }
           />
         ))}
-        <ListItem className="rounded-xl w-full justify-center border max-w-[200px] border-[#E2E2E8] border-dashed items-center last:mr-0 mr-4">
+        <ListItem
+          onClick={handleClick}
+          className="rounded-xl cursor-pointer w-full justify-center border max-w-[200px] border-[#E2E2E8] border-dashed items-center last:mr-0 mr-4"
+        >
           <span className="text-[#4C4C66] opacity-20">15 Others</span>
         </ListItem>
+        <Menu
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          MenuListProps={{
+            "aria-labelledby": "demo-customized-button",
+          }}
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+        >
+          {[
+            "Education",
+            "Emergencies",
+            "Children",
+            "Animals",
+            "Sports",
+            "Community",
+            "Elderly",
+            "Arts & Media",
+            "Technology",
+            "Environment",
+            "Social Entrepreneurship",
+            "Human Rights",
+            "Rural Development",
+            "Women",
+          ].map((label) => (
+            <MenuItem onClick={handleClose} key={label} value={label}>
+              {label}
+            </MenuItem>
+          ))}
+        </Menu>
       </Tabs>
 
       <div className="mt-10">

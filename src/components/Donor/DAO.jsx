@@ -3,6 +3,7 @@ import React from "react";
 import Chart from "react-apexcharts";
 import { BorderLinearProgress } from "../../utils/MuiComponents";
 import { getRandomInt } from "../../utils/extras";
+import { Copy, Open } from "../../assets/icons";
 const data = Array.from({ length: 200 }, (_e, i) => [
   new Date("July 07,2021").getTime() + 86400000 * i,
   getRandomInt(10000, 20000),
@@ -134,11 +135,17 @@ const progressBars = [
 const DAO = () => {
   return (
     <main className="px-10 pb-5 pt-10">
-      <h1 className="text-2xl font-semibold mb-5 text-[#4C4C66]">
+      <h1 className="text-2xl flex items-center font-semibold mb-5 text-[#4C4C66]">
         Kyndr DAO contact address:{" "}
         <span className="text-primary font-normal">
           0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
         </span>
+        <div className="ml-3">
+          <Copy className="cursor-pointer" />
+        </div>
+        <div className="ml-3">
+          <Open className="cursor-pointer" />
+        </div>
       </h1>
       <h3 className="text-[#4C4C66] text-xs mb-4 uppercase font-medium">
         Info & Explainer

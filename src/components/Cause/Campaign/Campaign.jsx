@@ -2,6 +2,9 @@ import { DateRangePicker } from "@mui/lab";
 import {
   Avatar,
   Button,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
   Paper,
   Table,
   TableBody,
@@ -169,7 +172,7 @@ const Campaign = () => {
                   >
                     <Table>
                       <TableBody>
-                        {[1, 2, 3, 4].map((item) => (
+                        {[1, 2, 3, 4, 1, 2, 3, 4, 5].map(() => (
                           <TableRow>
                             <TableCell className="py-0 border-b-0">
                               <div className="flex items-center">
@@ -194,9 +197,6 @@ const Campaign = () => {
                         ))}
                       </TableBody>
                     </Table>
-                    <div className="text-center p-4 text-primary text-xs">
-                      See more
-                    </div>
                   </TableContainer>
                 </div>
                 <div className="flex h-full flex-col">
@@ -210,20 +210,36 @@ const Campaign = () => {
                   >
                     <Table>
                       <TableBody>
-                        {[1, 2, 3, 4, 5, 6, 7].map((item) => (
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
                           <TableRow>
                             <TableCell className="py-0 border-b-0">
-                              <div className="flex items-center">
-                                <Avatar
-                                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-                                  className="mr-3 w-7 h-7"
+                              <ListItem
+                                disablePadding
+                                className="flex items-center"
+                              >
+                                <ListItemAvatar
+                                  style={{
+                                    minWidth: "40px",
+                                  }}
+                                >
+                                  <Avatar
+                                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                                    className="w-7 h-7"
+                                  />
+                                </ListItemAvatar>
+                                <ListItemText
+                                  primary={
+                                    <h1 className="text-sm font-medium text-[#9E9E9E]">
+                                      John Doe
+                                    </h1>
+                                  }
+                                  secondary={
+                                    <div className="text-xs text-[#9E9E9E]">
+                                      {new Date().toLocaleDateString()}
+                                    </div>
+                                  }
                                 />
-                                <div>
-                                  <h1 className="text-sm font-medium text-[#9E9E9E]">
-                                    John Doe
-                                  </h1>
-                                </div>
-                              </div>
+                              </ListItem>
                             </TableCell>
                             <TableCell
                               align="right"
@@ -235,9 +251,6 @@ const Campaign = () => {
                         ))}
                       </TableBody>
                     </Table>
-                    <div className="text-center p-4 text-primary text-xs">
-                      See more
-                    </div>
                   </TableContainer>
                 </div>
               </div>

@@ -23,7 +23,7 @@ const Header = ({ links, userMenu }) => {
       }`}
     >
       <Link to="/" className="pr-10">
-        <Logo className="w-28 h-auto" />
+        <Logo className="w-24 h-auto" />
       </Link>
       <div className="flex items-center justify-between w-full">
         <ul className="list-none flex">

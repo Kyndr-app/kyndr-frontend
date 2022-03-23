@@ -7,9 +7,7 @@ const Toolbar = ({ left, primary, secondary, path }) => {
   const navigate = useNavigate();
   return (
     <div className="flex justify-between items-center">
-      {left ? (
-        <div>{left}</div>
-      ) : (
+      <div className="flex">
         <Button
           startIcon={<BackArrow />}
           variant="text"
@@ -18,7 +16,8 @@ const Toolbar = ({ left, primary, secondary, path }) => {
         >
           <span className="text-sm capitalize">Back</span>
         </Button>
-      )}
+        {left && <div>{left}</div>}
+      </div>
       <div className="text-right">
         <ListItemText
           primary={

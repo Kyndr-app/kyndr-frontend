@@ -2,6 +2,7 @@ import { DateRangePicker } from "@mui/lab";
 import {
   Avatar,
   Button,
+  IconButton,
   ListItem,
   ListItemAvatar,
   ListItemText,
@@ -9,6 +10,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
+import { Link } from "react-router-dom";
 import {
   Copy,
   Filter,
@@ -19,8 +21,10 @@ import {
   User,
   Send,
   FlagAlt,
+  BackArrow,
 } from "../../../assets/icons";
 import { getRandomInt } from "../../../utils/extras";
+import JoditEditor from "jodit-react";
 const data = Array.from({ length: 200 }, (_e, i) => [
   new Date("July 07,2021").getTime() + 3600000 * i,
   getRandomInt(10000, 20000),
@@ -139,21 +143,30 @@ const Details = () => {
   const [open, setOpen] = useState(false);
   return (
     <main className="px-10 pb-5 pt-10">
-      <h1 className="text-2xl font-semibold mb-5 text-[#4C4C66]">
-        Help This Cause
-      </h1>
-      <div className="flex items-center mb-4">
-        <h3 className="text-[#4C4C66] text-xs uppercase font-medium">
-          Campaign Wallet:{" "}
-          <span className="text-primary font-normal text-lg">
-            0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
-          </span>
-        </h3>
-        <div className="ml-3">
-          <Copy className="cursor-pointer" />
+      <div className="flex">
+        <div>
+          <IconButton component={Link} to="..">
+            <BackArrow />
+          </IconButton>
         </div>
-        <div className="ml-3">
-          <Open className="cursor-pointer" />
+        <div>
+          <h1 className="text-2xl font-semibold mb-5 text-[#4C4C66]">
+            Help This Cause
+          </h1>
+          <div className="flex items-center mb-4">
+            <h3 className="text-[#4C4C66] text-xs uppercase font-medium">
+              Campaign Wallet:{" "}
+              <span className="text-primary font-normal text-lg">
+                0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
+              </span>
+            </h3>
+            <div className="ml-3">
+              <Copy className="cursor-pointer" />
+            </div>
+            <div className="ml-3">
+              <Open className="cursor-pointer" />
+            </div>
+          </div>
         </div>
       </div>
       <Paper className="py-5 pr-5 pl-2 shadow-lg">
@@ -193,10 +206,10 @@ const Details = () => {
       <div className="mt-7">
         <div className="grid grid-cols-6 gap-5">
           {boxes.map((card) => (
-            <Paper className={`h-40 shadow-md p-7 ${card.bg}`}>
+            <Paper className={`h-40 shadow-md p-5 ${card.bg}`}>
               <div className="flex mb-4 justify-between items-center">
-                <h1 className="font-medium text-sm">{card.name}</h1>
-                <card.icon className="w-4 h-4" />
+                <h1 className="font-bold text-xs">{card.name}</h1>
+                <card.icon className="w-3.5 h-3.5" />
               </div>
               <h1 className="text-[32px] font-bold">{card.price}</h1>
               <h6 className="font-semibold text-sm">{card.subtitle}</h6>
@@ -210,9 +223,9 @@ const Details = () => {
             <div className="h-full flex flex-col">
               <div className="flex justify-between mb-5 items-center">
                 <h3 className="text-lg font-bold">Team Members</h3>
-                <a href="#cb" className="text-primary underline">
+                <Link to="../../../team" className="text-primary underline">
                   Edit
-                </a>
+                </Link>
               </div>
               <Paper className="p-5 flex items-center h-full">
                 <div className="grid grid-cols-7 gap-4 w-full">
@@ -236,9 +249,9 @@ const Details = () => {
             <div className="h-full flex flex-col">
               <div className="flex justify-between mb-5 items-center">
                 <h3 className="text-lg font-bold">Benificiaries</h3>
-                <a href="#cnsj" className="text-primary underline">
+                <Link to="../../../payments" className="text-primary underline">
                   Edit
-                </a>
+                </Link>
               </div>
               <Paper className="p-5 flex items-center h-full">
                 <div className="grid grid-cols-7 gap-4 w-full">
@@ -307,23 +320,7 @@ const Details = () => {
                 </ListItem>
               </div>
               <div className="mt-4">
-                <p className="text-[13px] text-gray-500 mb-5 text-roboto">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Dignissimos ipsa officia et ullam animi eos, aspernatur
-                  obcaecati sequi laboriosam vel temporibus id libero qui
-                  tempore culpa odio perspiciatis hic nam. Lorem, ipsum dolor
-                  sit amet consectetur adipisicing elit. Dignissimos ipsa
-                  officia et ullam animi eos, aspernatur obcaecati sequi
-                  laboriosam vel temporibus id libero qui tempore culpa odio
-                  perspiciatis hic nam.
-                </p>
-                <p className="text-[13px] text-gray-500 text-roboto">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Inventore nesciunt ullam, sed aperiam et aliquam provident
-                  vitae eos delectus dolorem totam est minima qui quibusdam
-                  modi, rerum reiciendis? Pariatur, omnis.
-                  <span className="underline text-primary">See More</span>
-                </p>
+                <JoditEditor tabIndex={1} />
                 <div className="mt-16 flex justify-end">
                   <Button
                     variant="contained"

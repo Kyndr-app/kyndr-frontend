@@ -12,13 +12,12 @@ import { getRandomImage } from "../../utils/extras";
 import Input from "../../utils/Input";
 import { Edit } from "../../assets/icons";
 import ImageBox from "../../utils/ImageBox";
+import { StyledSelect } from "../../utils/MuiComponents";
 
 const randomData = () => ({
   name: `Qasim Rai`,
   desc: "Designer",
-  image: getRandomImage({
-    ratio: 1.2222,
-  }),
+  image: getRandomImage({ ratio: 1 }),
 });
 
 const cards = Array.from({ length: 3 }, randomData);
@@ -41,25 +40,23 @@ const Team = () => {
         <Paper className="p-5">
           <div className="flex items-center mb-5">
             <label htmlFor="i">Select Cause: &nbsp;</label>
-            <Input
+            <StyledSelect
               className="max-w-[500px] w-full"
               fullWidth
               name="cause"
-              select
-              defaultValue=""
-              SelectProps={{
-                fullWidth: true,
+              classes={{
+                select: "py-3",
               }}
+              defaultValue=""
+              displayEmpty
             >
               <MenuItem value="">Select</MenuItem>
-            </Input>
+            </StyledSelect>
           </div>
           <div className="mt-4">
-            <h1 className="text-2xl font-bold text-[#4C4C66]">
-              Help the cause by teach for india
-            </h1>
+            <h1 className="text-2xl font-bold text-[#4C4C66]">Team Members</h1>
             <div className="mt-5">
-              <div className="grid grid-cols-7 gap-5">
+              <div className="grid grid-cols-5 gap-5">
                 {cards.map((card) => (
                   <div className="">
                     <Card className="shadow-lg card">

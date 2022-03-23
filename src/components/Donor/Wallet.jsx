@@ -80,29 +80,33 @@ const Wallet = () => {
               </Button>
             </div>
           </Paper>
-          <Paper className="shadow-lg relative px-3 w-full pt-5 pb-3 max-w-[230px] overflow-hidden">
-            <BgBlurSecondary className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] blur-3xl" />
-            <ListItem disablePadding>
-              <ListItemAvatar className="">
-                <Avatar src={Kinr} alt="avatar" />
-              </ListItemAvatar>
-              <ListItemText
-                primary={<span className="font-bold">Token Balance</span>}
-                secondary={<span className="text-gray-500 text-xs">$KiNR</span>}
-              />
-            </ListItem>
-            <div className="mt-3 text-center">
-              <h1 className="text-3xl font-bold">50,156.00</h1>
-            </div>
-            <div className="mt-3">
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                className="bg-gradient-to-r py-3 shadow-none from-primary-light to-primary"
-              >
-                <span className="text-xs capitalize">Get $KiNR</span>
-              </Button>
+          <Paper className="shadow-lg relative w-full max-w-[230px] overflow-hidden">
+            <BgBlurSecondary className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]" />
+            <div className="h-full px-3 pt-5 pb-3 backdrop-blur-2xl">
+              <ListItem disablePadding>
+                <ListItemAvatar className="">
+                  <Avatar src={Kinr} alt="avatar" />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={<span className="font-bold">Token Balance</span>}
+                  secondary={
+                    <span className="text-gray-500 text-xs">$KiNR</span>
+                  }
+                />
+              </ListItem>
+              <div className="mt-3 text-center">
+                <h1 className="text-3xl font-bold">50,156.00</h1>
+              </div>
+              <div className="mt-3">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  className="bg-gradient-to-r py-3 shadow-none from-primary-light to-primary"
+                >
+                  <span className="text-xs capitalize">Get $KiNR</span>
+                </Button>
+              </div>
             </div>
           </Paper>
         </div>

@@ -11,7 +11,7 @@ const Setup = () => {
   const navigate = useNavigate();
   return (
     <Layout className="py-10 px-28 justify-between">
-      <Toolbar primary="STEP 03.1/04.1" secondary={"Setup"} />
+      <Toolbar primary="STEP 03/04" secondary={"Setup"} />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
           {steps.map((label) => (

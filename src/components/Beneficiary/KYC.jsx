@@ -54,14 +54,6 @@ const KYC = () => {
             <MenuItem value="company">Company</MenuItem>
             <MenuItem value="personal">Personal</MenuItem>
           </Input>
-          {type === "company" && (
-            <Input label="Sub Type Of KYC" select defaultValue="">
-              <MenuItem value="" disabled>
-                Select...
-              </MenuItem>
-              <MenuItem value="HUF">HUF</MenuItem>
-            </Input>
-          )}
           <TableContainer className="shadow-md shadow-gray-200 rounded-md">
             <Table>
               <TableHead>

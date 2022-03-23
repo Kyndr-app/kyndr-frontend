@@ -13,7 +13,7 @@ import {
   TableRow,
   MenuItem,
 } from "@mui/material";
-import { getRandomName } from "../../utils/extras";
+import { getRandomElement, getRandomName } from "../../utils/extras";
 import Input from "../../utils/Input";
 import { CircleCheck } from "../../assets/icons";
 import ImageBox from "../../utils/ImageBox";
@@ -23,6 +23,7 @@ const createData = () => ({
   id: Math.random().toString(36).slice(2, 9),
   walletAddress: "0x896E332e6D072Ce84B1a97d41B15...",
   cause: "Dummy Cause here...",
+  kyc: getRandomElement([true, false]),
 });
 
 const randomData = Array.from({ length: 7 }, createData);
@@ -81,7 +82,7 @@ const Payment = () => {
                     {row.cause}
                   </TableCell>
                   <TableCell className="text-sm font-medium py-2 text-roboto">
-                    <Checkbox />
+                    <Checkbox checked={row.kyc} disableRipple />
                   </TableCell>
                   <TableCell
                     align="right"
@@ -91,7 +92,8 @@ const Payment = () => {
                       variant="contained"
                       color="primary"
                       fullWidth
-                      className="bg-gradient-to-r max-w-[180px] py-3 shadow-none from-primary-light to-primary"
+                      disabled={!row.kyc}
+                      className="bg-gradient-to-r  disabled:to-transparent disabled:from-transparent max-w-[180px] py-3 shadow-none from-primary-light to-primary"
                     >
                       <span className="text-xs capitalize">Make Payment</span>
                     </Button>
