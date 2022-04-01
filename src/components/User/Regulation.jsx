@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
-import { CircleCheck, Lock } from "../../assets/icons";
-import Input from "../../utils/Input";
+import { Lock } from "../../assets/icons";
+import Input, { InputUPI } from "../../utils/Input";
 import Layout from "./Layout";
 import Toolbar from "./Toolbar";
 import { useNavigate } from "react-router-dom";
@@ -18,19 +18,7 @@ const Regulation = () => {
         <div className="text-lg text-roboto mt-2 text-[#8692A6] mb-4">
           For the purpose of industry regulation, your details are required.
         </div>
-        <Input
-          label="UPi ID"
-          name="phone"
-          InputProps={{
-            endAdornment: (
-              <>
-                <span className="text-primary cursor-pointer select-none text-xs flex items-center">
-                  Verify <CircleCheck className="ml-3" />
-                </span>
-              </>
-            ),
-          }}
-        />
+        <InputUPI input="UPI ID" Input={Input} />
         <Input
           required
           label="GST Number"

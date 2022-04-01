@@ -7,7 +7,7 @@ import {
   Paper,
 } from "@mui/material";
 import React from "react";
-import { CircleCheck } from "../../assets/icons";
+import { InputUPI } from "../../utils/Input";
 import { StyledInput } from "../../utils/MuiComponents";
 
 /**
@@ -86,22 +86,7 @@ const Account = () => {
           </div>
           <div className="col-span-3"></div>
           {inputs.map((input) => (
-            <div className="col-span-2">
-              <StyledInput
-                fullWidth
-                InputProps={{
-                  className: "py-1",
-                  endAdornment: input === "UPI ID" && (
-                    <>
-                      <span className="text-primary cursor-pointer select-none text-xs flex items-center">
-                        Verify <CircleCheck className="ml-3" />
-                      </span>
-                    </>
-                  ),
-                }}
-                label={input}
-              />
-            </div>
+            <InputUPI key={input} input={input} />
           ))}
         </div>
         <div className="mt-36 flex gap-6">

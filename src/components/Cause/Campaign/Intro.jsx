@@ -1,7 +1,6 @@
 import { Button, MenuItem, Step, StepLabel, Stepper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import countries from "../../../data/currencies";
 import Input from "../../../utils/Input";
 import Toolbar from "../../User/Toolbar";
 

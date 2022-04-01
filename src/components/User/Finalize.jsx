@@ -12,6 +12,7 @@ const Finalize = ({ beneficiary }) => {
   const [country, setCountry] = useState(countries[0]);
   const [value, setValue] = useState("");
   const navigate = useNavigate();
+  const [val, setVal] = useState("");
   return (
     <Layout className="py-10 px-28 justify-between">
       <Toolbar primary="STEP 03/03" secondary={"Residency Info."} />
@@ -22,6 +23,18 @@ const Finalize = ({ beneficiary }) => {
         <div className="text-lg text-roboto mt-2 text-[#8692A6] mb-4">
           For the purpose of industry regulation, your details are required.
         </div>
+        <Input
+          label="I am a"
+          select
+          value={val}
+          onChange={(e) => setVal(e.target.value)}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={"Individual"}>Individual</MenuItem>
+          <MenuItem value={"Organization"}>Organization</MenuItem>
+        </Input>
         <Input
           label="Phone number"
           value={value}
@@ -62,12 +75,29 @@ const Finalize = ({ beneficiary }) => {
             ),
           }}
         />
-        <Input
-          required
-          label="Organization name"
-          type="text"
-          placeholder="Please enter organization name"
-        />
+        {val === "Individual" ? (
+          <>
+            <Input
+              required
+              label="First Name"
+              type="text"
+              placeholder="First Name"
+            />
+            <Input
+              required
+              label="Last Name"
+              type="text"
+              placeholder="Last Name"
+            />
+          </>
+        ) : (
+          <Input
+            required
+            label="Organization name"
+            type="text"
+            placeholder="Please enter organization name"
+          />
+        )}
         <Input
           required
           label="PAN ID (Claim Tax Deductions)"

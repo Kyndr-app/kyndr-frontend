@@ -1,5 +1,7 @@
 import { InputAdornment, InputLabel } from "@mui/material";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { CircleCheck, Cross } from "../assets/icons";
+import { getRandomElement } from "./extras";
 import { StyledInput } from "./MuiComponents";
 
 const Input = ({ label, labelProps, ...p }) => {
@@ -9,7 +11,6 @@ const Input = ({ label, labelProps, ...p }) => {
     if (type === "password") return true;
     return false;
   }, [type]);
-  console.log(p.className);
   return (
     <div className="mb-5 max-w-[450px] w-full">
       {label && (
@@ -49,6 +50,45 @@ const Input = ({ label, labelProps, ...p }) => {
             p?.InputProps?.endAdornment
           ),
         }}
+      />
+    </div>
+  );
+};
+
+export const InputUPI = ({ input, Input }) => {
+  const [verify, setVerify] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setVerify(false);
+    }, 4000);
+    return () => clearTimeout(t);
+  }, [verify]);
+  const SInput = Input || StyledInput;
+  return (
+    <div className="col-span-2">
+      <SInput
+        fullWidth
+        InputProps={{
+          endAdornment: input === "UPI ID" && (
+            <>
+              <span
+                onClick={() => {
+                  setVerify(true);
+                }}
+                className="text-primary cursor-pointer select-none text-xs flex items-center"
+              >
+                Verify{" "}
+                {verify &&
+                  (getRandomElement([true, false]) ? (
+                    <CircleCheck className="w-4 h-4 mr-2 ml-2" />
+                  ) : (
+                    <Cross className="w-4 fill-red-600 h-4 mr-2 ml-2" />
+                  ))}
+              </span>
+            </>
+          ),
+        }}
+        label={input}
       />
     </div>
   );

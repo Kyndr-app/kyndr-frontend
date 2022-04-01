@@ -1,7 +1,7 @@
 import { Button, Paper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Input from "../../../utils/Input";
+import Input, { InputUPI } from "../../../utils/Input";
 
 const CorporateInfo = () => {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const CorporateInfo = () => {
           />
           <Input label="STATE" required placeholder="State" defaultValue="" />
           <Input label="CITY" required placeholder="City" defaultValue="" />
-          <Input label="UPI ID" placeholder="UPI ID" defaultValue="" />
+          <InputUPI input="UPI ID" Input={Input} placeholder="UPI ID" />
         </div>
       </Paper>
     </main>

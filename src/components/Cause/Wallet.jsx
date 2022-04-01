@@ -160,7 +160,7 @@ const Wallet = () => {
   return (
     <main className="p-10">
       <h1 className="text-2xl items-center flex font-semibold mb-5 text-[#4C4C66]">
-        Your Wallet:{" "}
+        Your Wallet: &nbsp;
         <span className="text-primary font-normal">
           0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
         </span>
@@ -197,7 +197,8 @@ const Wallet = () => {
                     variant="contained"
                     color="primary"
                     fullWidth
-                    className="bg-gradient-to-r py-3 shadow-none from-primary-light to-primary"
+                    disabled
+                    className="bg-gradient-to-r  disabled:to-transparent disabled:from-transparent max-w-[180px] py-3 shadow-none from-primary-light to-primary"
                   >
                     <span className="text-xs capitalize">Get $KYNDR</span>
                   </Button>
@@ -263,7 +264,7 @@ const Wallet = () => {
                     fullWidth
                     className="bg-gradient-to-r py-3 shadow-none from-primary-light to-primary"
                   >
-                    <span className="text-xs capitalize">Get $KiNR</span>
+                    <span className="text-xs capitalize">Withdraw</span>
                   </Button>
                 </div>
               </div>
@@ -276,7 +277,7 @@ const Wallet = () => {
                     <Trophy className="mb-5" />
                   </ListItemIcon>
                   <ListItemText
-                    primary={<span className="font-bold">Token Balance</span>}
+                    primary={<span className="font-bold">Rewards</span>}
                     secondary={
                       <span className="text-gray-500 text-xs">&nbsp;</span>
                     }
@@ -291,9 +292,10 @@ const Wallet = () => {
                     variant="contained"
                     color="primary"
                     fullWidth
-                    className="bg-gradient-to-r py-3 shadow-none from-primary-light to-primary"
+                    disabled
+                    className="bg-gradient-to-r  disabled:to-transparent disabled:from-transparent max-w-[180px] py-3 shadow-none from-primary-light to-primary"
                   >
-                    <span className="text-xs capitalize">Get $KiNR</span>
+                    <span className="text-xs capitalize">Redeem $KYNDR</span>
                   </Button>
                 </div>
               </div>

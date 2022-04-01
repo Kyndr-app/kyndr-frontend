@@ -106,6 +106,7 @@ const KYC = () => {
                       className="py-4"
                       color="primary"
                       fullWidth
+                      onClick={() => navigate("/beneficiary/wallet")}
                     >
                       <span className="capitalize font-semibold">
                         Skip for now

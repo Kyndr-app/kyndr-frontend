@@ -38,7 +38,7 @@ const Launch = () => {
       </div>
       <div className="max-w-[450px] p-4 mt-4 mx-auto w-full overflow-hidden">
         <Input
-          label="Tell Your Story"
+          label="Communicate with your donors as to why you need the funds"
           multiline
           rows={10}
           InputProps={{

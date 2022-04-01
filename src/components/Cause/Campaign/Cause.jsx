@@ -60,7 +60,7 @@ const Cause = () => {
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
-          {["Individual", "Group", "Organization"].map((label) => (
+          {["Self", "Individual", "Group", "Organization"].map((label) => (
             <MenuItem key={label} value={label}>
               {label}
             </MenuItem>

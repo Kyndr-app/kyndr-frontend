@@ -36,12 +36,7 @@ const NGOCard = ({ title, desc, des, percentage }) => {
   return (
     <Card className="shadow-lg card">
       <div className="relative">
-        <CardMedia
-          component="img"
-          alt="green iguana"
-          height="175"
-          image={img}
-        />
+        <CardMedia component="img" alt={title} height="175" image={img} />
         <div className="absolute button-container opacity-0 transition-all bg-gray-800 flex justify-center items-center bg-opacity-50 inset-0">
           <Button
             variant="contained"

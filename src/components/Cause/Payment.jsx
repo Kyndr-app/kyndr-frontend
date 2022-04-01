@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Checkbox,
@@ -12,10 +12,13 @@ import {
   TableHead,
   TableRow,
   MenuItem,
+  Dialog,
+  DialogContent,
+  DialogTitle,
 } from "@mui/material";
 import { getRandomElement, getRandomName } from "../../utils/extras";
-import Input from "../../utils/Input";
-import { CircleCheck } from "../../assets/icons";
+import Input, { InputUPI } from "../../utils/Input";
+import { Tick } from "../../assets/icons";
 import ImageBox from "../../utils/ImageBox";
 
 const createData = () => ({
@@ -28,12 +31,33 @@ const createData = () => ({
 
 const randomData = Array.from({ length: 7 }, createData);
 
-const inputs = ["Name", "UPI ID"];
-const selects = ["Select Cause", "Purpose"];
+const inputs = ["Name", "UPI ID", "Purpose"];
+const selects = ["Select Cause"];
 
 const Payment = () => {
+  const [open, setOpen] = useState(false);
   return (
     <div className="p-10">
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby="form-dialog-title"
+        maxWidth="sm"
+      >
+        <DialogTitle>
+          <div className="text-primary">Information</div>
+        </DialogTitle>
+        <DialogContent className="p-14">
+          <div className="flex justify-center items-center">
+            <Tick />
+          </div>
+          <div className="mt-5">
+            <div className="font-bold">
+              Congrats, You’ve added a beneficiary.
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
       <div>
         <p
           className="text-gray-500 mb-2 text-roboto text-xs font-medium uppercase"
@@ -135,19 +159,7 @@ const Payment = () => {
                 <div className="grid grid-cols-2 gap-x-3">
                   {inputs.map((input) => (
                     <div key={input}>
-                      <Input
-                        label={input}
-                        name="phone"
-                        InputProps={{
-                          endAdornment: input === "UPI ID" && (
-                            <>
-                              <span className="text-primary cursor-pointer select-none text-xs flex items-center">
-                                Verify <CircleCheck className="ml-3" />
-                              </span>
-                            </>
-                          ),
-                        }}
-                      />
+                      <InputUPI input={input} Input={Input} />
                     </div>
                   ))}
                   {selects.map((input) => (
@@ -180,16 +192,7 @@ const Payment = () => {
                 fullWidth
                 className="py-2 max-w-[200px] bg-gradient-to-r from-primary-light to-primary"
                 color="primary"
-              >
-                <span className="capitalize font-semibold">
-                  Verify Beneficiaries
-                </span>
-              </Button>
-              <Button
-                variant="contained"
-                fullWidth
-                className="py-2 max-w-[200px] bg-gradient-to-r from-primary-light to-primary"
-                color="primary"
+                onClick={() => setOpen(true)}
               >
                 <span className="capitalize font-semibold">
                   Add Beneficiaries

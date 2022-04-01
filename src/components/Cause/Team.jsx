@@ -3,14 +3,17 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   MenuItem,
   Paper,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { getRandomImage } from "../../utils/extras";
 import Input from "../../utils/Input";
-import { Edit } from "../../assets/icons";
+import { Edit, Tick } from "../../assets/icons";
 import ImageBox from "../../utils/ImageBox";
 import { StyledSelect } from "../../utils/MuiComponents";
 
@@ -25,9 +28,80 @@ const cards = Array.from({ length: 3 }, randomData);
 const inputs = ["Name", "Wallet Address", "Designation"];
 const selects = ["Assign to Cause"];
 
+const CustomCard = (card) => {
+  const [active, setActive] = useState(true);
+  return (
+    <div className="">
+      <Card className="shadow-lg card">
+        <div className="relative">
+          <CardMedia component="img" alt="green iguana" image={card.image} />
+          <div className="absolute button-container transition-all bg-transparent flex justify-end p-3 items-start bg-opacity-50 inset-0">
+            <Button
+              variant="text"
+              color="primary"
+              endIcon={<Edit />}
+              className="text-white"
+              onClick={() => setActive(!active)}
+            >
+              <span className="text-sm capitalize">
+                {active ? "Active" : "Inactive"}
+              </span>
+            </Button>
+          </div>
+        </div>
+        <CardContent
+          style={{
+            paddingBottom: 10,
+          }}
+        >
+          <div className="flex justify-between">
+            <div>
+              <Typography noWrap className="text-sm pr-2 text-roboto font-bold">
+                {card.name}
+              </Typography>
+              <h3 className="text-[11px] font-medium mb-3">{card.desc}</h3>
+            </div>
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                className="bg-gradient-to-r px-2 py-3 shadow-none from-primary-light to-primary"
+              >
+                <span className="text-xs capitalize">Make&nbsp;Payment</span>
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
 const Team = () => {
+  const [open, setOpen] = useState(false);
   return (
     <main className="p-10">
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby="form-dialog-title"
+        maxWidth="sm"
+      >
+        <DialogTitle>
+          <div className="text-primary">Information</div>
+        </DialogTitle>
+        <DialogContent className="p-14">
+          <div className="flex justify-center items-center">
+            <Tick />
+          </div>
+          <div className="mt-5">
+            <div className="font-bold">
+              Congrats, You’ve added a team member.{" "}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
       <div className="mb-7">
         <p
           className="text-gray-500 mb-2 text-roboto text-xs font-medium uppercase"
@@ -50,7 +124,7 @@ const Team = () => {
               defaultValue=""
               displayEmpty
             >
-              <MenuItem value="">Select</MenuItem>
+              <MenuItem value="">All</MenuItem>
             </StyledSelect>
           </div>
           <div className="mt-4">
@@ -58,58 +132,7 @@ const Team = () => {
             <div className="mt-5">
               <div className="grid grid-cols-5 gap-5">
                 {cards.map((card) => (
-                  <div className="">
-                    <Card className="shadow-lg card">
-                      <div className="relative">
-                        <CardMedia
-                          component="img"
-                          alt="green iguana"
-                          image={card.image}
-                        />
-                        <div className="absolute button-container transition-all bg-transparent flex justify-end p-3 items-start bg-opacity-50 inset-0">
-                          <Button
-                            variant="text"
-                            color="primary"
-                            endIcon={<Edit />}
-                            className="text-white"
-                          >
-                            <span className="text-sm capitalize">Active</span>
-                          </Button>
-                        </div>
-                      </div>
-                      <CardContent
-                        style={{
-                          paddingBottom: 10,
-                        }}
-                      >
-                        <div className="flex justify-between">
-                          <div>
-                            <Typography
-                              noWrap
-                              className="text-sm pr-2 text-roboto font-bold"
-                            >
-                              {card.name}
-                            </Typography>
-                            <h3 className="text-[11px] font-medium mb-3">
-                              {card.desc}
-                            </h3>
-                          </div>
-                          <div>
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              fullWidth
-                              className="bg-gradient-to-r px-2 py-3 shadow-none from-primary-light to-primary"
-                            >
-                              <span className="text-xs capitalize">
-                                Make&nbsp;Payment
-                              </span>
-                            </Button>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
+                  <CustomCard {...card} />
                 ))}
               </div>
             </div>
@@ -123,7 +146,7 @@ const Team = () => {
             letterSpacing: "0.01em",
           }}
         >
-          ADD Benificiaries
+          add team member
         </p>
         <Paper className="p-8">
           <div className="grid grid-cols-12 gap-10">
@@ -161,6 +184,7 @@ const Team = () => {
               variant="contained"
               className="py-4 px-7 bg-primary"
               color="primary"
+              onClick={() => setOpen(true)}
             >
               <span className="capitalize font-semibold">Add Team Member</span>
             </Button>

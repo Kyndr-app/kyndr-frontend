@@ -7,6 +7,9 @@ import {
   ListItemAvatar,
   ListItemText,
   Paper,
+  Tab,
+  Tabs,
+  tabsClasses,
 } from "@mui/material";
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
@@ -22,9 +25,13 @@ import {
   Send,
   FlagAlt,
   BackArrow,
+  Folder,
+  EditLight,
+  ShareRound,
 } from "../../../assets/icons";
 import { getRandomInt } from "../../../utils/extras";
 import JoditEditor from "jodit-react";
+import { StyledTab, StyledTabs } from "../../../utils/MuiComponents";
 const data = Array.from({ length: 200 }, (_e, i) => [
   new Date("July 07,2021").getTime() + 3600000 * i,
   getRandomInt(10000, 20000),
@@ -58,6 +65,10 @@ const beneficiaries = [
   {
     name: "Metaverse",
     image: "https://source.unsplash.com/random/290x290",
+  },
+  {
+    name: "Tesla Motors",
+    image: "https://source.unsplash.com/random/251x251",
   },
 ];
 
@@ -138,35 +149,90 @@ var options = {
   },
 };
 
+const Beneficiary = ({ name, image }) => {
+  return (
+    <Tab
+      disableRipple
+      style={{
+        opacity: 1,
+      }}
+      label={
+        <div className="w-[86px]">
+          <div>
+            <img
+              src={image}
+              className="rounded-full w-16 mb-2 h-16 mx-auto"
+              alt=""
+            />
+          </div>
+          <div className="text-sm mb-5 text-roboto capitalize font-semibold whitespace-nowrap">
+            {name}
+          </div>
+        </div>
+      }
+    />
+  );
+};
+
 const Details = () => {
-  const [value, setValue] = useState([null, null]);
+  const [values, setValues] = useState([null, null]);
+  const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
+  const handleChange = (e, nv) => setValue(nv);
   return (
     <main className="px-10 pb-5 pt-10">
-      <div className="flex">
-        <div>
-          <IconButton component={Link} to="..">
-            <BackArrow />
-          </IconButton>
-        </div>
-        <div>
-          <h1 className="text-2xl font-semibold mb-5 text-[#4C4C66]">
-            Help This Cause
-          </h1>
-          <div className="flex items-center mb-4">
-            <h3 className="text-[#4C4C66] text-xs uppercase font-medium">
-              Campaign Wallet:{" "}
-              <span className="text-primary font-normal text-lg">
-                0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
-              </span>
-            </h3>
-            <div className="ml-3">
-              <Copy className="cursor-pointer" />
-            </div>
-            <div className="ml-3">
-              <Open className="cursor-pointer" />
+      <div className="flex justify-between items-center">
+        <div className="flex">
+          <div>
+            <IconButton component={Link} to="..">
+              <BackArrow />
+            </IconButton>
+          </div>
+          <div>
+            <h1 className="text-2xl font-semibold mb-5 text-[#4C4C66]">
+              Help This Cause
+            </h1>
+            <div className="flex items-center mb-4">
+              <h3 className="text-[#4C4C66] text-xs uppercase font-medium">
+                Campaign Wallet:{" "}
+                <span className="text-primary font-normal text-lg">
+                  0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
+                </span>
+              </h3>
+              <div className="ml-3">
+                <Copy className="cursor-pointer" />
+              </div>
+              <div className="ml-3">
+                <Open className="cursor-pointer" />
+              </div>
             </div>
           </div>
+        </div>
+        <div className="flex gap-5">
+          <Button
+            variant="contained"
+            color="primary"
+            endIcon={<Folder />}
+            className="bg-gradient-to-tr px-5 rounded shadow-none py-3 max-w-[300px] mx-auto from-primary-light to-primary"
+          >
+            <span className="text-xs text-roboto capitalize">Get report</span>
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            endIcon={<EditLight />}
+            className="bg-gradient-to-tr px-5 rounded shadow-none py-3 max-w-[300px] mx-auto from-primary-light to-primary"
+          >
+            <span className="text-xs text-roboto capitalize">Edit</span>
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            endIcon={<ShareRound />}
+            className="bg-gradient-to-tr px-5 rounded shadow-none py-3 max-w-[300px] mx-auto from-primary-light to-primary"
+          >
+            <span className="text-xs text-roboto capitalize">Share</span>
+          </Button>
         </div>
       </div>
       <Paper className="py-5 pr-5 pl-2 shadow-lg">
@@ -174,11 +240,11 @@ const Details = () => {
           <h1 className="text-2xl mb-3 font-bold pl-4">Campaign Funds</h1>
           <DateRangePicker
             label="Advanced keyboard"
-            value={value}
+            value={values}
             open={open}
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
-            onChange={(newValue) => setValue(newValue)}
+            onChange={(newValue) => setValues(newValue)}
             renderInput={() => (
               <div className="flex mb-10">
                 <Button
@@ -228,22 +294,21 @@ const Details = () => {
                 </Link>
               </div>
               <Paper className="p-5 flex items-center h-full">
-                <div className="grid grid-cols-7 gap-4 w-full">
-                  {beneficiaries.map(({ image, name }, i) => (
-                    <div className="w-[86px] text-center" key={i}>
-                      <div>
-                        <img
-                          src={image}
-                          className="rounded-full w-16 mb-2 h-16 mx-auto"
-                          alt={image}
-                        />
-                      </div>
-                      <div className="text-sm text-roboto capitalize font-semibold whitespace-nowrap">
-                        {name}
-                      </div>
-                    </div>
+                <Tabs
+                  variant="scrollable"
+                  scrollButtons
+                  sx={{
+                    [`& .${tabsClasses.scrollButtons}`]: {
+                      color: "primary.main",
+                      "&.Mui-disabled": { display: "none" },
+                    },
+                  }}
+                  defaultValue={0}
+                >
+                  {beneficiaries.map((item, index) => (
+                    <Beneficiary key={index} {...item} />
                   ))}
-                </div>
+                </Tabs>
               </Paper>
             </div>
             <div className="h-full flex flex-col">
@@ -254,22 +319,21 @@ const Details = () => {
                 </Link>
               </div>
               <Paper className="p-5 flex items-center h-full">
-                <div className="grid grid-cols-7 gap-4 w-full">
-                  {beneficiaries.map(({ image, name }, i) => (
-                    <div className="w-[86px] text-center" key={i}>
-                      <div>
-                        <img
-                          src={image}
-                          className="rounded-full w-16 mb-2 h-16 mx-auto"
-                          alt={image}
-                        />
-                      </div>
-                      <div className="text-sm text-roboto capitalize font-semibold whitespace-nowrap">
-                        {name}
-                      </div>
-                    </div>
+                <Tabs
+                  variant="scrollable"
+                  scrollButtons
+                  sx={{
+                    [`& .${tabsClasses.scrollButtons}`]: {
+                      color: "primary.main",
+                      "&.Mui-disabled": { display: "none" },
+                    },
+                  }}
+                  defaultValue={0}
+                >
+                  {beneficiaries.map((item, index) => (
+                    <Beneficiary key={index} {...item} />
                   ))}
-                </div>
+                </Tabs>
               </Paper>
             </div>
           </div>
@@ -280,11 +344,7 @@ const Details = () => {
                 <div>
                   <div>
                     <div className="text-xs text-gray-400 font-semibold">
-                      Here’s a quick update
-                    </div>
-
-                    <div className="text-xs text-gray-600 mt-2 font-bold">
-                      Thank you for your support!
+                      Update
                     </div>
                   </div>
                 </div>
@@ -295,7 +355,7 @@ const Details = () => {
                 </div>
               </div>
               <div className="mt-3">
-                <ListItem disablePadding alignItems="flex-start">
+                <ListItem disablePadding>
                   <ListItemAvatar className="min-w-[35px]">
                     <Avatar
                       className="w-7 h-7"
@@ -307,14 +367,8 @@ const Details = () => {
                     primaryTypographyProps={{
                       style: { lineHeight: "1" },
                     }}
-                    secondaryTypographyProps={{
-                      style: { lineHeight: "1" },
-                    }}
                     primary={
-                      <span className="text-[9px] font-bold">Qasim Rai</span>
-                    }
-                    secondary={
-                      <span className="text-[7px] font-bold">30s ago</span>
+                      <span className="text-xs font-bold">Qasim Rai</span>
                     }
                   />
                 </ListItem>
@@ -338,8 +392,27 @@ const Details = () => {
           </div>
         </div>
       </div>
+      <div className="mt-7">
+        <div className="tabs mb-4">
+          <StyledTabs value={value} onChange={handleChange} defaultValue={1}>
+            <StyledTab label="Tokens Received" {...a11yProps(0)} />
+            <StyledTab label="Token Withdrawals" {...a11yProps(1)} />
+            <StyledTab label="Bank Withdrawals" {...a11yProps(2)} />
+          </StyledTabs>
+        </div>
+        <Paper className="h-[300px] shadow-lg flex rounded-md justify-center items-center">
+          <div className="text-3xl text-[#6C6C6C] text-roboto">
+            Block Explorer View
+          </div>
+        </Paper>
+      </div>
     </main>
   );
 };
+
+const a11yProps = (index) => ({
+  id: `vertical-tab-${index}`,
+  "aria-controls": `vertical-tabpanel-${index}`,
+});
 
 export default Details;

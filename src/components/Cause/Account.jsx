@@ -7,6 +7,7 @@ import {
   Paper,
 } from "@mui/material";
 import React from "react";
+import { getRandomElement } from "../../utils/extras";
 import { StyledInput } from "../../utils/MuiComponents";
 
 /**
@@ -22,13 +23,12 @@ import { StyledInput } from "../../utils/MuiComponents";
  */
 
 const inputs = [
-  "First Name",
-  "Last Name",
+  ...(getRandomElement([true, false])
+    ? ["First Name", "Last Name"]
+    : ["Name of organisation"]),
   "Email",
   "Phone",
-  "Job Title",
   "Country",
-  "National ID",
   "PAN Number (Claim Tax Deductions)",
 ];
 
