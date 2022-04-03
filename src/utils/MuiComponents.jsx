@@ -83,6 +83,9 @@ export const StyledInput = styled(TextField)({
     paddingLeft: 10,
     paddingRight: 10,
   },
+  "& input:disabled + fieldset": {
+    opacity: 0.2,
+  },
   "& label": {
     fontSize: 16,
     color: "#828282 !important",

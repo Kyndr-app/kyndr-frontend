@@ -1,5 +1,4 @@
 import {
-  Button,
   ListItem,
   ListItemButton,
   ListItemIcon,
@@ -47,7 +46,7 @@ const tabs = [
     icon: Medical,
   },
   {
-    name: "Memorials",
+    name: "Education",
     icon: Memorials,
   },
   {
@@ -63,7 +62,18 @@ const tabs = [
     icon: Women,
   },
 ];
-
+const extras = [
+  "Emergencies",
+  "Children",
+  "Animals",
+  "Community",
+  "Elderly",
+  "Arts & Media",
+  "Environment",
+  "Social Entrepreneurship",
+  "Human Rights",
+  "Rural Development",
+].map((e) => ({ name: e }));
 const Donate = () => {
   const [active, setActive] = useState(0);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -80,26 +90,35 @@ const Donate = () => {
         className="rounder-xl py-8 mb-7 px-20 overflow-hidden rounded-xl relative z-0"
         style={{
           backgroundImage: `url(${campaign})`,
-          backgroundPosition: "left center",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
         }}
       >
-        <img src={campaign} alt="campaign" className="absolute right-0 top-0" />
         <div className="relative flex justify-between items-center">
           <div className="relative">
-            <h1 className="text-xl font-medium mb-4">
-              Start your own fundraiser for FREE.
+            <h1 className="text-2xl mb-4 text-[#4C4C66]">
+              Crowd Funding build for impact
             </h1>
-            <ul className="list-disc list-inside text-[13px] font-semibold">
-              <li>0 Fees</li>
-              <li>Transact with crypto</li>
-              <li>Communicate impact with your Donors</li>
-              <li>Automated Impact Reporting</li>
-            </ul>
+            <p className=" text-[#4C4C66]">
+              Now donate with financial transparency & accountability <br /> for
+              a kyndr to scale real world impact.
+            </p>
           </div>
           <div>
-            <Button variant="outlined" className="py-3 px-8" color="primary">
-              <span className="capitalize font-semibold">Create Campaign</span>
-            </Button>
+            <ol className="list-decimal font-bold text-primary list-inside">
+              {[
+                "Select a Cause",
+                "Donate",
+                "Earn DAO Tokens & Track Impact",
+                "Vote & Build KyndrDAO together",
+              ].map((e) => {
+                return (
+                  <li>
+                    <span className="font-normal text-[#4C4C66]">{e}</span>
+                  </li>
+                );
+              })}
+            </ol>
           </div>
           <div className="max-w-[350px] w-full"></div>
         </div>
@@ -207,32 +226,16 @@ const Donate = () => {
           open={open}
           onClose={handleClose}
         >
-          {[
-            "Education",
-            "Emergencies",
-            "Children",
-            "Animals",
-            "Sports",
-            "Community",
-            "Elderly",
-            "Arts & Media",
-            "Technology",
-            "Environment",
-            "Social Entrepreneurship",
-            "Human Rights",
-            "Rural Development",
-            "Women",
-          ].map((label) => (
-            <MenuItem onClick={handleClose} key={label} value={label}>
-              {label}
+          {extras.map((label) => (
+            <MenuItem onClick={handleClose} key={label.name} value={label.name}>
+              {label.name}
             </MenuItem>
           ))}
         </Menu>
       </Tabs>
-
       <div className="mt-10">
         <h1 className="text-xs text-[#4C4C66] font-medium uppercase">
-          Featured Cause ({active.name})
+          Featured Cause ({tabs[active].name})
         </h1>
       </div>
       <div className="grid grid-cols-5 gap-5 mt-10 items-center justify-center">

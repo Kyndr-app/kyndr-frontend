@@ -13,78 +13,27 @@ import {
   Radio,
   RadioGroup,
   Select,
-  useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
-import {
-  Discover,
-  DownArrow,
-  Maestro,
-  Mastercard,
-  Norton,
-  Paypal,
-  Protect,
-  Visa,
-} from "../assets/icons";
-import TextMaskCustom, { CreditCardMask, ExpiryMask } from "./MaskInput";
+import { DownArrow, Norton, Protect } from "../assets/icons";
+import { InputUPI } from "./Input";
+import TextMaskCustom from "./MaskInput";
 import { MyFormControlLabel, StyledInput } from "./MuiComponents";
 
 const CreditCardInputs = () => {
-  const [values, setValues] = useState({
-    card: "",
-    expiry: "",
-    cvc: "",
-  });
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
-  };
   return (
     <Grid container spacing={2} className="mt-2">
       <Grid item xs={12} sm={6}>
         <StyledInput
-          className="text-sm"
-          variant="outlined"
-          fullWidth
-          id="firstName"
-          InputProps={{ inputComponent: CreditCardMask }}
-          name="card"
-          label="Card Number"
-          value={values.card}
-          onChange={handleChange}
+          label="Amount"
+          InputProps={{
+            startAdornment: "₹",
+          }}
+          type="number"
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <StyledInput
-          className="text-sm"
-          variant="outlined"
-          required
-          fullWidth
-          InputProps={{ inputComponent: ExpiryMask }}
-          id="exp"
-          placeholder="MM/YY"
-          label="Expiration Date"
-          name="expiry"
-          value={values.expiry}
-          onChange={handleChange}
-        />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <StyledInput
-          className="text-sm"
-          variant="outlined"
-          required
-          fullWidth
-          id="cvc"
-          label="Card Security Code"
-          placeholder="CVC"
-          name="cvc"
-          InputProps={{ maxLength: 3 }}
-          value={values.cvc}
-          onChange={handleChange}
-        />
+        <InputUPI input="UPI ID" Input={StyledInput} />
       </Grid>
       <Grid item xs={12} sm={6} className="flex items-center">
         <div className="text-primary">What is this?</div>
@@ -108,36 +57,14 @@ const CreditCardPopup = ({ open, setOpen, setCheckoutOpen }) => {
           <div>
             <RadioGroup>
               <MyFormControlLabel
-                value="a"
-                control={<Radio />}
-                label={() => (
-                  <div className="flex gap-5 justify-between items-center">
-                    <div className="font-semibold text-roboto">PayPal</div>
-                    <div className="text-sm">
-                      You will be redirected to the PayPal website after
-                      submitting your order
-                    </div>
-                    <div className="flex">
-                      <Paypal className="h-auto" />
-                    </div>
-                  </div>
-                )}
-              />
-              <MyFormControlLabel
                 value="b"
                 control={<Radio />}
                 label={({ checked }) => (
                   <div>
                     <div className="flex py-2 justify-between items-center">
                       <span className="font-semibold text-roboto">
-                        Pay with Credit Card
+                        Pay with UPI
                       </span>
-                      <div className="flex">
-                        <Visa className="mr-2 h-auto" />
-                        <Discover className="mr-2 h-auto" />
-                        <Maestro className="mr-2 h-auto" />
-                        <Mastercard className=" h-auto" />
-                      </div>
                     </div>
                     {checked && <CreditCardInputs />}
                   </div>
@@ -249,7 +176,6 @@ const ConfirmPopup = ({ open, setOpen }) => {
  */
 
 const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
-  const [value, setValue] = useState(null);
   const [values, setValues] = useState({
     firstName: "",
     lastName: "",
@@ -259,10 +185,10 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
     zip: "",
     phone: "",
   });
+  const [isAnonymus, setAnonymus] = useState(false);
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-  const theme = useTheme();
   return (
     <Dialog
       PaperProps={{ className: "max-w-[570px] w-full" }}
@@ -273,41 +199,6 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
         Choose a donation amount
       </DialogTitle>
       <DialogContent className="px-5">
-        <div className="mb-5 flex justify-items-stretch px-10">
-          <Button
-            style={{
-              backgroundColor: value === 1000 && theme.palette.primary.main,
-            }}
-            className="last:mr-0 mr-3 py-3 "
-            fullWidth
-            onClick={() => setValue(1000)}
-            variant={value === 1000 ? "contained" : "outlined"}
-          >
-            <span className="text-sm">$1,000</span>
-          </Button>
-          <Button
-            style={{
-              backgroundColor: value === 1500 && theme.palette.primary.main,
-            }}
-            fullWidth
-            className="last:mr-0 mr-3 py-3 "
-            onClick={() => setValue(1500)}
-            variant={value === 1500 ? "contained" : "outlined"}
-          >
-            <span className="text-sm">$1,500</span>
-          </Button>
-          <Button
-            style={{
-              backgroundColor: value === 4500 && theme.palette.primary.main,
-            }}
-            fullWidth
-            className="last:mr-0 mr-3 py-3 "
-            onClick={() => setValue(4500)}
-            variant={value === 4500 ? "contained" : "outlined"}
-          >
-            <span className="text-sm">$4,500</span>
-          </Button>
-        </div>
         <div>
           <StyledInput
             InputProps={{
@@ -350,6 +241,14 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
             placeholder="Enter Amount"
           />
         </div>
+        <div className="mt-3">
+          <FormControlLabel
+            label={<span className="text-sm">I want to be Anonymous</span>}
+            control={<Checkbox disableRipple size="small" color="primary" />}
+            onChange={() => setAnonymus(!isAnonymus)}
+            checked={isAnonymus}
+          />
+        </div>
         <Grid container rowSpacing={2} columnSpacing={3} className="mt-3">
           <Grid item xs={12} sm={6}>
             <StyledInput
@@ -361,6 +260,7 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
               label="First Name"
               value={values.firstName}
               onChange={handleChange}
+              disabled={isAnonymus}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -373,6 +273,7 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
               label="Last Name"
               value={values.lastName}
               onChange={handleChange}
+              disabled={isAnonymus}
             />
           </Grid>
           <Grid item xs={12}>
@@ -385,6 +286,7 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
               label="Email"
               value={values.email}
               onChange={handleChange}
+              disabled={isAnonymus}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -397,6 +299,7 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
               label="State/Province"
               value={values.state}
               onChange={handleChange}
+              disabled={isAnonymus}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -409,6 +312,7 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
               label="City"
               value={values.city}
               onChange={handleChange}
+              disabled={isAnonymus}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -421,6 +325,7 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
               label="Zip/Postal Code"
               value={values.zip}
               onChange={handleChange}
+              disabled={isAnonymus}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -434,6 +339,7 @@ const PaymentPopup = ({ open, setOpen, setCheckoutOpen }) => {
               label="Phone"
               value={values.phone}
               onChange={handleChange}
+              disabled={isAnonymus}
             />
           </Grid>
         </Grid>

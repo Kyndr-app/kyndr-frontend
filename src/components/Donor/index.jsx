@@ -29,21 +29,12 @@ const links = [
     path: "wallet",
   },
   {
-    name: "Stake (Coming Soon)",
-    path: "stake",
-    disabled: true,
-  },
-  {
-    name: "NFT Market (Coming Soon)",
-    path: "nft-market",
-    disabled: true,
+    name: "Account",
+    path: "account",
   },
 ];
 
 const userMenu = [
-  {
-    title: "Account",
-  },
   {
     title: "Logout",
   },

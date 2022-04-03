@@ -1,4 +1,4 @@
-import { Button, Paper } from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
 import React from "react";
 import Chart from "react-apexcharts";
 import { BorderLinearProgress } from "../../utils/MuiComponents";
@@ -232,15 +232,16 @@ const DAO = () => {
               Proposals & Voting
             </h3>
             <Paper className="px-10 py-10 shadow-lg h-full">
-              <div className="grid grid-cols-2 gap-5">
-                <div>
+              <div className="grid grid-cols-2 gap-x-5">
+                <div className="col-span-2">
                   <h1 className="text-lg font-bold mb-5">
-                    Tokens Required For Proposals & Votes &nbsp; &nbsp; &nbsp;
-                    &nbsp;
-                    <span className="text-xl font-semibold text-[#5E5D75]">
+                    Tokens Required For Proposals & Votes &nbsp;
+                    <span className="text-lg font-semibold text-[#5E5D75]">
                       20 $KYNDR
                     </span>
                   </h1>
+                </div>
+                <div>
                   <p className="text-lg text-[#6C6C6C]">
                     You can now create proposals to add or remove features,
                     create something new or get inputs on matters regarding the
@@ -251,8 +252,10 @@ const DAO = () => {
                 <div className="flex flex-col justify-between">
                   <div className="mt-4 w-full">
                     <div className="flex items-center justify-between">
-                      <h1 className="text-xl">Your Token Balance</h1>
-                      <div className="text-[32px]">51.56 $KYNDR</div>
+                      <h1 className="text-xl font-medium">
+                        Your Token Balance
+                      </h1>
+                      <h1 className="text-3xl font-bold">51.56 $KYNDR</h1>
                     </div>
                   </div>
                   <div className="w-full flex gap-4">
@@ -262,9 +265,9 @@ const DAO = () => {
                       fullWidth
                       className="bg-gradient-to-r py-4 from-primary-light to-primary"
                     >
-                      <span className="text-xs capitalize">
+                      <Typography noWrap className="text-xs capitalize">
                         Click here to make a proposal
-                      </span>
+                      </Typography>
                     </Button>
                     <Button
                       variant="contained"

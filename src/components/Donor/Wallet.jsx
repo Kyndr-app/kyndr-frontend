@@ -74,7 +74,8 @@ const Wallet = () => {
                 variant="contained"
                 color="primary"
                 fullWidth
-                className="bg-gradient-to-r py-3 shadow-none from-primary-light to-primary"
+                disabled
+                className="bg-gradient-to-r disabled:to-transparent disabled:from-transparent py-3 shadow-none from-primary-light to-primary"
               >
                 <span className="text-xs capitalize">Get $KYNDR</span>
               </Button>
@@ -142,9 +143,10 @@ const Wallet = () => {
                   variant="contained"
                   color="primary"
                   fullWidth
-                  className="bg-gradient-to-r py-3 shadow-none from-primary-light to-primary"
+                  disabled
+                  className="bg-gradient-to-r  disabled:to-transparent disabled:from-transparent max-w-[180px] py-3 shadow-none from-primary-light to-primary"
                 >
-                  <span className="text-xs capitalize">Claim $KYNDR</span>
+                  <span className="text-xs capitalize">Radeem $KYNDR</span>
                 </Button>
               </div>
             </div>

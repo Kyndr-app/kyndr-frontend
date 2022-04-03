@@ -19,12 +19,7 @@ const Regulation = () => {
           For the purpose of industry regulation, your details are required.
         </div>
         <InputUPI input="UPI ID" Input={Input} />
-        <Input
-          required
-          label="GST Number"
-          type="number"
-          placeholder="12121232342"
-        />
+        <Input required label="GST Number" placeholder="12121232342" />
         <div className="mb-20" />
         <Button
           fullWidth

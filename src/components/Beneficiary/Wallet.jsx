@@ -77,10 +77,10 @@ const Wallet = () => {
           </div>
           <div className="mt-4">
             <StyledInput
-              type="number"
               className="max-w-[380px]"
               fullWidth
-              label="Select Beneficiary Address"
+              label="Amount"
+              type="number"
               InputProps={{ startAdornment: "₹" }}
             />
           </div>

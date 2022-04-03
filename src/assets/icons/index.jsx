@@ -60,6 +60,7 @@ export { ReactComponent as Folder } from "./folder.svg";
 export { ReactComponent as ShareRound } from "./share-round.svg";
 export { ReactComponent as Tick } from "./tick.svg";
 export { ReactComponent as Cross } from "./cross.svg";
+export { ReactComponent as Metamask } from "./metamask.svg";
 export { default as Bitcoin } from "./bitcoin.svg";
 export { default as Kinr } from "./kinr.svg";
 export { default as Kyndr } from "./kyndr.svg";

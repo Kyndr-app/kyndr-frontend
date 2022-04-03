@@ -1,7 +1,7 @@
 import { Button, Checkbox, Divider, FormControlLabel } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Google } from "../../assets/icons";
+import { Google, Metamask } from "../../assets/icons";
 import Input from "../../utils/Input";
 import Layout from "./Layout";
 import Toolbar from "./Toolbar";
@@ -55,6 +55,19 @@ const Login = () => {
           >
             <span className="text-xs capitalize text-roboto text-black">
               Login with Google
+            </span>
+          </Button>
+        </div>
+        <div className="mt-4">
+          <Button
+            fullWidth
+            variant="contained"
+            className="py-3 shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
+            startIcon={<Metamask className="w-6 h-6" />}
+            color="inherit"
+          >
+            <span className="text-xs capitalize text-roboto text-black">
+              Login with Metamask
             </span>
           </Button>
         </div>

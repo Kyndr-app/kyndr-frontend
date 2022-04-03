@@ -69,7 +69,7 @@ export const InputUPI = ({ input, Input }) => {
       <SInput
         fullWidth
         InputProps={{
-          endAdornment: input === "UPI ID" && (
+          endAdornment: input === "" && (
             <>
               <span
                 onClick={() => {

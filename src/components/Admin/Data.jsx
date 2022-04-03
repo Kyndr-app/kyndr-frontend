@@ -1,7 +1,19 @@
 import { DateRangePicker } from "@mui/lab";
-import { Button, Paper } from "@mui/material";
+import {
+  Button,
+  ButtonGroup,
+  Checkbox,
+  Pagination,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import React, { useState } from "react";
-import { Filter } from "../../assets/icons";
+import { CircleCheck, Cross, Filter } from "../../assets/icons";
 import { StyledTab, StyledTabs } from "../../utils/MuiComponents";
 const a11yTabProps = (index) => ({
   id: `vertical-tab-${index}`,
@@ -72,7 +84,7 @@ const Data = () => {
       </div>
       <div className="mb-5 last:mb-0">
         <h1 className="text-2xl text-gray-500 mb-3 font-bold">KYC</h1>
-        <Paper className="h-[350px] shadow-lg flex rounded-md justify-center flex-col items-center">
+        <Paper className="min-h-[350px] shadow-lg flex rounded-md justify-center flex-col items-center">
           <div className="tabs mb-4 w-full">
             <StyledTabs
               value={value}
@@ -84,9 +96,88 @@ const Data = () => {
               <StyledTab label="Bank Withdrawals" {...a11yTabProps(2)} />
             </StyledTabs>
           </div>
-          <div className="h-full flex justify-center items-center">
-            <div className="text-3xl text-[#6C6C6C] text-roboto">DATA</div>
-          </div>
+          <Table>
+            <TableHead className="bg-slate-100">
+              <TableRow>
+                <TableCell className="text-sm font-medium text-roboto py-2">
+                  Name
+                </TableCell>
+                <TableCell className="text-sm font-medium text-roboto py-2">
+                  Wallet Address
+                </TableCell>
+                <TableCell className="text-sm font-medium text-roboto py-2">
+                  Cause
+                </TableCell>
+                <TableCell className="text-sm font-medium text-roboto py-2">
+                  KYC
+                </TableCell>
+                <TableCell
+                  align="right"
+                  className="text-sm font-medium text-roboto py-2"
+                ></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {[1, 2, 4, 5, 64, 3, 6, 44, 3, 32].map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell className="text-sm font-medium py-2 text-roboto">
+                    Name
+                  </TableCell>
+                  <TableCell className="text-sm font-medium text-primary py-2 text-roboto">
+                    Address
+                  </TableCell>
+                  <TableCell className="text-sm font-medium py-2 text-roboto">
+                    Cause
+                  </TableCell>
+                  <TableCell className="text-sm font-medium py-2 text-roboto">
+                    <Checkbox checked={row.kyc} disableRipple />
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    className="text-sm font-medium py-1 text-roboto"
+                  >
+                    <ButtonGroup>
+                      <Button
+                        variant="contained"
+                        color="success"
+                        fullWidth
+                        startIcon={<CircleCheck />}
+                        className="bg-green-600"
+                      >
+                        <span className="text-xs capitalize">Accept</span>
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        fullWidth
+                        startIcon={<Cross className="w-3 fill-white" />}
+                        className="bg-red-600"
+                      >
+                        <span className="text-xs capitalize">Reject</span>
+                      </Button>
+                    </ButtonGroup>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TableCell
+                  colSpan={4}
+                  className="text-sm text-center py-3"
+                  align="right"
+                >
+                  <div className="flex justify-end">
+                    <Pagination
+                      count={10}
+                      className="text-xs"
+                      color="primary"
+                    />
+                  </div>
+                </TableCell>
+              </TableRow>
+            </TableFooter>
+          </Table>
         </Paper>
       </div>
       <div className="mb-5 last:mb-0">
