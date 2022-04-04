@@ -1,8 +1,10 @@
 import React, { lazy, useEffect } from "react";
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { useFallback } from "../../routes/Routes";
+import { getRandomElement } from "../../utils/extras";
 import Header from "../Layout/Header";
-// Lazy load the routes
+const KYCSubmitted = lazy(() => import("./KYC-submitted"));
+const KYCSuccess = lazy(() => import("./KYC-success"));
 const Account = lazy(() => import("./Account"));
 const CampaignPages = lazy(() => import("./Campaign"));
 const Company = lazy(() => import("./Company"));
@@ -88,7 +90,11 @@ const Cause = () => {
         <Route path="wallet" element={useFallback(<Wallet />)} />
         <Route path="campaign/*" element={useFallback(<CampaignPages />)} />
         <Route path="kyc">
-          <Route index element={useFallback(<KYC />)} />
+          <Route
+            index
+            element={useFallback(getRandomElement([<KYC />, <KYCSuccess />]))}
+          />
+          <Route path="submitted" element={useFallback(<KYCSubmitted />)} />
           <Route path="company/*" element={useFallback(<Company />)} />
           <Route path="personal/*" element={useFallback(<Personal />)} />
         </Route>

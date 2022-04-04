@@ -1,10 +1,11 @@
 import { Button, Paper } from "@mui/material";
 import React from "react";
-import { UploadIcon } from "../../../assets/icons";
+import { useNavigate } from "react-router-dom";
 import ImageBox from "../../../utils/ImageBox";
 import Input from "../../../utils/Input";
 
 const DocumentInfo = () => {
+  const navigate = useNavigate();
   return (
     <main className="pb-5 pt-10">
       <Paper
@@ -59,6 +60,7 @@ const DocumentInfo = () => {
               className="py-4 mt-10 bg-primary"
               color="primary"
               fullWidth
+              onClick={() => navigate("../../submitted")}
             >
               <span className="capitalize">SUBMIT FOR VERIFICATION</span>
             </Button>

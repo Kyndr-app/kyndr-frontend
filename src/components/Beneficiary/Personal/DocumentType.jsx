@@ -57,7 +57,7 @@ const DocumentType = () => {
               className="py-4 mt-10 bg-primary"
               color="primary"
               fullWidth
-              onClick={() => navigate("../../../wallet")}
+              onClick={() => navigate("../../submitted")}
             >
               <span>SUBMIT FOR VERIFICATION</span>
             </Button>
