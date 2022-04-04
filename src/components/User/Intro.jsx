@@ -1,17 +1,16 @@
 import { Button, MenuItem, Step, StepLabel, Stepper } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import countries from "../../data/currencies";
 import Input from "../../utils/Input";
-import Layout from "./Layout";
 import Toolbar from "./Toolbar";
 
 const steps = ["Intro", "Cause", "Setup", "Launch"];
 
 const Intro = () => {
   const navigate = useNavigate();
+  const [value, setValue] = useState("Individual");
   return (
-    <Layout className="py-10 px-28 justify-between">
+    <>
       <Toolbar primary="STEP 01/04" secondary={"Cause"} />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
@@ -32,15 +31,38 @@ const Intro = () => {
           label="I would like to register as:"
           select
           placeholder="Select..."
-          defaultValue=""
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
         >
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
           <MenuItem value="Individual">Individual</MenuItem>
           <MenuItem value="Organization">Organization</MenuItem>
-          <MenuItem value="Non-profit">Non-profit</MenuItem>
         </Input>
+        {value === "Individual" ? (
+          <>
+            <Input
+              required
+              label="First Name"
+              type="text"
+              placeholder="First Name"
+            />
+            <Input
+              required
+              label="Last Name"
+              type="text"
+              placeholder="Last Name"
+            />
+          </>
+        ) : (
+          <Input
+            required
+            label="Organization name"
+            type="text"
+            placeholder="Please enter organization name"
+          />
+        )}
         <Input
           label="Purpose of fundraiser"
           select
@@ -119,7 +141,7 @@ const Intro = () => {
         </Button>
       </div>
       <div />
-    </Layout>
+    </>
   );
 };
 

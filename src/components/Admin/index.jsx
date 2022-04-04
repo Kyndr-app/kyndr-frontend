@@ -1,20 +1,15 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Route, Routes, Outlet } from "react-router-dom";
-import Header from "../Layout/Header";
-import Data from "./Data";
+import { useFallback } from "../../routes/Routes";
+const Header = lazy(() => import("../Layout/Header"));
+const Data = lazy(() => import("./Data"));
+
 const links = [
   {
     name: "data",
     path: "data",
   },
 ];
-
-/**
- * Account
- * KYC
- * Permission
- * Logout
- */
 
 const userMenu = [
   {
@@ -23,7 +18,7 @@ const userMenu = [
 ];
 const AdminRoutes = () => (
   <>
-    <Header links={links} userMenu={userMenu} />
+    {useFallback(<Header links={links} userMenu={userMenu} />)}
     <Outlet />
   </>
 );
@@ -31,8 +26,8 @@ const AdminRoutes = () => (
 const Admin = () => (
   <Routes>
     <Route path="" element={<AdminRoutes />}>
-      <Route index element={<Data />} />
-      <Route path="data" element={<Data />} />
+      <Route index element={useFallback(<Data />)} />
+      <Route path="data" element={useFallback(<Data />)} />
       <Route path="*" element={<div />} />
     </Route>
   </Routes>

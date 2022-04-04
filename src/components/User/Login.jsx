@@ -1,14 +1,14 @@
 import { Button, Checkbox, Divider, FormControlLabel } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Google, Metamask } from "../../assets/icons";
 import Input from "../../utils/Input";
-import Layout from "./Layout";
 import Toolbar from "./Toolbar";
 
 const Login = () => {
+  const { id } = useParams();
   return (
-    <Layout className="py-10 px-28 justify-between">
+    <>
       <Toolbar primary="Login account" secondary={"Personal Info."} />
       <div className="max-w-[450px] p-4 mt-4 mx-auto w-full overflow-hidden">
         <div className="text-3xl text-roboto font-bold">
@@ -36,7 +36,7 @@ const Login = () => {
           className="bg-primary py-3 shadow-none"
           color="primary"
           component={Link}
-          to={"../finalize"}
+          to={`/${id}`}
         >
           <span className="capitalize text-roboto">Login</span>
         </Button>
@@ -52,36 +52,42 @@ const Login = () => {
             className="py-3 shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
             startIcon={<Google />}
             color="inherit"
+            component={Link}
+            to={`/${id}`}
           >
             <span className="text-xs capitalize text-roboto text-black">
               Login with Google
             </span>
           </Button>
         </div>
-        <div className="mt-4">
-          <Button
-            fullWidth
-            variant="contained"
-            className="py-3 shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
-            startIcon={<Metamask className="w-6 h-6" />}
-            color="inherit"
-          >
-            <span className="text-xs capitalize text-roboto text-black">
-              Login with Metamask
-            </span>
-          </Button>
-        </div>
+        {id === "supporter" && (
+          <div className="mt-4">
+            <Button
+              fullWidth
+              variant="contained"
+              className="py-3 shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
+              startIcon={<Metamask className="w-5 h-5" />}
+              color="inherit"
+              component={Link}
+              to={`/${id}`}
+            >
+              <span className="text-xs capitalize text-roboto text-black">
+                Login with Metamask
+              </span>
+            </Button>
+          </div>
+        )}
         <div className="mt-10 text-lg text-center">
           <span className="text-[#8692A6] text-roboto">
             Don't have an account?
           </span>{" "}
-          <Link to="/user/join-us" className="text-primary">
+          <Link to={`/user/${id}/register`} className="text-primary">
             Sign Up
           </Link>
         </div>
       </div>
       <div />
-    </Layout>
+    </>
   );
 };
 

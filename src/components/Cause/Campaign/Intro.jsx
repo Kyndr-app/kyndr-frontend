@@ -48,7 +48,6 @@ const Intro = () => {
           </MenuItem>
           <MenuItem value="Individual">Individual</MenuItem>
           <MenuItem value="Organization">Organization</MenuItem>
-          <MenuItem value="Non-profit">Non-profit</MenuItem>
         </Input>
         <Input
           label="Purpose of fundraiser"

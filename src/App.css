@@ -3,8 +3,8 @@
   font-weight: 500;
 }
 :root {
-  --primary-light: rgb(241, 97, 120, 0.85);
-  --primary: rgb(241, 97, 120);
+  --primary-light: rgb(241, 97, 120, 0.9);
+  --primary: rgb(241, 97, 120, 0.97);
 }
 * {
   font-family: "DM Sans", sans-serif;

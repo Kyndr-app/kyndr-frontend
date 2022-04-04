@@ -1,12 +1,14 @@
 import { Paper } from "@mui/material";
-import React from "react";
+import React, { lazy } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
-import Campaign from "./Campaign";
-import Cause from "./Cause";
-import Details from "./Details";
-import Intro from "./Intro";
-import Launch from "./Launch";
-import Setup from "./Setup";
+import { useFallback } from "../../../routes/Routes";
+// Lazily load the components
+const Campaign = lazy(() => import("./Campaign"));
+const Cause = lazy(() => import("./Cause"));
+const Details = lazy(() => import("./Details"));
+const Intro = lazy(() => import("./Intro"));
+const Launch = lazy(() => import("./Launch"));
+const Setup = lazy(() => import("./Setup"));
 
 const AddPages = () => {
   return (
@@ -22,13 +24,13 @@ const CampaignPages = () => {
   return (
     <Routes>
       <Route path="">
-        <Route index element={<Campaign />} />
-        <Route path="details" element={<Details />} />
+        <Route index element={useFallback(<Campaign />)} />
+        <Route path="details" element={useFallback(<Details />)} />
         <Route path="add" element={<AddPages />}>
-          <Route path="intro" element={<Intro />} />
-          <Route path="cause" element={<Cause />} />
-          <Route path="setup" element={<Setup />} />
-          <Route path="launch" element={<Launch />} />
+          <Route path="intro" element={useFallback(<Intro />)} />
+          <Route path="cause" element={useFallback(<Cause />)} />
+          <Route path="setup" element={useFallback(<Setup />)} />
+          <Route path="launch" element={useFallback(<Launch />)} />
         </Route>
       </Route>
     </Routes>

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import countries from "../../data/currencies";
 import { Lock } from "../../assets/icons";
 import Input from "../../utils/Input";
-import Layout from "./Layout";
 import Toolbar from "./Toolbar";
 import TextMaskCustom from "../../utils/MaskInput";
 
@@ -12,9 +11,9 @@ const Finalize = ({ beneficiary }) => {
   const [country, setCountry] = useState(countries[0]);
   const [value, setValue] = useState("");
   const navigate = useNavigate();
-  const [val, setVal] = useState("");
+  const [val, setVal] = useState("Individual");
   return (
-    <Layout className="py-10 px-28 justify-between">
+    <>
       <Toolbar primary="STEP 03/03" secondary={"Residency Info."} />
       <div className="max-w-[450px] p-4 mt-4 mx-auto w-full overflow-hidden">
         <div className="text-3xl text-roboto font-bold">
@@ -24,14 +23,11 @@ const Finalize = ({ beneficiary }) => {
           For the purpose of industry regulation, your details are required.
         </div>
         <Input
-          label="I am a"
+          label="I would like to register as:"
           select
           value={val}
           onChange={(e) => setVal(e.target.value)}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
           <MenuItem value={"Individual"}>Individual</MenuItem>
           <MenuItem value={"Organization"}>Organization</MenuItem>
         </Input>
@@ -114,7 +110,7 @@ const Finalize = ({ beneficiary }) => {
             if (beneficiary) {
               navigate("../regulation");
             } else {
-              navigate("/donor/donate");
+              navigate("/supporter/donate");
             }
           }}
         >
@@ -128,7 +124,7 @@ const Finalize = ({ beneficiary }) => {
         </div>
       </div>
       <div />
-    </Layout>
+    </>
   );
 };
 

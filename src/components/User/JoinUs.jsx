@@ -5,10 +5,9 @@ import {
   RadioGroup,
   SvgIcon,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Beneficiary, Donor, Ngo, Right } from "../../assets/icons";
-import Layout from "./Layout";
 
 /**
  * 1. Supporter donor Personal account to manage all you activities.
@@ -19,13 +18,13 @@ import Layout from "./Layout";
 const pages = [
   {
     title: "Supporter",
-    path: "donor",
+    path: "supporter",
     description: "Personal account to manage all you activities.",
     icon: Donor,
   },
   {
     title: "Cause",
-    path: "ngo",
+    path: "cause",
     description: "Own or belong to a company, this is for you.",
     icon: Ngo,
   },
@@ -37,17 +36,16 @@ const pages = [
   },
 ];
 
-const JoinUs = () => {
-  const [value, setValue] = useState();
+const JoinUs = ({ type: value, setType: setValue }) => {
   const navigate = useNavigate();
   const handleChange = (event) => {
     setValue(event.target.value);
   };
   return (
-    <Layout className="p-10 justify-between">
+    <>
       <div className="text-right w-full">
         Already have an account?{" "}
-        <Link to="/user/login" className="text-primary">
+        <Link to={`/user/${value}/login`} className="text-primary">
           Sign In
         </Link>
       </div>
@@ -70,7 +68,7 @@ const JoinUs = () => {
                     "& *": { transition: "all .1s" },
                   }}
                   onClick={() =>
-                    value === el.path && navigate(`/user/${el.path}`)
+                    value === el.path && navigate(`/user/${el.path}/login`)
                   }
                   className={`${
                     value === el.path
@@ -111,7 +109,7 @@ const JoinUs = () => {
         </RadioGroup>
       </div>
       <div />
-    </Layout>
+    </>
   );
 };
 

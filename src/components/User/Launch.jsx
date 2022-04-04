@@ -2,7 +2,6 @@ import { Button, Step, StepLabel, Stepper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../utils/Input";
-import Layout from "./Layout";
 import Toolbar from "./Toolbar";
 
 const steps = ["Intro", "Cause", "Setup", "Launch"];
@@ -10,7 +9,7 @@ const steps = ["Intro", "Cause", "Setup", "Launch"];
 const Launch = () => {
   const navigate = useNavigate();
   return (
-    <Layout className="py-10 px-28 justify-enevly">
+    <>
       <Toolbar primary="STEP 04/04" secondary={"Launch"} />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
@@ -55,7 +54,7 @@ const Launch = () => {
       <div />
       <div />
       <div />
-    </Layout>
+    </>
   );
 };
 

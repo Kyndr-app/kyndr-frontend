@@ -1,15 +1,16 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import DocumentType from "./DocumentType";
-import PanCard from "./PanCard";
-import PersonalInfo from "./PersonalInfo";
+import { useFallback } from "../../../routes/Routes";
+const DocumentType = lazy(() => import("./DocumentType"));
+const PanCard = lazy(() => import("./PanCard"));
+const PersonalInfo = lazy(() => import("./PersonalInfo"));
 
 const Personal = () => {
   return (
     <Routes>
-      <Route path="info" element={<PersonalInfo />} />
-      <Route path="pan-card" element={<PanCard />} />
-      <Route path="document-type" element={<DocumentType />} />
+      <Route path="info" element={useFallback(<PersonalInfo />)} />
+      <Route path="pan-card" element={useFallback(<PanCard />)} />
+      <Route path="document-type" element={useFallback(<DocumentType />)} />
     </Routes>
   );
 };

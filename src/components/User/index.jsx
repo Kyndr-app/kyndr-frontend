@@ -1,14 +1,18 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Cause from "./Cause";
-import Finalize from "./Finalize";
-import Intro from "./Intro";
-import JoinUs from "./JoinUs";
-import Launch from "./Launch";
-import Login from "./Login";
-import Register from "./Register";
-import Regulation from "./Regulation";
-import Setup from "./Setup";
+import React, { lazy, useEffect } from "react";
+import { Route, Routes, Outlet, useLocation } from "react-router-dom";
+import useLocalStorageState from "../../hooks/useLocalStorageState";
+import { useFallback } from "../../routes/Routes";
+import Layout from "./Layout";
+
+const Cause = lazy(() => import("./Cause"));
+const Finalize = lazy(() => import("./Finalize"));
+const Intro = lazy(() => import("./Intro"));
+const JoinUs = lazy(() => import("./JoinUs"));
+const Launch = lazy(() => import("./Launch"));
+const Setup = lazy(() => import("./Setup"));
+const Login = lazy(() => import("./Login"));
+const Register = lazy(() => import("./Register"));
+const Regulation = lazy(() => import("./Regulation"));
 
 /**
  * 1. Join Us
@@ -46,31 +50,59 @@ import Setup from "./Setup";
  * 3. beneficiary/finalize
  * 4. beneficiary/regulation
  */
+const LayoutItem = ({ type }) => (
+  <Layout type={type} className="py-10 px-28 justify-between">
+    <Outlet />
+  </Layout>
+);
 const User = () => {
+  const [type, setType] = useLocalStorageState("type", "donor");
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname.includes("cause")) {
+      setType("cause");
+    } else if (location.pathname.includes("beneficiary")) {
+      setType("beneficiary");
+    } else if (location.pathname.includes("supporter")) {
+      setType("supporter");
+    }
+  }, [location.pathname, setType]);
   return (
     <Routes>
-      <Route path="">
-        <Route index element={<JoinUs />} />
-        <Route path="join-us" element={<JoinUs />} />
-        <Route path="login" element={<Login />} />
-        <Route path="donor">
-          <Route index element={<Login donor />} />
-          <Route path="login" index element={<Login donor />} />
-          <Route path="finalize" element={<Finalize donor />} />
+      <Route path="" element={<LayoutItem type={type} />}>
+        <Route
+          index
+          element={useFallback(<JoinUs type={type} setType={setType} />)}
+        />
+        <Route
+          path="join-us"
+          element={useFallback(<JoinUs type={type} setType={setType} />)}
+        />
+        <Route path=":id">
+          <Route path="login" element={useFallback(<Login />)} />
+          <Route path="register" element={useFallback(<Register />)} />
+        </Route>
+        <Route path="supporter">
+          <Route
+            path="finalize"
+            element={useFallback(<Finalize supporter />)}
+          />
         </Route>
         <Route path="beneficiary">
-          <Route index element={<Login beneficiary />} />
-          <Route path="login" index element={<Login beneficiary />} />
-          <Route path="finalize" element={<Finalize beneficiary />} />
-          <Route path="regulation" element={<Regulation beneficiary />} />
+          <Route
+            path="finalize"
+            element={useFallback(<Finalize beneficiary />)}
+          />
+          <Route
+            path="regulation"
+            element={useFallback(<Regulation beneficiary />)}
+          />
         </Route>
-        <Route path="ngo">
-          <Route index element={<Register ngo />} />
-          <Route path="register" index element={<Register ngo />} />
-          <Route path="intro" element={<Intro ngo />} />
-          <Route path="cause" element={<Cause ngo />} />
-          <Route path="setup" element={<Setup ngo />} />
-          <Route path="launch" element={<Launch ngo />} />
+        <Route path="cause">
+          <Route path="intro" element={useFallback(<Intro cause />)} />
+          <Route path="cause" element={useFallback(<Cause cause />)} />
+          <Route path="setup" element={useFallback(<Setup cause />)} />
+          <Route path="launch" element={useFallback(<Launch cause />)} />
         </Route>
       </Route>
     </Routes>

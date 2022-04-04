@@ -1,11 +1,13 @@
-import React from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
-import Header from "../Layout/Header";
-import Account from "./Account";
-import Company from "./Company";
-import KYC from "./KYC";
-import Personal from "./Personal";
-import Wallet from "./Wallet";
+import React, { lazy, useEffect } from "react";
+import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
+import { useFallback } from "../../routes/Routes";
+// lazy load above components
+const Header = lazy(() => import("../Layout/Header"));
+const Account = lazy(() => import("./Account"));
+const Company = lazy(() => import("./Company"));
+const Personal = lazy(() => import("./Personal"));
+const KYC = lazy(() => import("./KYC"));
+const Wallet = lazy(() => import("./Wallet"));
 
 const links = [
   {
@@ -28,9 +30,17 @@ const userMenu = [
   },
 ];
 
+const B = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("./wallet", { replace: true });
+  }, [navigate]);
+  return null;
+};
+
 const BeneficiaryPages = () => (
   <>
-    <Header links={links} userMenu={userMenu} />
+    {useFallback(<Header links={links} userMenu={userMenu} />)}
     <Outlet />
   </>
 );
@@ -39,13 +49,13 @@ const Beneficiary = () => {
   return (
     <Routes>
       <Route path="" element={<BeneficiaryPages />}>
-        <Route index element={<Wallet />} />
-        <Route path="wallet" element={<Wallet />} />
-        <Route path="account" element={<Account />} />
+        <Route index element={useFallback(<B />)} />
+        <Route path="wallet" element={useFallback(<Wallet />)} />
+        <Route path="account" element={useFallback(<Account />)} />
         <Route path="kyc">
-          <Route index element={<KYC />} />
-          <Route path="company/*" element={<Company />} />
-          <Route path="personal/*" element={<Personal />} />
+          <Route index element={useFallback(<KYC />)} />
+          <Route path="company/*" element={useFallback(<Company />)} />
+          <Route path="personal/*" element={useFallback(<Personal />)} />
         </Route>
         <Route path="*" element={<div />} />
       </Route>

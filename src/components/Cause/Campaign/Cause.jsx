@@ -60,36 +60,23 @@ const Cause = () => {
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
-          {["Self", "Individual", "Group", "Organization"].map((label) => (
-            <MenuItem key={label} value={label}>
-              {label}
-            </MenuItem>
-          ))}
-        </Input>
-        <Input
-          label="Select your impact category"
-          select
-          placeholder="Select..."
-          defaultValue=""
-        >
-          <MenuItem value="" disabled>
-            Select...
-          </MenuItem>
           {[
-            "Education",
+            "COVID-19",
+            "Medical",
             "Emergencies",
+            "Education",
             "Children",
+            "Elderly",
             "Animals",
             "Sports",
-            "Community",
-            "Elderly",
+            "Communitiy",
             "Arts & Media",
             "Technology",
             "Environment",
             "Social Entrepreneurship",
+            "Women",
             "Human Rights",
             "Rural Development",
-            "Women",
           ].map((label) => (
             <MenuItem key={label} value={label}>
               {label}

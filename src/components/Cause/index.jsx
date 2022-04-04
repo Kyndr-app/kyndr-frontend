@@ -1,17 +1,18 @@
-import React from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
+import React, { lazy, useEffect } from "react";
+import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
+import { useFallback } from "../../routes/Routes";
 import Header from "../Layout/Header";
-import Account from "./Account";
-import CampaignPages from "./Campaign";
-import Campaign from "./Campaign/Campaign";
-import Company from "./Company";
-import KYC from "./KYC";
-import Payment from "./Payment";
-import Permission from "./Permission";
-import Personal from "./Personal";
-import Supporters from "./Supporters";
-import Team from "./Team";
-import Wallet from "./Wallet";
+// Lazy load the routes
+const Account = lazy(() => import("./Account"));
+const CampaignPages = lazy(() => import("./Campaign"));
+const Company = lazy(() => import("./Company"));
+const Personal = lazy(() => import("./Personal"));
+const Team = lazy(() => import("./Team"));
+const Wallet = lazy(() => import("./Wallet"));
+const Supporters = lazy(() => import("./Supporters"));
+const KYC = lazy(() => import("./KYC"));
+const Payment = lazy(() => import("./Payment"));
+const Permission = lazy(() => import("./Permission"));
 
 const links = [
   {
@@ -34,6 +35,10 @@ const links = [
     name: "wallet",
     path: "wallet",
   },
+  {
+    name: "Account",
+    path: "account",
+  },
 ];
 
 /**
@@ -44,9 +49,6 @@ const links = [
  */
 
 const userMenu = [
-  {
-    title: "Account",
-  },
   {
     title: "KYC",
   },
@@ -65,22 +67,30 @@ const CausePages = () => (
   </>
 );
 
+const C = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("./campaign", { replace: true });
+  }, [navigate]);
+  return null;
+};
+
 const Cause = () => {
   return (
     <Routes>
       <Route path="" element={<CausePages />}>
-        <Route index element={<Campaign />} />
-        <Route path="account" element={<Account />} />
-        <Route path="supporters" element={<Supporters />} />
-        <Route path="permission" element={<Permission />} />
-        <Route path="payments" element={<Payment />} />
-        <Route path="team" element={<Team />} />
-        <Route path="wallet" element={<Wallet />} />
-        <Route path="campaign/*" element={<CampaignPages />} />
+        <Route index element={useFallback(<C />)} />
+        <Route path="account" element={useFallback(<Account />)} />
+        <Route path="supporters" element={useFallback(<Supporters />)} />
+        <Route path="permission" element={useFallback(<Permission />)} />
+        <Route path="payments" element={useFallback(<Payment />)} />
+        <Route path="team" element={useFallback(<Team />)} />
+        <Route path="wallet" element={useFallback(<Wallet />)} />
+        <Route path="campaign/*" element={useFallback(<CampaignPages />)} />
         <Route path="kyc">
-          <Route index element={<KYC />} />
-          <Route path="company/*" element={<Company />} />
-          <Route path="personal/*" element={<Personal />} />
+          <Route index element={useFallback(<KYC />)} />
+          <Route path="company/*" element={useFallback(<Company />)} />
+          <Route path="personal/*" element={useFallback(<Personal />)} />
         </Route>
         <Route path="*" element={<div />} />
       </Route>

@@ -1,24 +1,22 @@
 import { Button, Checkbox, Divider, FormControlLabel } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
-import { Google, Metamask } from "../../assets/icons";
+import { Link, useParams } from "react-router-dom";
+import { Google } from "../../assets/icons";
 import Input from "../../utils/Input";
-import Layout from "./Layout";
 import Toolbar from "./Toolbar";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
   return (
-    <Layout className="py-10 px-28 justify-between">
+    <>
       <Toolbar primary="STEP 03/03" secondary={"Residency Info."} />
       <div className="max-w-[450px] p-4 mt-4 mx-auto w-full overflow-hidden">
-        <div className="text-3xl text-roboto font-bold">
-          Complete Your Profile!
-        </div>
-        <div className="text-lg text-roboto mt-2 text-[#8692A6] mb-4">
+        <h1 className="text-3xl text-roboto font-bold">Register Account!</h1>
+        <h6 className="text-lg text-roboto mt-2 text-[#8692A6] mb-4">
           For the purpose of industry regulation, your details are required.
-        </div>
+        </h6>
         <Input required label="Email" type="email" />
         <Input required label="Username" type="text" />
         <Input required label="Create password" type="password" />
@@ -38,7 +36,15 @@ const Register = () => {
           variant="contained"
           className="bg-primary py-3 shadow-none"
           color="primary"
-          onClick={() => navigate("../intro")}
+          onClick={() => {
+            if (id === "supporter") {
+              navigate("../finalize");
+            } else if (id === "cause") {
+              navigate("../intro");
+            } else if (id === "beneficiary") {
+              navigate("../finalize");
+            }
+          }}
         >
           <span className="capitalize text-roboto">Register Account</span>
         </Button>
@@ -54,22 +60,18 @@ const Register = () => {
             className="py-3 shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
             startIcon={<Google />}
             color="inherit"
+            onClick={() => {
+              if (id === "supporter") {
+                navigate("../finalize");
+              } else if (id === "cause") {
+                navigate("../intro");
+              } else if (id === "beneficiary") {
+                navigate("../finalize");
+              }
+            }}
           >
             <span className="text-xs capitalize text-roboto text-black">
-              Login with Google
-            </span>
-          </Button>
-        </div>
-        <div className="mt-4">
-          <Button
-            fullWidth
-            variant="contained"
-            className="py-3 shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
-            startIcon={<Metamask className="w-5 h-5" />}
-            color="inherit"
-          >
-            <span className="text-xs capitalize text-roboto text-black">
-              Login with Metamask
+              Register with Google
             </span>
           </Button>
         </div>
@@ -77,13 +79,13 @@ const Register = () => {
           <span className="text-[#8692A6] text-roboto">
             Already have an account?
           </span>{" "}
-          <Link to="/user/login" className="text-primary">
+          <Link to={`/user/${id}/login`} className="text-primary">
             Sign In
           </Link>
         </div>
       </div>
       <div />
-    </Layout>
+    </>
   );
 };
 
