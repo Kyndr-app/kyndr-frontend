@@ -1,6 +1,7 @@
-import { Button, Paper } from "@mui/material";
+import { Button, IconButton, Paper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { BackArrow } from "../../../assets/icons";
 import ImageBox from "../../../utils/ImageBox";
 import Input from "../../../utils/Input";
 
@@ -13,20 +14,23 @@ const DocumentType = () => {
         className="container py-10 shadow-gray-400 flex justify-center rounded-lg"
       >
         <div className="max-w-[900px] grid grid-cols-2 w-full">
-          <div className="text-3xl px-4 col-span-2 text-roboto font-bold">
-            Docoment Type
+          <div className="flex">
+            <div>
+              <IconButton onClick={() => navigate(-1)}>
+                <BackArrow />
+              </IconButton>
+            </div>
+            <div className="text-3xl px-4 col-span-2 text-roboto font-bold">
+              Docoment Type
+            </div>
           </div>
           <div className="text-lg col-span-2 text-roboto mt-2 text-[#8692A6] my-4"></div>
-          <div className="p-4">
-            <Input label="AADHAR" required />
-          </div>
           <div className="p-4">
             <Input label="AADHAR NUMBER" required defaultValue="" />
           </div>
           <div className="p-4">
             <Input label="RE-ENTER AADHAR NUMBER" required defaultValue="" />
           </div>
-          <div />
           <div className="p-4">
             <ImageBox
               id="aadhar-card-front"

@@ -6,11 +6,11 @@ import Toolbar from "./Toolbar";
 
 const steps = ["Intro", "Cause", "Setup", "Launch"];
 
-const Cause = () => {
+const Cause = ({ primary }) => {
   const navigate = useNavigate();
   return (
     <>
-      <Toolbar primary="STEP 02/04" secondary={"Cause"} />
+      <Toolbar primary={primary} secondary={"Cause"} />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
           {steps.map((label) => (
@@ -49,24 +49,7 @@ const Cause = () => {
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
-          {[
-            "COVID-19",
-            "Medical",
-            "Emergencies",
-            "Education",
-            "Children",
-            "Elderly",
-            "Animals",
-            "Sports",
-            "Communitiy",
-            "Arts & Media",
-            "Technology",
-            "Environment",
-            "Social Entrepreneurship",
-            "Women",
-            "Human Rights",
-            "Rural Development",
-          ].map((label) => (
+          {["Self", "Individual", "Group", "Organization"].map((label) => (
             <MenuItem key={label} value={label}>
               {label}
             </MenuItem>

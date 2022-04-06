@@ -1,6 +1,7 @@
-import { Button, Paper } from "@mui/material";
+import { Button, IconButton, Paper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { BackArrow } from "../../../assets/icons";
 import ImageBox from "../../../utils/ImageBox";
 import Input from "../../../utils/Input";
 
@@ -13,8 +14,15 @@ const PanCard = () => {
         className="container py-10 shadow-gray-400 flex justify-center rounded-lg"
       >
         <div className="max-w-[900px] grid grid-cols-2 w-full">
-          <div className="text-3xl px-4 col-span-2 text-roboto font-bold">
-            Pan Card
+          <div className="flex">
+            <div>
+              <IconButton onClick={() => navigate(-1)}>
+                <BackArrow />
+              </IconButton>
+            </div>
+            <div className="text-3xl px-4 col-span-2 text-roboto font-bold">
+              Pan Card
+            </div>
           </div>
           <div className="text-lg col-span-2 text-roboto mt-2 text-[#8692A6] my-4"></div>
           <div className="p-4">

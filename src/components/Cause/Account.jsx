@@ -30,6 +30,7 @@ const inputs = [
   "Phone",
   "Country",
   "PAN Number (Claim Tax Deductions)",
+  "Wallet Address",
 ];
 
 const Account = () => {

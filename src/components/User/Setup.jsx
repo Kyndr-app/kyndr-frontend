@@ -6,11 +6,11 @@ import Toolbar from "./Toolbar";
 
 const steps = ["Intro", "Cause", "Setup", "Launch"];
 
-const Setup = () => {
+const Setup = ({ primary }) => {
   const navigate = useNavigate();
   return (
     <>
-      <Toolbar primary="STEP 03/04" secondary={"Setup"} />
+      <Toolbar primary={primary} secondary={"Setup"} />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
           {steps.map((label) => (
@@ -39,7 +39,14 @@ const Setup = () => {
               }
             />
           </div>
-          <div />
+          <div className="">
+            <ImageBox
+              id="banner-image"
+              title={
+                <div className="mb-3 text-[#696F79]">Cause Banner Image</div>
+              }
+            />
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-8 mt-7">
           <div className="">

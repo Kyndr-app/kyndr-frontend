@@ -60,24 +60,7 @@ const Cause = () => {
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
-          {[
-            "COVID-19",
-            "Medical",
-            "Emergencies",
-            "Education",
-            "Children",
-            "Elderly",
-            "Animals",
-            "Sports",
-            "Communitiy",
-            "Arts & Media",
-            "Technology",
-            "Environment",
-            "Social Entrepreneurship",
-            "Women",
-            "Human Rights",
-            "Rural Development",
-          ].map((label) => (
+          {["Self", "Individual", "Group", "Organization"].map((label) => (
             <MenuItem key={label} value={label}>
               {label}
             </MenuItem>

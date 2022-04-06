@@ -85,24 +85,38 @@ const User = () => {
         <Route path="supporter">
           <Route
             path="finalize"
-            element={useFallback(<Finalize supporter />)}
+            element={useFallback(<Finalize primary="STEP 02/02" supporter />)}
           />
         </Route>
         <Route path="beneficiary">
           <Route
             path="finalize"
-            element={useFallback(<Finalize beneficiary />)}
+            element={useFallback(<Finalize primary="STEP 02/03" beneficiary />)}
           />
           <Route
             path="regulation"
-            element={useFallback(<Regulation beneficiary />)}
+            element={useFallback(
+              <Regulation primary="STEP 03/03" beneficiary />
+            )}
           />
         </Route>
         <Route path="cause">
-          <Route path="intro" element={useFallback(<Intro cause />)} />
-          <Route path="cause" element={useFallback(<Cause cause />)} />
-          <Route path="setup" element={useFallback(<Setup cause />)} />
-          <Route path="launch" element={useFallback(<Launch cause />)} />
+          <Route
+            path="intro"
+            element={useFallback(<Intro primary="STEP 02/05" cause />)}
+          />
+          <Route
+            path="cause"
+            element={useFallback(<Cause primary="STEP 03/05" cause />)}
+          />
+          <Route
+            path="setup"
+            element={useFallback(<Setup primary="STEP 04/05" cause />)}
+          />
+          <Route
+            path="launch"
+            element={useFallback(<Launch primary="STEP 05/05" cause />)}
+          />
         </Route>
       </Route>
     </Routes>

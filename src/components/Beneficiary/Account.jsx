@@ -30,6 +30,7 @@ const inputs = [
   "PAN number",
   "Phone number",
   "UPI ID",
+  "Wallet Address",
 ];
 
 const Account = () => {

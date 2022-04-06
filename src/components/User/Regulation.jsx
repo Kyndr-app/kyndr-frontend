@@ -5,11 +5,11 @@ import Input, { InputUPI } from "../../utils/Input";
 import Toolbar from "./Toolbar";
 import { useNavigate } from "react-router-dom";
 
-const Regulation = () => {
+const Regulation = ({ primary }) => {
   const navigate = useNavigate();
   return (
     <>
-      <Toolbar primary="STEP 03/03" secondary={"ID Varification"} />
+      <Toolbar primary={primary} secondary={"ID Varification"} />
       <div className="max-w-[450px] p-4 mt-4 mx-auto w-full overflow-hidden">
         <div className="text-3xl text-roboto font-bold">
           Complete Your Profile!

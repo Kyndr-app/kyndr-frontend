@@ -6,8 +6,16 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
+  Pagination,
   Paper,
   Tab,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableFooter,
+  TableHead,
+  TableRow,
   Tabs,
   tabsClasses,
 } from "@mui/material";
@@ -29,9 +37,15 @@ import {
   EditLight,
   ShareRound,
 } from "../../../assets/icons";
-import { getRandomInt } from "../../../utils/extras";
+import {
+  getRandomDate,
+  getRandomInt,
+  getRandomStatus,
+} from "../../../utils/extras";
 import JoditEditor from "jodit-react";
-import { StyledTab, StyledTabs } from "../../../utils/MuiComponents";
+import { StyledInput } from "../../../utils/MuiComponents";
+import fromNow from "../../../libraries/FromNow";
+import Method from "../../../utils/Method";
 const data = Array.from({ length: 200 }, (_e, i) => [
   new Date("July 07,2021").getTime() + 3600000 * i,
   getRandomInt(10000, 20000),
@@ -112,6 +126,14 @@ const boxes = [
     icon: FlagAlt,
   },
 ];
+const createData = () => ({
+  age: fromNow(getRandomDate()),
+  block: Math.random().toString().slice(2, 9),
+  method: getRandomStatus(),
+  id: Math.random().toString(36).slice(2, 9),
+});
+
+const randomData = Array.from({ length: 7 }, createData);
 
 const formatter = Intl.NumberFormat("en", { notation: "compact" });
 var options = {
@@ -176,9 +198,7 @@ const Beneficiary = ({ name, image }) => {
 
 const Details = () => {
   const [values, setValues] = useState([null, null]);
-  const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
-  const handleChange = (e, nv) => setValue(nv);
   return (
     <main className="px-10 pb-5 pt-10">
       <div className="flex justify-between items-center">
@@ -221,6 +241,8 @@ const Details = () => {
             variant="contained"
             color="primary"
             endIcon={<EditLight />}
+            component={Link}
+            to="/cause/campaign/add/intro"
             className="bg-gradient-to-tr px-5 rounded shadow-none py-3 max-w-[300px] mx-auto from-primary-light to-primary"
           >
             <span className="text-xs text-roboto capitalize">Edit</span>
@@ -374,8 +396,11 @@ const Details = () => {
                 </ListItem>
               </div>
               <div className="mt-4">
+                <div className="mb-4">
+                  <StyledInput fullWidth placeholder="Title" label="Title" />
+                </div>
                 <JoditEditor tabIndex={1} />
-                <div className="mt-16 flex justify-end">
+                <div className="mt-10 flex justify-end">
                   <Button
                     variant="contained"
                     fullWidth
@@ -393,26 +418,98 @@ const Details = () => {
         </div>
       </div>
       <div className="mt-7">
-        <div className="tabs mb-4">
-          <StyledTabs value={value} onChange={handleChange} defaultValue={1}>
-            <StyledTab label="Tokens Received" {...a11yProps(0)} />
-            <StyledTab label="Token Withdrawals" {...a11yProps(1)} />
-            <StyledTab label="Bank Withdrawals" {...a11yProps(2)} />
-          </StyledTabs>
-        </div>
-        <Paper className="h-[300px] shadow-lg flex rounded-md justify-center items-center">
-          <div className="text-3xl text-[#6C6C6C] text-roboto">
-            Block Explorer View
-          </div>
-        </Paper>
+        <TransactionTable />
       </div>
     </main>
   );
 };
 
-const a11yProps = (index) => ({
-  id: `vertical-tab-${index}`,
-  "aria-controls": `vertical-tabpanel-${index}`,
-});
+const TransactionTable = () => {
+  return (
+    <>
+      <TableContainer className="rounded-md shadow-lg" component={Paper}>
+        <Table>
+          <TableHead className="bg-slate-100">
+            <TableRow>
+              <TableCell className="text-sm font-medium text-roboto py-3">
+                Txn Hash
+              </TableCell>
+              <TableCell className="text-sm font-medium text-roboto py-3">
+                Method
+              </TableCell>
+              <TableCell className="text-sm font-medium text-roboto py-3">
+                Block
+              </TableCell>
+              <TableCell className="text-sm font-medium text-roboto py-3">
+                Age
+              </TableCell>
+              <TableCell className="text-sm font-medium text-roboto py-3">
+                From
+              </TableCell>
+              <TableCell className="text-sm font-medium text-roboto py-3">
+                To
+              </TableCell>
+              <TableCell className="text-sm font-medium text-roboto py-3">
+                Value
+              </TableCell>
+              <TableCell className="text-sm font-medium text-roboto py-3">
+                [Txn Fee]
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {randomData.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell className="text-sm font-medium py-3 text-roboto text-primary">
+                  c4C222B8546C3be595f6894m...
+                </TableCell>
+                <TableCell className="text-sm py-3">
+                  <Method method={row.method} />
+                </TableCell>
+                <TableCell className="text-sm py-3 font-medium text-roboto text-primary">
+                  {row.block}
+                </TableCell>
+                <TableCell className="font-medium py-3 text-roboto text-xs ">
+                  {row.age}
+                </TableCell>
+                <TableCell className="text-sm py-3">
+                  <div className="flex justify-between">
+                    c4C222B8546C3be595f6894m
+                    <div
+                      style={{
+                        letterSpacing: "0.4px",
+                      }}
+                      className={`px-1 bg-orange-100 text-orange-600 text-xs w-auto inline-block text-center text-roboto font-medium rounded-md ml-5 py-1`}
+                    >
+                      Out
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell className="text-sm font-medium py-3 text-roboto text-primary">
+                  c4C222B8546C3be595f6894m
+                </TableCell>
+                <TableCell className="text-sm py-3">0 MATIC</TableCell>
+                <TableCell className="text-sm py-3">0.000321</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell
+                colSpan={8}
+                className="text-sm text-center py-3"
+                align="right"
+              >
+                <div className="flex justify-end">
+                  <Pagination count={10} color="primary" />
+                </div>
+              </TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </TableContainer>
+    </>
+  );
+};
 
 export default Details;

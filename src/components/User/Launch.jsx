@@ -6,11 +6,11 @@ import Toolbar from "./Toolbar";
 
 const steps = ["Intro", "Cause", "Setup", "Launch"];
 
-const Launch = () => {
+const Launch = ({ primary }) => {
   const navigate = useNavigate();
   return (
     <>
-      <Toolbar primary="STEP 04/04" secondary={"Launch"} />
+      <Toolbar primary={primary} secondary={"Launch"} />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
           {steps.map((label) => (
@@ -31,13 +31,13 @@ const Launch = () => {
         </div>
 
         <Input
-          label="Email"
+          label="Communicate with your donors as to why you need the funds"
           multiline
           rows={6}
           InputProps={{
             className: "py-4",
           }}
-          placeholder="Enter your Email"
+          placeholder="Tell us your story"
         />
         <div className="mb-10" />
         <Button

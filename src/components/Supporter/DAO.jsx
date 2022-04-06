@@ -147,9 +147,6 @@ const DAO = () => {
           <Open className="cursor-pointer" />
         </div>
       </h1>
-      <h3 className="text-[#4C4C66] text-xs mb-4 uppercase font-medium">
-        Info & Explainer
-      </h3>
       <Paper className="py-5 pr-5 pl-2 shadow-lg">
         <h1 className="text-2xl mb-3 font-bold pl-4">
           KiNR Circulating Supply

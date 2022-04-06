@@ -1,10 +1,10 @@
-import { InputAdornment, InputLabel } from "@mui/material";
+import { InputAdornment } from "@mui/material";
 import React, { useEffect, useMemo, useState } from "react";
 import { CircleCheck, Cross } from "../assets/icons";
 import { getRandomElement } from "./extras";
 import { StyledInput } from "./MuiComponents";
 
-const Input = ({ label, labelProps, ...p }) => {
+const Input = ({ label: lab, labelProps, ...p }) => {
   const [type, setType] = useState(p.type);
   const isPassword = useMemo(() => p.type === "password", [p.type]);
   const show = useMemo(() => {
@@ -13,22 +13,22 @@ const Input = ({ label, labelProps, ...p }) => {
   }, [type]);
   return (
     <div className="mb-5 max-w-[450px] w-full">
-      {label && (
-        <InputLabel
+      {lab && (
+        <label
           {...labelProps}
           className={`${labelProps?.className} text-base text-roboto mb-2 text-[#696F79]`}
-          htmlFor={label}
+          htmlFor={lab}
         >
-          {label}
+          {lab}
           {p.required && "*"}
-        </InputLabel>
+        </label>
       )}
       <StyledInput
         fullWidth
         {...p}
         type={type}
         className={`${p.className} shadow-sm shadow-gray-400 rounded-xl`}
-        id={label}
+        id={lab}
         SelectProps={{
           className: "py-1",
           displayEmpty: true,
@@ -69,7 +69,7 @@ export const InputUPI = ({ input, Input }) => {
       <SInput
         fullWidth
         InputProps={{
-          endAdornment: input === "" && (
+          endAdornment: input === "UPI ID" && (
             <>
               <span
                 onClick={() => {

@@ -1,5 +1,5 @@
 import { Button, MenuItem, Step, StepLabel, Stepper } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../../utils/Input";
 import Toolbar from "../../User/Toolbar";
@@ -8,6 +8,7 @@ const steps = ["Intro", "Cause", "Setup", "Launch"];
 
 const Intro = () => {
   const navigate = useNavigate();
+  const [val, setVal] = useState("Individual");
   return (
     <>
       <Toolbar
@@ -36,21 +37,41 @@ const Intro = () => {
           Tell us about yourself
         </div>
         <div className="text-lg text-roboto mt-2 text-[#8692A6] mb-4" />
-        <Input label="Your name" type="text" placeholder="Enter your name" />
         <Input
           label="I would like to register as:"
           select
           placeholder="Select..."
-          defaultValue=""
+          value={val}
+          onChange={(e) => setVal(e.target.value)}
         >
-          <MenuItem value="" disabled>
-            Select...
-          </MenuItem>
           <MenuItem value="Individual">Individual</MenuItem>
           <MenuItem value="Organization">Organization</MenuItem>
         </Input>
+        {val === "Individual" ? (
+          <>
+            <Input
+              required
+              label="First Name"
+              type="text"
+              placeholder="First Name"
+            />
+            <Input
+              required
+              label="Last Name"
+              type="text"
+              placeholder="Last Name"
+            />
+          </>
+        ) : (
+          <Input
+            required
+            label="Organization name"
+            type="text"
+            placeholder="Please enter organization name"
+          />
+        )}
         <Input
-          label="Purpose of fundraiser"
+          label="Impact Category"
           select
           placeholder="Select..."
           defaultValue=""
@@ -58,9 +79,28 @@ const Intro = () => {
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
-          <MenuItem value="Education">Education</MenuItem>
-          <MenuItem value="Environment">Environment</MenuItem>
-          <MenuItem value="Health">Health</MenuItem>
+          {[
+            "COVID-19",
+            "Medical",
+            "Emergencies",
+            "Education",
+            "Children",
+            "Elderly",
+            "Animals",
+            "Sports",
+            "Communitiy",
+            "Arts & Media",
+            "Technology",
+            "Environment",
+            "Social Entrepreneurship",
+            "Women",
+            "Human Rights",
+            "Rural Development",
+          ].map((label) => (
+            <MenuItem key={label} value={label}>
+              {label}
+            </MenuItem>
+          ))}
         </Input>
         <Input
           label="Where are you located?"

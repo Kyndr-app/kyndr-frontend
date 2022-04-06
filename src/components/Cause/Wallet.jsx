@@ -159,18 +159,20 @@ const TransactionTable = () => {
 const Wallet = () => {
   return (
     <main className="p-10">
-      <h1 className="text-2xl items-center flex font-semibold mb-5 text-[#4C4C66]">
-        Your Wallet: &nbsp;
-        <span className="text-primary font-normal">
-          0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
-        </span>
+      <div className="flex items-center mb-4">
+        <h3 className="text-[#4C4C66] text-xs uppercase font-medium">
+          Your Wallet:{" "}
+          <span className="text-primary font-normal text-lg">
+            0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
+          </span>
+        </h3>
         <div className="ml-3">
           <Copy className="cursor-pointer" />
         </div>
         <div className="ml-3">
           <Open className="cursor-pointer" />
         </div>
-      </h1>
+      </div>
       <div className="grid grid-cols-12 gap-5">
         <div className="col-span-8">
           <div className="grid grid-cols-4 w-full gap-5">
@@ -198,7 +200,7 @@ const Wallet = () => {
                     color="primary"
                     fullWidth
                     disabled
-                    className="bg-gradient-to-r  disabled:to-transparent disabled:from-transparent max-w-[180px] py-3 shadow-none from-primary-light to-primary"
+                    className="bg-gradient-to-r  disabled:to-transparent disabled:from-transparent py-3 shadow-none from-primary-light to-primary"
                   >
                     <span className="text-xs capitalize">Get $KYNDR</span>
                   </Button>
@@ -293,7 +295,7 @@ const Wallet = () => {
                     color="primary"
                     fullWidth
                     disabled
-                    className="bg-gradient-to-r  disabled:to-transparent disabled:from-transparent max-w-[180px] py-3 shadow-none from-primary-light to-primary"
+                    className="bg-gradient-to-r  disabled:to-transparent disabled:from-transparent py-3 shadow-none from-primary-light to-primary"
                   >
                     <span className="text-xs capitalize">Redeem $KYNDR</span>
                   </Button>

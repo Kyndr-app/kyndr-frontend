@@ -91,7 +91,7 @@ const Donate = () => {
         style={{
           backgroundImage: `url(${campaign})`,
           backgroundPosition: "center",
-          backgroundSize: "cover",
+          backgroundSize: "120%",
         }}
       >
         <div className="relative flex justify-between items-center">
@@ -120,6 +120,7 @@ const Donate = () => {
               })}
             </ol>
           </div>
+          <div className="max-w-[350px] w-full"></div>
           <div className="max-w-[350px] w-full"></div>
         </div>
       </div>

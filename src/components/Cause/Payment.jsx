@@ -16,10 +16,16 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-import { getRandomElement, getRandomName } from "../../utils/extras";
+import {
+  getRandomElement,
+  getRandomImage,
+  getRandomName,
+  truncateFromMiddle,
+} from "../../utils/extras";
 import Input, { InputUPI } from "../../utils/Input";
-import { Tick } from "../../assets/icons";
+import { Copy, Tick } from "../../assets/icons";
 import ImageBox from "../../utils/ImageBox";
+import { StyledInput } from "../../utils/MuiComponents";
 
 const createData = () => ({
   name: `${getRandomName()} ${getRandomName()}`,
@@ -36,8 +42,84 @@ const selects = ["Select Cause"];
 
 const Payment = () => {
   const [open, setOpen] = useState(false);
+  const [paymentOpen, setPaymentOpen] = useState(false);
   return (
     <div className="p-10">
+      <Dialog
+        open={paymentOpen}
+        maxWidth="md"
+        onClose={() => setPaymentOpen(false)}
+        scroll="body"
+        aria-labelledby="payment-dialog-title"
+        aria-describedby="payment-dialog-title"
+      >
+        <div className="flex px-8 justify-center items-center py-10 border-b-2">
+          <div className="text-center">
+            <div>
+              <img
+                src={getRandomImage({ ratio: 1 })}
+                className="rounded-full w-16 mb-4 h-16 mx-auto"
+                alt=""
+              />
+            </div>
+            <div className="text-primary items-center flex text-sm">
+              {truncateFromMiddle(
+                "0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1",
+                25
+              )}
+              <Copy className="cursor-pointer ml-3" />
+            </div>
+            <div className="mt-2 font-bold text-sm">0 KINR</div>
+          </div>
+        </div>
+        <div className="p-8 text-center">
+          <h1 className="text-xl mb-5 font-medium">Transfer Assets</h1>
+          <div className="mt-5 first:mt-0 w-[350px]">
+            <StyledInput
+              label="Address"
+              fullWidth
+              placeholder="0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1"
+              select
+            >
+              <MenuItem value={"0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1"}>
+                0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
+              </MenuItem>
+            </StyledInput>
+          </div>
+          <div className="mt-5 first:mt-0">
+            <StyledInput
+              label="Amount"
+              InputProps={{ className: "pb-1" }}
+              fullWidth
+              placeholder="10,000.00"
+              type="number"
+            />
+          </div>
+          <div className="mt-5 first:mt-0 text-left">
+            <StyledInput
+              label="Assets"
+              fullWidth
+              placeholder="12,345.00"
+              select
+            >
+              <MenuItem value="" disabled>
+                Select
+              </MenuItem>
+              <MenuItem value={"KINR"}>KINR</MenuItem>
+            </StyledInput>
+          </div>
+          <div className="mt-10">
+            <Button
+              variant="contained"
+              className="py-4 px-7 bg-primary"
+              color="primary"
+              fullWidth
+            >
+              <span className="capitalize font-medium text-base">Transfer</span>
+            </Button>
+          </div>
+        </div>
+      </Dialog>
       <Dialog
         open={open}
         onClose={() => setOpen(false)}
@@ -117,6 +199,12 @@ const Payment = () => {
                       color="primary"
                       fullWidth
                       disabled={!row.kyc}
+                      onClick={() => {
+                        console.log("kyc");
+                        if (row.kyc) {
+                          setPaymentOpen(true);
+                        }
+                      }}
                       className="bg-gradient-to-r  disabled:to-transparent disabled:from-transparent max-w-[180px] py-3 shadow-none from-primary-light to-primary"
                     >
                       <span className="text-xs capitalize">Make Payment</span>

@@ -1,6 +1,7 @@
-import { Button, Paper } from "@mui/material";
+import { Button, IconButton, Paper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { BackArrow } from "../../../assets/icons";
 import Input from "../../../utils/Input";
 
 const PersonalInfo = () => {
@@ -12,8 +13,15 @@ const PersonalInfo = () => {
         className="container py-10 shadow-gray-400 flex justify-center rounded-lg"
       >
         <div className="max-w-[900px] grid grid-cols-2 w-full">
-          <div className="text-3xl px-4 col-span-2 text-roboto font-bold">
-            Personal Info
+          <div className="flex col-span-2">
+            <div>
+              <IconButton onClick={() => navigate(-1)}>
+                <BackArrow />
+              </IconButton>
+            </div>
+            <div className="text-3xl px-4 col-span-2 text-roboto font-bold">
+              Personal Info
+            </div>
           </div>
           <div className="p-4">
             <div className="text-lg text-roboto mt-2 text-[#8692A6] my-4"></div>

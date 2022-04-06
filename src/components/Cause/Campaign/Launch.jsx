@@ -44,7 +44,7 @@ const Launch = () => {
           InputProps={{
             className: "py-4",
           }}
-          placeholder="Enter your Email"
+          placeholder="Tell us your story"
         />
         <div className="mb-10" />
         <Button

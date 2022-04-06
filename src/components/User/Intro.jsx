@@ -6,12 +6,12 @@ import Toolbar from "./Toolbar";
 
 const steps = ["Intro", "Cause", "Setup", "Launch"];
 
-const Intro = () => {
+const Intro = ({ primary }) => {
   const navigate = useNavigate();
   const [value, setValue] = useState("Individual");
   return (
     <>
-      <Toolbar primary="STEP 01/04" secondary={"Cause"} />
+      <Toolbar primary={primary} secondary={"Cause"} />
       <div className="max-w-[600px] p-4 mt-4 mx-auto w-full">
         <Stepper alternativeLabel className="flex">
           {steps.map((label) => (
@@ -26,7 +26,6 @@ const Intro = () => {
           Tell us about yourself
         </div>
         <div className="text-lg text-roboto mt-2 text-[#8692A6] mb-4" />
-        <Input label="Your name" type="text" placeholder="Enter your name" />
         <Input
           label="I would like to register as:"
           select
@@ -64,7 +63,7 @@ const Intro = () => {
           />
         )}
         <Input
-          label="Purpose of fundraiser"
+          label="Impact Category"
           select
           placeholder="Select..."
           defaultValue=""
@@ -72,9 +71,28 @@ const Intro = () => {
           <MenuItem value="" disabled>
             Select...
           </MenuItem>
-          <MenuItem value="Education">Education</MenuItem>
-          <MenuItem value="Environment">Environment</MenuItem>
-          <MenuItem value="Health">Health</MenuItem>
+          {[
+            "COVID-19",
+            "Medical",
+            "Emergencies",
+            "Education",
+            "Children",
+            "Elderly",
+            "Animals",
+            "Sports",
+            "Communitiy",
+            "Arts & Media",
+            "Technology",
+            "Environment",
+            "Social Entrepreneurship",
+            "Women",
+            "Human Rights",
+            "Rural Development",
+          ].map((label) => (
+            <MenuItem key={label} value={label}>
+              {label}
+            </MenuItem>
+          ))}
         </Input>
         <Input
           label="Where are you located?"

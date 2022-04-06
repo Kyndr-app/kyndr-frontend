@@ -26,10 +26,9 @@ const inputs = [
   "Last Name",
   "Email",
   "Phone",
-  "Job Title",
   "Country",
-  "National ID",
   "PAN Number (Claim Tax Deductions)",
+  "Wallet Address",
 ];
 
 const Account = () => {

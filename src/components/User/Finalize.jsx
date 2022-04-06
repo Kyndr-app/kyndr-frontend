@@ -7,14 +7,14 @@ import Input from "../../utils/Input";
 import Toolbar from "./Toolbar";
 import TextMaskCustom from "../../utils/MaskInput";
 
-const Finalize = ({ beneficiary }) => {
+const Finalize = ({ beneficiary, primary }) => {
   const [country, setCountry] = useState(countries[0]);
   const [value, setValue] = useState("");
   const navigate = useNavigate();
   const [val, setVal] = useState("Individual");
   return (
     <>
-      <Toolbar primary="STEP 03/03" secondary={"Residency Info."} />
+      <Toolbar primary={primary} secondary={"Residency Info."} />
       <div className="max-w-[450px] p-4 mt-4 mx-auto w-full overflow-hidden">
         <div className="text-3xl text-roboto font-bold">
           Complete Your Profile!

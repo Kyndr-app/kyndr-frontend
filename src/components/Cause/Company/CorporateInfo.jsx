@@ -1,6 +1,7 @@
-import { Button, Paper } from "@mui/material";
+import { Button, IconButton, Paper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { BackArrow } from "../../../assets/icons";
 import Input, { InputUPI } from "../../../utils/Input";
 
 const CorporateInfo = () => {
@@ -12,7 +13,16 @@ const CorporateInfo = () => {
         className="container py-10 shadow-gray-400 flex justify-center rounded-lg"
       >
         <div className="max-w-[450px] w-full p-4">
-          <div className="text-3xl text-roboto font-bold">Corporate Info</div>
+          <div className="flex">
+            <div>
+              <IconButton onClick={() => navigate(-1)}>
+                <BackArrow />
+              </IconButton>
+            </div>
+            <div className="text-3xl px-4 col-span-2 text-roboto font-bold">
+              Corporate Info
+            </div>
+          </div>
           <div className="text-lg text-roboto mt-2 text-[#8692A6] my-4"></div>
           <Input label="NAME OF ENTITY:" required />
           <Input

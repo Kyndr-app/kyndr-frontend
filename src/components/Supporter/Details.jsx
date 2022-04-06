@@ -200,14 +200,6 @@ const Donor = () => {
         setCheckoutOpen={setConfirmOpen}
       />
       <h1 className="text-2xl text-gray-500 font-bold">Campaign 1</h1>
-      <p
-        className="text-gray-500 mb-2 text-xs font-semibold uppercase"
-        style={{
-          letterSpacing: "0.01em",
-        }}
-      >
-        Info & Explainer
-      </p>
       <Grid spacing={2} container>
         <Grid item md={7}>
           <div className="flex h-full flex-col justify-between">

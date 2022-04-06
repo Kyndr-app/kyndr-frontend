@@ -11,11 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { getRandomImage } from "../../utils/extras";
-import Input from "../../utils/Input";
-import { Edit, Tick } from "../../assets/icons";
+import { getRandomImage, truncateFromMiddle } from "../../utils/extras";
+import Input, { InputUPI } from "../../utils/Input";
+import { Copy, Edit, Tick } from "../../assets/icons";
 import ImageBox from "../../utils/ImageBox";
-import { StyledSelect } from "../../utils/MuiComponents";
+import { StyledInput, StyledSelect } from "../../utils/MuiComponents";
 
 const randomData = () => ({
   name: `Qasim Rai`,
@@ -25,13 +25,89 @@ const randomData = () => ({
 
 const cards = Array.from({ length: 3 }, randomData);
 
-const inputs = ["Name", "Wallet Address", "Designation"];
+const inputs = ["Name", "Wallet Address", "Designation", "UPI ID"];
 const selects = ["Assign to Cause"];
 
 const CustomCard = (card) => {
   const [active, setActive] = useState(true);
+  const [paymentOpen, setPaymentOpen] = useState(false);
   return (
     <div className="">
+      <Dialog
+        open={paymentOpen}
+        maxWidth="md"
+        onClose={() => setPaymentOpen(false)}
+        scroll="body"
+        aria-labelledby="payment-dialog-title"
+        aria-describedby="payment-dialog-title"
+      >
+        <div className="flex px-8 justify-center items-center py-10 border-b-2">
+          <div className="text-center">
+            <div>
+              <img
+                src={getRandomImage({ ratio: 1 })}
+                className="rounded-full w-16 mb-4 h-16 mx-auto"
+                alt=""
+              />
+            </div>
+            <div className="text-primary items-center flex text-sm">
+              {truncateFromMiddle(
+                "0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1",
+                25
+              )}
+              <Copy className="cursor-pointer ml-3" />
+            </div>
+            <div className="mt-2 font-bold text-sm">0 KINR</div>
+          </div>
+        </div>
+        <div className="p-8 text-center">
+          <h1 className="text-xl mb-5 font-medium">Transfer Assets</h1>
+          <div className="mt-5 first:mt-0 w-[350px]">
+            <StyledInput
+              label="Address"
+              fullWidth
+              placeholder="0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1"
+              select
+            >
+              <MenuItem value={"0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1"}>
+                0x896E332e6D072Ce84B1a97d41B15ddd0EF9337A1
+              </MenuItem>
+            </StyledInput>
+          </div>
+          <div className="mt-5 first:mt-0">
+            <StyledInput
+              label="Amount"
+              InputProps={{ className: "pb-1" }}
+              fullWidth
+              placeholder="10,000.00"
+              type="number"
+            />
+          </div>
+          <div className="mt-5 first:mt-0 text-left">
+            <StyledInput
+              label="Assets"
+              fullWidth
+              placeholder="12,345.00"
+              select
+            >
+              <MenuItem value="" disabled>
+                Select
+              </MenuItem>
+              <MenuItem value={"KINR"}>KINR</MenuItem>
+            </StyledInput>
+          </div>
+          <div className="mt-10">
+            <Button
+              variant="contained"
+              className="py-4 px-7 bg-primary"
+              color="primary"
+              fullWidth
+            >
+              <span className="capitalize font-medium text-base">Transfer</span>
+            </Button>
+          </div>
+        </div>
+      </Dialog>
       <Card className="shadow-lg card">
         <div className="relative">
           <CardMedia component="img" alt="green iguana" image={card.image} />
@@ -66,6 +142,7 @@ const CustomCard = (card) => {
                 variant="contained"
                 color="primary"
                 fullWidth
+                onClick={() => setPaymentOpen(true)}
                 className="bg-gradient-to-r px-2 py-3 shadow-none from-primary-light to-primary"
               >
                 <span className="text-xs capitalize">Make&nbsp;Payment</span>
@@ -154,7 +231,7 @@ const Team = () => {
               <div className="grid grid-cols-2 gap-x-3">
                 {inputs.map((input) => (
                   <div key={input}>
-                    <Input label={input} name={input} />
+                    <InputUPI input={input} Input={Input} />
                   </div>
                 ))}
                 {selects.map((input) => (

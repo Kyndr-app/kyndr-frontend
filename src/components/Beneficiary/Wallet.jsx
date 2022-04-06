@@ -71,9 +71,9 @@ const Wallet = () => {
             <StyledInput
               className="max-w-[380px]"
               fullWidth
-              label="Select Beneficiary Address"
+              label="Cause Wallet Address"
               InputProps={{ className: "text-primary" }}
-            ></StyledInput>
+            />
           </div>
           <div className="mt-4">
             <StyledInput

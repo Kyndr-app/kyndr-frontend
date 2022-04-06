@@ -9,9 +9,18 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const renderStep = () => {
+    if (id === "supporter") {
+      return "STEP 01/02";
+    } else if (id === "cause") {
+      return "STEP 01/05";
+    } else if (id === "beneficiary") {
+      return "STEP 01/03";
+    }
+  };
   return (
     <>
-      <Toolbar primary="STEP 03/03" secondary={"Residency Info."} />
+      <Toolbar primary={renderStep()} secondary={"Personal Info."} />
       <div className="max-w-[450px] p-4 mt-4 mx-auto w-full overflow-hidden">
         <h1 className="text-3xl text-roboto font-bold">Register Account!</h1>
         <h6 className="text-lg text-roboto mt-2 text-[#8692A6] mb-4">
