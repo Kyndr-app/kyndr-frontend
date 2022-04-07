@@ -91,7 +91,7 @@ const Donate = () => {
         style={{
           backgroundImage: `url(${campaign})`,
           backgroundPosition: "center",
-          backgroundSize: "120%",
+          backgroundSize: "140%",
         }}
       >
         <div className="relative flex justify-between items-center">
