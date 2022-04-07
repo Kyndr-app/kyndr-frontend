@@ -120,8 +120,8 @@ const Donate = () => {
               })}
             </ol>
           </div>
-          <div className="max-w-[300px] w-full"></div>
-          <div className="max-w-[300px] w-full"></div>
+          <div className="max-w-[150px] w-full"></div>
+          <div className="max-w-[150px] w-full"></div>
         </div>
       </div>
       <h1 className="text-xs text-[#4C4C66] font-medium">SELECT CATEGORY</h1>
